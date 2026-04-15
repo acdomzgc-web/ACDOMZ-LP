@@ -1,5 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { Briefcase, Zap, Star, ShieldCheck, Cpu } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 export function ExpertiseSection() {
   const metrics = [
