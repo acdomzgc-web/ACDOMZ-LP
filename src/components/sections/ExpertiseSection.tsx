@@ -1,88 +1,85 @@
 import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+import { Briefcase, Zap, Star, ShieldCheck, Cpu } from 'lucide-react'
 
 export function ExpertiseSection() {
+  const metrics = [
+    {
+      value: '+50',
+      label: 'projetos entregues com sucesso',
+      icon: <Briefcase className="w-6 h-6 text-accent" />,
+    },
+    {
+      value: '1 semana',
+      label: 'Tempo médio de entrega (com todos os dados em mãos)',
+      icon: <Zap className="w-6 h-6 text-accent" />,
+    },
+    {
+      value: '100%',
+      label: 'de satisfação dos clientes',
+      icon: <Star className="w-6 h-6 text-accent" />,
+    },
+  ]
+
+  const partners = ['GitHub', 'Supabase', 'SkipCloud', 'Adapta', '+25 IA do mercado']
+
   return (
     <section id="expertise" className="py-24 bg-muted/30 relative">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm font-bold text-accent tracking-widest uppercase mb-3">
-            Nossa Autoridade
+            Garantia de Resultados
           </h2>
           <h3 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-            A Fusão entre Gestão Estratégica e Engenharia de Alto Padrão
+            Autoridade e Confiança
           </h3>
-          <p className="text-lg text-muted-foreground">
-            Não entregamos apenas código. Entregamos soluções de negócios validadas por
-            especialistas em gestão e desenvolvidas por engenheiros certificados.
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Não desenvolvemos soluções genéricas. Construímos extensões digitais da sua visão única
+            — alinhadas à sua cultura, ao seu mercado e aos seus objetivos estratégicos. Com contato
+            direto e consultivo, entendemos profundamente sua essência antes de criar, garantindo
+            100% de satisfação, qualidade impecável, velocidade comprovada e eficiência máxima.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto relative">
-          {/* Connector Line (Desktop) */}
-          <div className="hidden md:block absolute top-1/2 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-secondary to-transparent -translate-y-1/2 z-0" />
+        {/* Metrics Grid */}
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-20 relative z-10">
+          {metrics.map((metric, i) => (
+            <Card
+              key={i}
+              className="border-border/50 bg-white/50 backdrop-blur-sm hover:shadow-elevation transition-all duration-300 group"
+            >
+              <CardContent className="p-8 flex flex-col items-center text-center h-full justify-center">
+                <div className="mb-6 p-4 rounded-2xl bg-secondary/10 group-hover:bg-accent/10 group-hover:scale-110 transition-transform duration-300">
+                  {metric.icon}
+                </div>
+                <h4 className="text-4xl font-bold text-primary mb-3 tracking-tight">
+                  {metric.value}
+                </h4>
+                <p className="text-muted-foreground font-medium">{metric.label}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
 
-          {/* Founder 1 */}
-          <Card className="relative z-10 overflow-hidden group hover:shadow-elevation transition-all duration-300 border-border/50 bg-white/50 backdrop-blur-sm">
-            <CardContent className="p-0">
-              <div className="flex flex-col sm:flex-row">
-                <div className="sm:w-2/5 overflow-hidden">
-                  <img
-                    src="https://img.usecurling.com/ppl/medium?gender=male&seed=adir"
-                    alt="Adir Ailson Model"
-                    className="w-full h-full object-cover aspect-square sm:aspect-auto group-hover:scale-105 transition-transform duration-500 filter grayscale group-hover:grayscale-0"
-                  />
-                </div>
-                <div className="p-6 sm:w-3/5 flex flex-col justify-center">
-                  <h4 className="text-2xl font-bold text-primary mb-1">Adir Ailson Model</h4>
-                  <p className="text-accent font-medium text-sm mb-4">
-                    Especialista em Gestão e Operações
-                  </p>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Visão estratégica focada em resultados reais, otimização de processos e escala
-                    de negócios digitais.
-                  </p>
-                  <Badge
-                    variant="outline"
-                    className="w-fit text-xs bg-secondary/10 text-primary border-secondary/30"
-                  >
-                    CRA/PR 14.172
-                  </Badge>
-                </div>
+        {/* Partners Display */}
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-8">
+            Parcerias e Tecnologias
+          </p>
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            {partners.map((partner, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 px-5 py-3 rounded-full border border-border/50 bg-white/80 backdrop-blur-sm shadow-sm hover:border-accent hover:shadow-md transition-all duration-300 group cursor-default"
+              >
+                {partner.includes('IA') ? (
+                  <Cpu className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
+                ) : (
+                  <ShieldCheck className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
+                )}
+                <span className="font-semibold text-primary text-sm sm:text-base">{partner}</span>
               </div>
-            </CardContent>
-          </Card>
-
-          {/* Founder 2 */}
-          <Card className="relative z-10 overflow-hidden group hover:shadow-elevation transition-all duration-300 border-border/50 bg-white/50 backdrop-blur-sm">
-            <CardContent className="p-0">
-              <div className="flex flex-col sm:flex-row">
-                <div className="sm:w-2/5 overflow-hidden">
-                  <img
-                    src="https://img.usecurling.com/ppl/medium?gender=male&seed=carlos"
-                    alt="Carlos Eduardo Model"
-                    className="w-full h-full object-cover aspect-square sm:aspect-auto group-hover:scale-105 transition-transform duration-500 filter grayscale group-hover:grayscale-0"
-                  />
-                </div>
-                <div className="p-6 sm:w-3/5 flex flex-col justify-center">
-                  <h4 className="text-2xl font-bold text-primary mb-1">Carlos Eduardo Model</h4>
-                  <p className="text-accent font-medium text-sm mb-4">
-                    Engenheiro de Software e Inovação
-                  </p>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Arquitetura de sistemas robustos, tecnologias de ponta e performance de alto
-                    nível para produtos digitais.
-                  </p>
-                  <Badge
-                    variant="outline"
-                    className="w-fit text-xs bg-secondary/10 text-primary border-secondary/30"
-                  >
-                    CREA/PR 222741/D
-                  </Badge>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
