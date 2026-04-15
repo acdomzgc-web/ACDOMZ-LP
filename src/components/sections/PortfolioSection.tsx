@@ -1,7 +1,8 @@
 import { useEffect, useState, useCallback } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { getProjects, getProjectImageUrl, type ProjectRecord } from '@/services/projects'
+import { getProjects, type ProjectRecord } from '@/services/projects'
+import pb from '@/lib/pocketbase/client'
 import { CheckCircle2, Building2, Target } from 'lucide-react'
 import { useRealtime } from '@/hooks/use-realtime'
 
@@ -30,7 +31,7 @@ export function PortfolioSection() {
 
   if (loading) {
     return (
-      <section id="portfolio" className="py-24 bg-background relative">
+      <section id="cases" className="py-24 bg-background relative">
         <div className="container mx-auto px-4 text-center">
           <div className="animate-pulse w-32 h-6 bg-muted mx-auto rounded mb-4" />
           <div className="animate-pulse w-64 h-10 bg-muted mx-auto rounded mb-16" />
@@ -46,7 +47,7 @@ export function PortfolioSection() {
 
   return (
     <section
-      id="portfolio"
+      id="cases"
       className="py-24 bg-background relative overflow-hidden border-t border-border/50"
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
@@ -74,7 +75,11 @@ export function PortfolioSection() {
               <div className="h-48 sm:h-56 w-full bg-muted relative overflow-hidden shrink-0 border-b border-border/50">
                 {project.image ? (
                   <img
-                    src={getProjectImageUrl(project)!}
+                    src={
+                      project.image.startsWith('http')
+                        ? project.image
+                        : pb.files.getUrl(project as any, project.image)
+                    }
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
