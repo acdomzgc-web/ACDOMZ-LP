@@ -65,23 +65,24 @@ export function TransformationSection() {
   return (
     <section
       id="portfolio"
-      className="py-24 bg-background relative overflow-hidden transition-colors duration-500 border-t border-border/50"
+      className="py-24 bg-background relative overflow-hidden transition-colors duration-500 border-t border-border"
     >
       {/* Technological background patterns */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--tw-gradient-stops))] from-secondary/10 via-background to-background opacity-60 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none z-10" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(194,178,143,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(194,178,143,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(6,41,69,0.8),transparent_50%)] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-background via-background/90 to-transparent pointer-events-none z-10" />
 
       <div className="container mx-auto px-4 relative z-20">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-sm font-bold text-secondary tracking-widest uppercase mb-3 drop-shadow-sm">
+          <h2 className="text-sm font-bold text-secondary tracking-widest uppercase mb-3 drop-shadow-[0_0_10px_rgba(194,178,143,0.3)]">
             Resultados Comprovados
           </h2>
-          <h3 className="text-3xl md:text-5xl font-extrabold text-foreground mb-6 tracking-tight">
+          <h3 className="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
             Portfólio
           </h3>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Explore nossa galeria de excelência digital. Interfaces premium e sistemas robustos
-            construídos para escalar e converter em diversos setores da indústria.
+            construídos para escalar e converter, sem comprometer a performance.
           </p>
         </div>
 
@@ -90,17 +91,18 @@ export function TransformationSection() {
             <Card
               key={index}
               className={cn(
-                'group overflow-hidden flex flex-col bg-card/60 dark:bg-card/40 backdrop-blur-sm border-border/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_-15px_rgba(6,41,69,0.2)] dark:hover:shadow-[0_20px_50px_-15px_rgba(194,178,143,0.15)] hover:border-secondary',
+                'group overflow-hidden flex flex-col bg-card/40 backdrop-blur-md border-border/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_-15px_rgba(194,178,143,0.15)] hover:border-secondary/60 ring-1 ring-transparent hover:ring-secondary/20',
                 item.colSpan,
               )}
             >
               {/* Image Container */}
-              <div className="relative h-56 sm:h-72 lg:h-80 overflow-hidden bg-muted/30 dark:bg-muted/10 flex items-center justify-center p-4 sm:p-6">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+              <div className="relative h-56 sm:h-72 lg:h-80 overflow-hidden bg-background/50 flex items-center justify-center p-4 sm:p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay pointer-events-none" />
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover object-top rounded-xl shadow-xl group-hover:scale-[1.03] transition-transform duration-700 ease-out relative z-0 border border-border/20"
+                  className="w-full h-full object-cover object-top rounded-xl shadow-2xl group-hover:scale-[1.05] transition-transform duration-700 ease-out relative z-0 border border-white/5"
                 />
                 <div className="absolute top-4 right-4 z-20">
                   <div className="bg-background/90 backdrop-blur-md rounded-full p-2 shadow-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">

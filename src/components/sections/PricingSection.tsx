@@ -13,7 +13,7 @@ const plans = [
       'Design Responsivo',
       'Formulário de Contato',
       'Otimização SEO Básica',
-      'Hospedagem Inclusa (Plano Assinatura)',
+      'Hospedagem Inclusa',
     ],
   },
   {
@@ -22,46 +22,20 @@ const plans = [
     desc: 'Para empresas que precisam de múltiplas páginas e autoridade.',
     single: 'R$ 997',
     sub: 'R$ 697 + R$ 197/mês',
-    features: ['Até 5 Páginas', 'Blog Integrado', 'Integração WhatsApp', 'Painel de Gestão Básico'],
+    features: ['Até 5 Páginas', 'Blog Integrado', 'Integração WhatsApp', 'Painel de Gestão'],
     highlight: true,
   },
   {
     level: 'Nível 3',
-    name: 'E-commerce & Automações',
-    desc: 'Venda online com carrinho, pagamentos e gestão de estoque.',
+    name: 'E-commerce / Sistemas',
+    desc: 'Soluções customizadas com integrações avançadas e vendas.',
     single: 'R$ 1.497',
     sub: 'R$ 997 + R$ 297/mês',
     features: [
-      'Catálogo Ilimitado',
+      'Funcionalidades Sob Medida',
       'Checkout Transparente',
-      'Cálculo de Frete',
-      'Automação de E-mails',
-    ],
-  },
-  {
-    level: 'Nível 4',
-    name: 'Sistema Web Customizado',
-    desc: 'Aplicações robustas sob medida para processos internos.',
-    single: 'R$ 2.497',
-    sub: 'R$ 1.997 + R$ 497/mês',
-    features: [
-      'Regras de Negócio Customizadas',
       'Banco de Dados Dedicado',
       'Painel Admin Avançado',
-      'Integração de APIs',
-    ],
-  },
-  {
-    level: 'Nível 5',
-    name: 'Plataforma Enterprise',
-    desc: 'Arquitetura de alto desempenho para escalar sem limites.',
-    single: 'R$ 3.997',
-    sub: 'R$ 2.997 + R$ 797/mês',
-    features: [
-      'Microserviços',
-      'Alta Disponibilidade',
-      'App Mobile Complementar',
-      'Suporte Dedicado 24/7',
     ],
   },
 ]
@@ -86,21 +60,21 @@ export function PricingSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8 max-w-[1500px] mx-auto items-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-[1200px] mx-auto items-center">
           {plans.map((plan, i) => (
             <div
               key={i}
               className={cn(
-                'group relative flex flex-col p-6 sm:p-8 rounded-[2rem] bg-card backdrop-blur-xl border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl',
+                'group relative flex flex-col p-6 sm:p-8 rounded-[2rem] bg-card/60 backdrop-blur-xl border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl',
                 plan.highlight
-                  ? 'border-secondary shadow-[0_20px_50px_-15px_rgba(194,178,143,0.3)] md:-translate-y-4 xl:scale-110 bg-gradient-to-b from-card via-card to-secondary/10 z-20 ring-1 ring-secondary'
-                  : 'border-border/50 shadow-subtle hover:border-secondary/40 dark:bg-card/40',
+                  ? 'border-secondary shadow-[0_20px_50px_-15px_rgba(194,178,143,0.2)] md:-translate-y-4 md:scale-105 bg-gradient-to-b from-card/90 via-card/80 to-secondary/10 z-20 ring-1 ring-secondary'
+                  : 'border-border/50 shadow-subtle hover:border-secondary/40',
               )}
             >
               {plan.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-secondary-foreground px-4 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full flex items-center gap-1.5 shadow-lg">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-secondary-foreground px-5 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full flex items-center gap-1.5 shadow-[0_0_20px_rgba(194,178,143,0.4)]">
                   <Sparkles className="w-3.5 h-3.5" />
-                  Mais Escolhido
+                  Recomendado
                 </div>
               )}
 
@@ -108,7 +82,7 @@ export function PricingSection() {
                 <div
                   className={cn(
                     'text-sm font-bold mb-3 tracking-wide',
-                    plan.highlight ? 'text-primary dark:text-secondary' : 'text-secondary',
+                    plan.highlight ? 'text-secondary' : 'text-secondary',
                   )}
                 >
                   {plan.level}
@@ -123,10 +97,7 @@ export function PricingSection() {
                 <div className="text-center">
                   <p
                     className={cn(
-                      'text-xs uppercase tracking-wider mb-2 font-bold',
-                      plan.highlight
-                        ? 'text-primary/70 dark:text-muted-foreground'
-                        : 'text-muted-foreground',
+                      'text-xs uppercase tracking-wider mb-2 font-bold text-muted-foreground',
                     )}
                   >
                     Pagamento Único
@@ -169,10 +140,10 @@ export function PricingSection() {
               <div className="pt-6 mt-auto">
                 <Button
                   className={cn(
-                    'w-full rounded-xl h-12 text-sm font-bold transition-all duration-300',
+                    'w-full rounded-xl h-12 min-h-[44px] text-sm font-bold transition-all duration-300',
                     plan.highlight
-                      ? 'bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:shadow-lg'
-                      : 'bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground dark:bg-card dark:text-foreground dark:border-border dark:hover:bg-secondary dark:hover:text-secondary-foreground',
+                      ? 'bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:shadow-[0_0_20px_rgba(194,178,143,0.3)]'
+                      : 'bg-card text-foreground border-border hover:bg-secondary hover:text-secondary-foreground',
                   )}
                   variant={plan.highlight ? 'default' : 'outline'}
                   asChild

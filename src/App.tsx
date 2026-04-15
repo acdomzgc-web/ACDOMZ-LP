@@ -13,7 +13,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 
 const App = () => (
   <BrowserRouter future={{ v7_startTransition: false, v7_relativeSplatPath: false }}>
-    <ThemeProvider defaultTheme="system" storageKey="acdomz-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="acdomz-theme">
       <TooltipProvider>
         <Toaster />
         <Sonner />

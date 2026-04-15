@@ -5,66 +5,37 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 207 84% 15%; /* #062945 - Deep Blue */
-
-    --card: 0 0% 100%;
-    --card-foreground: 207 84% 15%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 207 84% 15%;
-
-    --primary: 207 84% 15%; /* #062945 - Deep Blue */
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 41 31% 66%; /* #c2b28f - Beige/Gold */
-    --secondary-foreground: 207 84% 15%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 41 31% 66%; /* #c2b28f - Beige/Gold */
-    --accent-foreground: 207 84% 15%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 41 31% 66%;
-
-    --radius: 1rem;
-  }
-
+  :root,
   .dark {
-    --background: 207 84% 15%; /* #062945 - Deep Blue */
+    --background: 215 50% 4%; /* Very deep futuristic blue/black */
     --foreground: 0 0% 100%;
 
-    --card: 207 80% 10%; /* Darker Blue */
+    --card: 207 60% 8%; /* Dark Blue */
     --card-foreground: 0 0% 100%;
 
-    --popover: 207 80% 10%;
+    --popover: 207 60% 8%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 0 0% 100%; /* White */
-    --primary-foreground: 207 84% 15%;
+    --primary: 207 84% 30%; /* Vibrant Blue for elements */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 41 31% 66%; /* Beige/Gold */
-    --secondary-foreground: 207 84% 15%;
+    --secondary: 41 40% 60%; /* Richer Gold */
+    --secondary-foreground: 215 50% 4%; /* Deep Blue text */
 
-    --muted: 207 40% 25%;
-    --muted-foreground: 215 20.2% 70%;
+    --muted: 207 40% 15%;
+    --muted-foreground: 215 20.2% 75%;
 
-    --accent: 41 31% 66%;
-    --accent-foreground: 207 84% 15%;
+    --accent: 41 40% 60%; /* Richer Gold */
+    --accent-foreground: 215 50% 4%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 207 40% 25%;
-    --input: 207 40% 25%;
-    --ring: 41 31% 66%;
+    --border: 207 40% 20%;
+    --input: 207 40% 20%;
+    --ring: 41 40% 60%;
+
+    --radius: 1rem;
   }
 
   html {

@@ -47,10 +47,11 @@ export function ExpertiseSection() {
             <Card
               key={i}
               className={cn(
-                'border-border/50 bg-card/80 dark:bg-card/40 backdrop-blur-md hover:shadow-xl hover:-translate-y-1 hover:border-secondary transition-all duration-300 group',
+                'border-border/50 bg-card/40 backdrop-blur-xl hover:shadow-[0_0_30px_rgba(6,41,69,0.5)] hover:-translate-y-1 hover:border-secondary/70 transition-all duration-500 group relative overflow-hidden',
                 i === 2 ? 'sm:col-span-2 md:col-span-1' : '',
               )}
             >
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full justify-center">
                 <div className="mb-6 p-4 rounded-2xl bg-secondary/10 group-hover:bg-secondary/20 group-hover:scale-110 transition-transform duration-300">
                   {metric.icon}
@@ -75,7 +76,7 @@ export function ExpertiseSection() {
             {partners.map((partner, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2 px-5 py-3 rounded-full border border-border/50 bg-card/80 backdrop-blur-md shadow-sm hover:border-secondary hover:shadow-md transition-all duration-300 group cursor-default"
+                className="flex items-center gap-2 px-5 py-3 rounded-full border border-border/50 bg-card/40 backdrop-blur-md shadow-sm hover:border-secondary/60 hover:shadow-[0_0_15px_rgba(194,178,143,0.15)] transition-all duration-300 group cursor-default"
               >
                 {partner.includes('IA') ? (
                   <Cpu className="w-4 h-4 text-secondary group-hover:scale-110 transition-transform" />

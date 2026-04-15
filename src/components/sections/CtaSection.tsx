@@ -20,17 +20,17 @@ export function CtaSection() {
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <Button
             size="lg"
-            className="w-full sm:w-auto bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all duration-300 gap-2 h-14 px-8 rounded-full shadow-xl shadow-secondary/20"
+            className="w-full sm:w-auto bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all duration-300 gap-2 h-14 min-h-[56px] px-8 rounded-full shadow-[0_0_30px_rgba(194,178,143,0.3)]"
             asChild
           >
-            <a href="https://wa.me/5541987322926" target="_blank" rel="noreferrer">
-              <MessageCircle className="w-5 h-5" /> Falar com Especialista
+            <a href="tel:+5541987322926" target="_blank" rel="noreferrer">
+              <MessageCircle className="w-5 h-5" /> (41) 98732-2926
             </a>
           </Button>
           <Button
             size="lg"
             variant="outline"
-            className="w-full sm:w-auto border-white/20 text-white hover:bg-white/10 gap-2 h-14 px-8 rounded-full"
+            className="w-full sm:w-auto border-white/20 text-white hover:bg-white/10 gap-2 h-14 min-h-[56px] px-8 rounded-full backdrop-blur-sm"
             asChild
           >
             <a href="#planos">
@@ -40,11 +40,11 @@ export function CtaSection() {
           <Button
             size="lg"
             variant="ghost"
-            className="w-full sm:w-auto text-white/80 hover:text-white hover:bg-white/5 gap-2 h-14 px-8 rounded-full"
+            className="w-full sm:w-auto text-white/80 hover:text-white hover:bg-white/5 gap-2 h-14 min-h-[56px] px-8 rounded-full"
             asChild
           >
             <a href="mailto:acdomz.gc@gmail.com">
-              <Mail className="w-5 h-5" /> Proposta Customizada
+              <Mail className="w-5 h-5" /> acdomz.gc@gmail.com
             </a>
           </Button>
         </div>

@@ -77,8 +77,9 @@ export function FeaturesSection() {
           {features.map((feat, i) => (
             <Card
               key={i}
-              className="group hover:-translate-y-1 sm:hover:-translate-y-2 transition-all duration-300 bg-card/80 dark:bg-card/40 backdrop-blur-sm border-border/50 hover:border-secondary hover:shadow-lg"
+              className="group hover:-translate-y-1 sm:hover:-translate-y-2 transition-all duration-500 bg-card/40 backdrop-blur-md border-border/50 hover:border-secondary/60 hover:shadow-[0_10px_30px_-10px_rgba(6,41,69,0.5)] relative overflow-hidden"
             >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-[50px] group-hover:bg-secondary/10 transition-colors duration-500" />
               <CardContent className="p-5 sm:p-6">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4 sm:mb-5 group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors duration-300 text-secondary shadow-sm">
                   <feat.icon className="w-5 h-5 sm:w-6 sm:h-6" />
