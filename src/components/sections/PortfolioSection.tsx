@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import { getProjects, getProjectImageUrl, type ProjectRecord } from '@/services/projects'
 import { CheckCircle2, Building2, Target } from 'lucide-react'
 import eleveImage from '@/assets/image-73d8e.png'
-import starsImage from '@/assets/image-216eb.png'
+import starsImage from '@/assets/image-216eb-40f3d.png'
 
 export function PortfolioSection() {
   const [projects, setProjects] = useState<ProjectRecord[]>([])
@@ -73,7 +73,8 @@ export function PortfolioSection() {
                     src={
                       project.image === 'src/assets/image-73d8e.png'
                         ? eleveImage
-                        : project.image === 'src/assets/image-216eb.png'
+                        : project.image === 'src/assets/image-216eb.png' ||
+                            project.image === 'src/assets/image-216eb-40f3d.png'
                           ? starsImage
                           : getProjectImageUrl(project)!
                     }
