@@ -1,5 +1,6 @@
 import { HeroSection } from '@/components/sections/HeroSection'
 import { ExpertiseSection } from '@/components/sections/ExpertiseSection'
+import { PortfolioSection } from '@/components/sections/PortfolioSection'
 import { TransformationSection } from '@/components/sections/TransformationSection'
 import { PricingSection } from '@/components/sections/PricingSection'
 import { FeaturesSection } from '@/components/sections/FeaturesSection'
@@ -12,6 +13,7 @@ export default function Index() {
     <div className="w-full">
       <HeroSection />
       <ExpertiseSection />
+      <PortfolioSection />
       <TransformationSection />
       <PricingSection />
       <FeaturesSection />
