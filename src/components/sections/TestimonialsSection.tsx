@@ -34,10 +34,10 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section className="py-24 bg-primary text-primary-foreground relative">
+    <section className="py-24 bg-[#062945] text-white relative">
       {/* Decorative blob */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-10">
-        <div className="absolute -top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-secondary blur-[100px]" />
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
+        <div className="absolute -top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-secondary blur-[120px]" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -49,30 +49,30 @@ export function TestimonialsSection() {
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <Carousel opts={{ align: 'start' }} className="w-full">
-            <CarouselContent>
+          <Carousel opts={{ align: 'start', loop: true }} className="w-full">
+            <CarouselContent className="-ml-2 md:-ml-4">
               {testimonials.map((test, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <Card className="bg-white/5 border-white/10 h-full">
+                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card className="bg-white/5 border-white/10 h-full backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
                     <CardContent className="p-6 flex flex-col h-full relative">
-                      <Quote className="absolute top-4 right-4 w-8 h-8 text-white/10" />
+                      <Quote className="absolute top-4 right-4 w-8 h-8 text-secondary/20" />
                       <div className="flex gap-1 mb-4">
                         {[...Array(test.rating)].map((_, i) => (
                           <Star key={i} className="w-4 h-4 fill-secondary text-secondary" />
                         ))}
                       </div>
-                      <p className="text-primary-foreground/80 text-sm flex-1 mb-6 leading-relaxed italic">
+                      <p className="text-white/80 text-sm flex-1 mb-6 leading-relaxed italic">
                         "{test.text}"
                       </p>
                       <div className="flex items-center gap-3 mt-auto">
                         <img
                           src={test.img}
                           alt={test.name}
-                          className="w-10 h-10 rounded-full border border-white/20"
+                          className="w-10 h-10 rounded-full border border-secondary/30"
                         />
                         <div>
                           <p className="font-bold text-sm text-white">{test.name}</p>
-                          <p className="text-xs text-white/60">{test.role}</p>
+                          <p className="text-xs text-secondary/80">{test.role}</p>
                         </div>
                       </div>
                     </CardContent>
@@ -81,8 +81,8 @@ export function TestimonialsSection() {
               ))}
             </CarouselContent>
             <div className="flex justify-center gap-4 mt-8">
-              <CarouselPrevious className="static translate-y-0 bg-white/10 border-white/20 hover:bg-white/20 hover:text-white" />
-              <CarouselNext className="static translate-y-0 bg-white/10 border-white/20 hover:bg-white/20 hover:text-white" />
+              <CarouselPrevious className="static translate-y-0 bg-white/5 border-white/10 hover:bg-white/20 hover:text-white transition-all text-white/70" />
+              <CarouselNext className="static translate-y-0 bg-white/5 border-white/10 hover:bg-white/20 hover:text-white transition-all text-white/70" />
             </div>
           </Carousel>
         </div>

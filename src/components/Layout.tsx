@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet'
 import { Menu, Zap, Sun, Moon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useTheme } from '@/components/theme-provider'
@@ -67,7 +67,7 @@ export default function Layout() {
               className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-6"
               asChild
             >
-              <a href="https://wa.me/5511999999999" target="_blank" rel="noreferrer">
+              <a href="https://wa.me/5541987322926" target="_blank" rel="noreferrer">
                 Falar com Especialista
               </a>
             </Button>
@@ -76,20 +76,21 @@ export default function Layout() {
           {/* Mobile Nav */}
           <Sheet>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="w-6 h-6" />
+              <Button variant="ghost" size="icon" className="h-10 w-10">
+                <Menu className="w-6 h-6 text-foreground" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <div className="flex flex-col gap-6 mt-12">
+            <SheetContent side="right" className="w-[85vw] sm:w-[400px] border-border/50">
+              <div className="flex flex-col gap-8 mt-12">
                 {navLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="text-xl font-semibold text-primary hover:text-accent"
-                  >
-                    {link.name}
-                  </a>
+                  <SheetClose asChild key={link.name}>
+                    <a
+                      href={link.href}
+                      className="text-xl font-bold text-foreground hover:text-secondary transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  </SheetClose>
                 ))}
 
                 <div className="flex items-center justify-between mt-4 border-t border-border pt-4">
@@ -106,11 +107,17 @@ export default function Layout() {
                   </Button>
                 </div>
 
-                <Button className="bg-accent text-accent-foreground mt-4" size="lg" asChild>
-                  <a href="https://wa.me/5511999999999" target="_blank" rel="noreferrer">
-                    Falar com Especialista
-                  </a>
-                </Button>
+                <SheetClose asChild>
+                  <Button
+                    className="bg-accent text-accent-foreground mt-4 w-full h-14 text-lg rounded-xl"
+                    size="lg"
+                    asChild
+                  >
+                    <a href="https://wa.me/5541987322926" target="_blank" rel="noreferrer">
+                      Falar com Especialista
+                    </a>
+                  </Button>
+                </SheetClose>
               </div>
             </SheetContent>
           </Sheet>
@@ -149,9 +156,16 @@ export default function Layout() {
           </div>
           <div>
             <h4 className="text-lg font-semibold mb-4 text-secondary">Contato</h4>
-            <div className="space-y-2 text-slate-300 dark:text-muted-foreground">
-              <p>contato@acdomz.com.br</p>
-              <p>+55 (11) 99999-9999</p>
+            <div className="space-y-3 text-slate-300 dark:text-muted-foreground">
+              <a
+                href="mailto:acdomz.gc@gmail.com"
+                className="block hover:text-secondary transition-colors"
+              >
+                acdomz.gc@gmail.com
+              </a>
+              <a href="tel:+5541987322926" className="block hover:text-secondary transition-colors">
+                +55 (41) 98732-2926
+              </a>
               <div className="flex gap-4 mt-6">
                 <a
                   href="#"

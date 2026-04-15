@@ -3,13 +3,13 @@ import { MessageCircle, CreditCard, Mail } from 'lucide-react'
 
 export function CtaSection() {
   return (
-    <section className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-primary" />
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[#062945]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(194,178,143,0.15)_0,transparent_70%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:3rem_3rem]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
       <div className="container mx-auto px-4 relative z-10 text-center">
-        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+        <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
           Pronto para Transformar Seu Negócio?
         </h2>
         <p className="text-lg text-white/70 mb-10 max-w-2xl mx-auto">
@@ -23,7 +23,7 @@ export function CtaSection() {
             className="w-full sm:w-auto bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all duration-300 gap-2 h-14 px-8 rounded-full shadow-xl shadow-secondary/20"
             asChild
           >
-            <a href="https://wa.me/5511999999999" target="_blank" rel="noreferrer">
+            <a href="https://wa.me/5541987322926" target="_blank" rel="noreferrer">
               <MessageCircle className="w-5 h-5" /> Falar com Especialista
             </a>
           </Button>
@@ -43,7 +43,7 @@ export function CtaSection() {
             className="w-full sm:w-auto text-white/80 hover:text-white hover:bg-white/5 gap-2 h-14 px-8 rounded-full"
             asChild
           >
-            <a href="mailto:contato@acdomz.com.br">
+            <a href="mailto:acdomz.gc@gmail.com">
               <Mail className="w-5 h-5" /> Proposta Customizada
             </a>
           </Button>

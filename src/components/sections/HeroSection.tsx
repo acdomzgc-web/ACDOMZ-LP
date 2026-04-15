@@ -7,13 +7,14 @@ export function HeroSection() {
       id="inicio"
       className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-background"
     >
-      {/* Tech Background decorations */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(194,178,143,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(194,178,143,0.05)_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none" />
-      <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3 opacity-30 pointer-events-none">
-        <div className="w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-secondary/30 via-primary/10 to-transparent blur-3xl" />
+      {/* Futuristic Background decorations */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(6,41,69,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(6,41,69,0.05)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(194,178,143,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(194,178,143,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(194,178,143,0.15),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(6,41,69,0.5),rgba(255,255,255,0))] pointer-events-none" />
+      <div className="absolute top-1/4 right-0 -translate-y-1/2 translate-x-1/3 opacity-30 dark:opacity-40 pointer-events-none">
+        <div className="w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] rounded-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-secondary/40 via-primary/5 to-transparent blur-3xl" />
       </div>
-      <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 opacity-20 pointer-events-none">
-        <div className="w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-primary/40 via-secondary/10 to-transparent blur-3xl" />
+      <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/4 opacity-30 dark:opacity-40 pointer-events-none">
+        <div className="w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] rounded-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-primary/30 via-secondary/10 to-transparent blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
@@ -24,12 +25,12 @@ export function HeroSection() {
 
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-foreground mb-6 leading-[1.1] drop-shadow-sm">
             Sites que Vendem. <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-primary to-secondary bg-[length:200%_auto] animate-gradient">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-[#062945] dark:via-white to-secondary bg-[length:200%_auto] animate-gradient">
               Sistemas que Crescem.
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-xl">
+          <p className="text-lg md:text-xl text-muted-foreground dark:text-muted-foreground/90 mb-8 leading-relaxed max-w-xl">
             Transforme seu negócio com presença digital profissional, inovadora e funcional.
             Credibilidade que converte visitantes em clientes fiéis.
           </p>
@@ -37,10 +38,10 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-5">
             <Button
               size="lg"
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 gap-2 h-14 px-8 text-base rounded-full shadow-xl shadow-secondary/30 hover:scale-105 transition-all duration-300 ring-1 ring-secondary/50"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 gap-2 h-14 px-8 text-base rounded-full shadow-xl shadow-secondary/30 hover:scale-105 transition-all duration-300 ring-1 ring-secondary/50 w-full sm:w-auto"
               asChild
             >
-              <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/5541987322926" target="_blank" rel="noopener noreferrer">
                 Falar com Especialista
                 <ArrowRight className="w-5 h-5" />
               </a>
@@ -48,12 +49,12 @@ export function HeroSection() {
             <Button
               size="lg"
               variant="outline"
-              className="h-14 px-8 text-base rounded-full gap-2 border-primary/20 bg-background/50 backdrop-blur-sm hover:bg-secondary/10 hover:border-secondary/50 hover:text-primary transition-all duration-300"
+              className="h-14 px-8 text-base rounded-full gap-2 border-primary/20 bg-background/50 backdrop-blur-sm hover:bg-secondary/10 hover:border-secondary/50 hover:text-primary dark:text-foreground dark:hover:text-secondary transition-all duration-300 w-full sm:w-auto"
               asChild
             >
               <a href="#portfolio">
                 Ver Portfólio
-                <ChevronRight className="w-5 h-5 text-muted-foreground" />
+                <ChevronRight className="w-5 h-5 opacity-70" />
               </a>
             </Button>
           </div>

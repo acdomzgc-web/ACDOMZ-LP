@@ -73,17 +73,19 @@ export function FeaturesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {features.map((feat, i) => (
             <Card
               key={i}
-              className="group hover:-translate-y-2 transition-all duration-300 bg-card border-border/50 hover:border-secondary/50 hover:shadow-xl"
+              className="group hover:-translate-y-1 sm:hover:-translate-y-2 transition-all duration-300 bg-card/80 dark:bg-card/40 backdrop-blur-sm border-border/50 hover:border-secondary hover:shadow-lg"
             >
-              <CardContent className="p-6">
-                <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-5 group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors duration-300 text-secondary shadow-sm">
-                  <feat.icon className="w-6 h-6" />
+              <CardContent className="p-5 sm:p-6">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4 sm:mb-5 group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors duration-300 text-secondary shadow-sm">
+                  <feat.icon className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <h4 className="text-xl font-bold text-foreground mb-3">{feat.title}</h4>
+                <h4 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">
+                  {feat.title}
+                </h4>
                 <p className="text-muted-foreground text-sm leading-relaxed">{feat.desc}</p>
               </CardContent>
             </Card>

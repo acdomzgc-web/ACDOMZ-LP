@@ -13,7 +13,7 @@ const cases = [
     description:
       'Plataforma interativa e moderna com gestão de comunicados e reservas em tempo real.',
     image: 'https://img.usecurling.com/p/800/600?q=modern%20dashboard%20clean&color=blue&dpr=2',
-    colSpan: 'lg:col-span-2',
+    colSpan: 'md:col-span-2 lg:col-span-2',
   },
   {
     title: 'E-commerce Moda X',
@@ -24,7 +24,7 @@ const cases = [
     description: 'Redesign focado em conversão, mobile-first e checkout fluido em uma página.',
     image:
       'https://img.usecurling.com/p/600/600?q=minimalist%20fashion%20ecommerce&color=pink&dpr=2',
-    colSpan: 'lg:col-span-1',
+    colSpan: 'md:col-span-1 lg:col-span-1',
   },
   {
     title: 'Clínica Saúde Total',
@@ -35,7 +35,7 @@ const cases = [
     description: 'Sistema de agendamento integrado com portal do paciente rápido e intuitivo.',
     image:
       'https://img.usecurling.com/p/800/600?q=medical%20dashboard%20calendar&color=green&dpr=2',
-    colSpan: 'lg:col-span-1',
+    colSpan: 'md:col-span-1 lg:col-span-1',
   },
   {
     title: 'Startup Tech',
@@ -46,7 +46,7 @@ const cases = [
     description:
       'Interface de dados complexos simplificada com visualização de métricas de alta performance.',
     image: 'https://img.usecurling.com/p/800/600?q=saas%20analytics%20dashboard&color=purple&dpr=2',
-    colSpan: 'lg:col-span-1',
+    colSpan: 'md:col-span-1 lg:col-span-1',
   },
   {
     title: 'Franquia Alimentícia',
@@ -57,7 +57,7 @@ const cases = [
     description: 'Aplicativo de delivery próprio com programa de fidelidade automatizado.',
     image:
       'https://img.usecurling.com/p/800/600?q=food%20delivery%20mobile%20app&color=orange&dpr=2',
-    colSpan: 'lg:col-span-1',
+    colSpan: 'md:col-span-2 lg:col-span-1',
   },
 ]
 
@@ -85,22 +85,22 @@ export function TransformationSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-[1400px] mx-auto">
           {cases.map((item, index) => (
             <Card
               key={index}
               className={cn(
-                'group overflow-hidden flex flex-col bg-card border-border/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_-15px_rgba(6,41,69,0.15)] dark:hover:shadow-[0_20px_50px_-15px_rgba(194,178,143,0.15)] hover:border-secondary/40',
+                'group overflow-hidden flex flex-col bg-card/60 dark:bg-card/40 backdrop-blur-sm border-border/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_-15px_rgba(6,41,69,0.2)] dark:hover:shadow-[0_20px_50px_-15px_rgba(194,178,143,0.15)] hover:border-secondary',
                 item.colSpan,
               )}
             >
               {/* Image Container */}
-              <div className="relative h-64 sm:h-80 overflow-hidden bg-muted flex items-center justify-center p-6">
-                <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500 z-10" />
+              <div className="relative h-56 sm:h-72 lg:h-80 overflow-hidden bg-muted/30 dark:bg-muted/10 flex items-center justify-center p-4 sm:p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover rounded-xl shadow-2xl group-hover:scale-105 group-hover:rotate-1 transition-transform duration-700 ease-out relative z-0 border border-border/50"
+                  className="w-full h-full object-cover object-top rounded-xl shadow-xl group-hover:scale-[1.03] transition-transform duration-700 ease-out relative z-0 border border-border/20"
                 />
                 <div className="absolute top-4 right-4 z-20">
                   <div className="bg-background/90 backdrop-blur-md rounded-full p-2 shadow-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
@@ -123,21 +123,21 @@ export function TransformationSection() {
                       {item.type}
                     </Badge>
                   </div>
-                  <h4 className="text-2xl font-bold text-foreground mb-3">{item.title}</h4>
-                  <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
+                  <h4 className="text-2xl font-bold text-foreground mb-2 sm:mb-3">{item.title}</h4>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 sm:mb-6">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="flex items-center gap-3 pt-4 border-t border-border/50 mt-auto">
-                  <div className="p-2 rounded-lg bg-secondary/10 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors duration-300">
+                <div className="flex items-center gap-3 pt-4 border-t border-border/30 mt-auto">
+                  <div className="p-2.5 rounded-lg bg-secondary/10 text-secondary group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors duration-300">
                     <item.icon className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                       Impacto
                     </p>
-                    <p className="font-bold text-foreground">{item.metric}</p>
+                    <p className="font-bold text-foreground text-sm sm:text-base">{item.metric}</p>
                   </div>
                 </div>
               </div>

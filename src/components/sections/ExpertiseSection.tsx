@@ -41,20 +41,25 @@ export function ExpertiseSection() {
         </div>
 
         {/* Metrics Grid */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-20 relative z-10">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-20 relative z-10">
           {metrics.map((metric, i) => (
             <Card
               key={i}
-              className="border-border/50 bg-card/60 backdrop-blur-md hover:shadow-xl hover:-translate-y-1 hover:border-secondary/40 transition-all duration-300 group"
+              className={cn(
+                'border-border/50 bg-card/80 dark:bg-card/40 backdrop-blur-md hover:shadow-xl hover:-translate-y-1 hover:border-secondary transition-all duration-300 group',
+                i === 2 ? 'sm:col-span-2 md:col-span-1' : '',
+              )}
             >
-              <CardContent className="p-8 flex flex-col items-center text-center h-full justify-center">
-                <div className="mb-6 p-4 rounded-2xl bg-secondary/10 group-hover:bg-accent/10 group-hover:scale-110 transition-transform duration-300">
+              <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full justify-center">
+                <div className="mb-6 p-4 rounded-2xl bg-secondary/10 group-hover:bg-secondary/20 group-hover:scale-110 transition-transform duration-300">
                   {metric.icon}
                 </div>
-                <h4 className="text-4xl font-bold text-primary mb-3 tracking-tight">
+                <h4 className="text-4xl md:text-5xl font-bold text-foreground mb-3 tracking-tight drop-shadow-sm">
                   {metric.value}
                 </h4>
-                <p className="text-muted-foreground font-medium">{metric.label}</p>
+                <p className="text-muted-foreground font-medium text-sm md:text-base">
+                  {metric.label}
+                </p>
               </CardContent>
             </Card>
           ))}

@@ -91,10 +91,10 @@ export function PricingSection() {
             <div
               key={i}
               className={cn(
-                'group relative flex flex-col p-8 rounded-[2rem] bg-card backdrop-blur-xl border transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl',
+                'group relative flex flex-col p-6 sm:p-8 rounded-[2rem] bg-card backdrop-blur-xl border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl',
                 plan.highlight
-                  ? 'border-secondary/80 shadow-[0_20px_50px_-15px_rgba(194,178,143,0.3)] md:-translate-y-4 xl:scale-110 bg-gradient-to-b from-card to-secondary/10 z-20 ring-2 ring-secondary/20'
-                  : 'border-border/50 shadow-subtle hover:border-secondary/40',
+                  ? 'border-secondary shadow-[0_20px_50px_-15px_rgba(194,178,143,0.3)] md:-translate-y-4 xl:scale-110 bg-gradient-to-b from-card via-card to-secondary/10 z-20 ring-1 ring-secondary'
+                  : 'border-border/50 shadow-subtle hover:border-secondary/40 dark:bg-card/40',
               )}
             >
               {plan.highlight && (
@@ -113,7 +113,7 @@ export function PricingSection() {
                 >
                   {plan.level}
                 </div>
-                <h4 className="text-xl font-bold text-primary h-14 flex items-center justify-center leading-tight">
+                <h4 className="text-xl font-bold text-foreground h-14 flex items-center justify-center leading-tight">
                   {plan.name}
                 </h4>
                 <p className="text-sm text-muted-foreground mt-2 h-10 line-clamp-2">{plan.desc}</p>
@@ -131,7 +131,7 @@ export function PricingSection() {
                   >
                     Pagamento Único
                   </p>
-                  <p className="text-3xl font-bold text-primary transition-colors group-hover:text-secondary">
+                  <p className="text-3xl font-bold text-foreground transition-colors group-hover:text-secondary">
                     {plan.single}
                   </p>
                 </div>
@@ -141,12 +141,14 @@ export function PricingSection() {
                     <span className="w-full border-t border-border/50" />
                   </div>
                   <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-card px-2 text-muted-foreground">Ou Assinatura</span>
+                    <span className="bg-card px-2 text-muted-foreground group-hover:bg-transparent transition-colors">
+                      Ou Assinatura
+                    </span>
                   </div>
                 </div>
 
                 <div className="text-center">
-                  <p className="text-xl font-bold text-primary">{plan.sub}</p>
+                  <p className="text-xl font-bold text-foreground">{plan.sub}</p>
                   <p className="text-xs text-muted-foreground mt-1">Setup + Mensalidade</p>
                 </div>
 
@@ -170,12 +172,12 @@ export function PricingSection() {
                     'w-full rounded-xl h-12 text-sm font-bold transition-all duration-300',
                     plan.highlight
                       ? 'bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:shadow-lg'
-                      : 'bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground',
+                      : 'bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground dark:bg-card dark:text-foreground dark:border-border dark:hover:bg-secondary dark:hover:text-secondary-foreground',
                   )}
                   variant={plan.highlight ? 'default' : 'outline'}
                   asChild
                 >
-                  <a href="https://wa.me/5511999999999" target="_blank" rel="noreferrer">
+                  <a href="https://wa.me/5541987322926" target="_blank" rel="noreferrer">
                     Selecionar Plano
                   </a>
                 </Button>
