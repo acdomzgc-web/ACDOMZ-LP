@@ -5,6 +5,7 @@ import { getProjects, getProjectImageUrl, type ProjectRecord } from '@/services/
 import { CheckCircle2, Building2, Target } from 'lucide-react'
 import eleveImage from '@/assets/image-73d8e.png'
 import starsImage from '@/assets/image-216eb-40f3d.png'
+import acdomzImage from '@/assets/image-2b7fc.png'
 
 export function PortfolioSection() {
   const [projects, setProjects] = useState<ProjectRecord[]>([])
@@ -76,7 +77,9 @@ export function PortfolioSection() {
                         : project.image === 'src/assets/image-216eb.png' ||
                             project.image === 'src/assets/image-216eb-40f3d.png'
                           ? starsImage
-                          : getProjectImageUrl(project)!
+                          : project.image === 'src/assets/image-2b7fc.png'
+                            ? acdomzImage
+                            : getProjectImageUrl(project)!
                     }
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
