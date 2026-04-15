@@ -17,9 +17,13 @@ export default function Layout() {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
+    document.documentElement.classList.add('scroll-smooth')
     const handleScroll = () => setIsScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      document.documentElement.classList.remove('scroll-smooth')
+    }
   }, [])
 
   return (

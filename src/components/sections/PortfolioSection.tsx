@@ -5,6 +5,7 @@ import { getProjects, type ProjectRecord } from '@/services/projects'
 import pb from '@/lib/pocketbase/client'
 import { CheckCircle2, Building2, Target } from 'lucide-react'
 import { useRealtime } from '@/hooks/use-realtime'
+import { cn } from '@/lib/utils'
 
 export function PortfolioSection() {
   const [projects, setProjects] = useState<ProjectRecord[]>([])
@@ -72,8 +73,24 @@ export function PortfolioSection() {
               key={project.id}
               className="bg-card/40 backdrop-blur-xl border-border/50 hover:border-secondary/50 hover:shadow-[0_0_30px_rgba(6,41,69,0.5)] transition-all duration-500 overflow-hidden flex flex-col group h-full"
             >
-              <div className="h-48 sm:h-56 w-full bg-muted relative overflow-hidden shrink-0 border-b border-border/50">
-                {project.image ? (
+              <div
+                className={cn(
+                  'h-48 sm:h-56 w-full bg-muted relative overflow-hidden shrink-0 border-b border-border/50',
+                  project.company === 'Acdomz' && project.image && 'bg-fixed bg-cover bg-center',
+                )}
+                style={
+                  project.company === 'Acdomz' && project.image
+                    ? {
+                        backgroundImage: `url(${
+                          project.image.startsWith('http')
+                            ? project.image
+                            : pb.files.getUrl(project as any, project.image)
+                        })`,
+                      }
+                    : undefined
+                }
+              >
+                {project.company !== 'Acdomz' && project.image ? (
                   <img
                     src={
                       project.image.startsWith('http')
@@ -83,7 +100,7 @@ export function PortfolioSection() {
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                ) : (
+                ) : !project.image ? (
                   <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-background to-secondary/20">
                     <img
                       src={`https://img.usecurling.com/p/600/400?q=${encodeURIComponent(project.niche.split(' ')[0] || 'technology')}&color=black`}
@@ -91,8 +108,8 @@ export function PortfolioSection() {
                       className="w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-500 mix-blend-overlay"
                     />
                   </div>
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                ) : null}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent pointer-events-none" />
               </div>
 
               <CardContent className="p-6 md:p-8 flex flex-col flex-1 relative z-10 -mt-8">
