@@ -7,20 +7,24 @@ export function HeroSection() {
       id="inicio"
       className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-background"
     >
-      {/* Background decorations */}
-      <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3 opacity-20 pointer-events-none">
-        <div className="w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle_at_center,rgba(26,115,232,0.4),transparent_60%)] blur-3xl" />
+      {/* Tech Background decorations */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(194,178,143,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(194,178,143,0.05)_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none" />
+      <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3 opacity-30 pointer-events-none">
+        <div className="w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-secondary/30 via-primary/10 to-transparent blur-3xl" />
+      </div>
+      <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 opacity-20 pointer-events-none">
+        <div className="w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-primary/40 via-secondary/10 to-transparent blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+      <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
         <div className="max-w-2xl animate-fade-in-up z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted border border-border/50 text-sm font-medium text-primary mb-6">
             <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse" />
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-primary mb-6 leading-[1.1]">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-foreground mb-6 leading-[1.1] drop-shadow-sm">
             Sites que Vendem. <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-primary to-secondary bg-[length:200%_auto] animate-gradient">
               Sistemas que Crescem.
             </span>
           </h1>
@@ -30,10 +34,10 @@ export function HeroSection() {
             Credibilidade que converte visitantes em clientes fiéis.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-5">
             <Button
               size="lg"
-              className="bg-accent text-accent-foreground hover:bg-accent/90 gap-2 h-14 px-8 text-base rounded-full shadow-lg shadow-accent/20"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 gap-2 h-14 px-8 text-base rounded-full shadow-xl shadow-secondary/30 hover:scale-105 transition-all duration-300 ring-1 ring-secondary/50"
               asChild
             >
               <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">
@@ -44,10 +48,10 @@ export function HeroSection() {
             <Button
               size="lg"
               variant="outline"
-              className="h-14 px-8 text-base rounded-full gap-2 hover:bg-secondary/20"
+              className="h-14 px-8 text-base rounded-full gap-2 border-primary/20 bg-background/50 backdrop-blur-sm hover:bg-secondary/10 hover:border-secondary/50 hover:text-primary transition-all duration-300"
               asChild
             >
-              <a href="#cases">
+              <a href="#portfolio">
                 Ver Portfólio
                 <ChevronRight className="w-5 h-5 text-muted-foreground" />
               </a>
@@ -56,11 +60,12 @@ export function HeroSection() {
         </div>
 
         <div className="relative animate-fade-in lg:ml-auto z-10 mt-10 lg:mt-0">
-          <div className="relative animate-float">
+          <div className="relative animate-float group">
+            <div className="absolute inset-0 bg-gradient-to-tr from-secondary/20 to-primary/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-50" />
             <img
-              src="https://img.usecurling.com/p/800/600?q=dashboard%20software%20analytics&color=blue"
+              src="https://img.usecurling.com/p/800/600?q=dashboard%20software%20analytics&color=blue&dpr=2"
               alt="Plataforma ACDOMZ"
-              className="rounded-2xl shadow-elevation border border-border/60"
+              className="relative rounded-2xl shadow-2xl border border-border bg-card object-cover"
             />
             {/* Floating Element 1 */}
             <div

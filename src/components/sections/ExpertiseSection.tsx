@@ -45,7 +45,7 @@ export function ExpertiseSection() {
           {metrics.map((metric, i) => (
             <Card
               key={i}
-              className="border-border/50 bg-white/50 backdrop-blur-sm hover:shadow-elevation transition-all duration-300 group"
+              className="border-border/50 bg-card/60 backdrop-blur-md hover:shadow-xl hover:-translate-y-1 hover:border-secondary/40 transition-all duration-300 group"
             >
               <CardContent className="p-8 flex flex-col items-center text-center h-full justify-center">
                 <div className="mb-6 p-4 rounded-2xl bg-secondary/10 group-hover:bg-accent/10 group-hover:scale-110 transition-transform duration-300">
@@ -69,14 +69,16 @@ export function ExpertiseSection() {
             {partners.map((partner, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2 px-5 py-3 rounded-full border border-border/50 bg-white/80 backdrop-blur-sm shadow-sm hover:border-accent hover:shadow-md transition-all duration-300 group cursor-default"
+                className="flex items-center gap-2 px-5 py-3 rounded-full border border-border/50 bg-card/80 backdrop-blur-md shadow-sm hover:border-secondary hover:shadow-md transition-all duration-300 group cursor-default"
               >
                 {partner.includes('IA') ? (
-                  <Cpu className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
+                  <Cpu className="w-4 h-4 text-secondary group-hover:scale-110 transition-transform" />
                 ) : (
-                  <ShieldCheck className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
+                  <ShieldCheck className="w-4 h-4 text-secondary group-hover:scale-110 transition-transform" />
                 )}
-                <span className="font-semibold text-primary text-sm sm:text-base">{partner}</span>
+                <span className="font-semibold text-foreground text-sm sm:text-base">
+                  {partner}
+                </span>
               </div>
             ))}
           </div>

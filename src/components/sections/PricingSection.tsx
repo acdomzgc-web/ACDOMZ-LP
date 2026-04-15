@@ -23,6 +23,7 @@ const plans = [
     single: 'R$ 997',
     sub: 'R$ 697 + R$ 197/mês',
     features: ['Até 5 Páginas', 'Blog Integrado', 'Integração WhatsApp', 'Painel de Gestão Básico'],
+    highlight: true,
   },
   {
     level: 'Nível 3',
@@ -36,7 +37,6 @@ const plans = [
       'Cálculo de Frete',
       'Automação de E-mails',
     ],
-    highlight: true,
   },
   {
     level: 'Nível 4',
@@ -91,10 +91,10 @@ export function PricingSection() {
             <div
               key={i}
               className={cn(
-                'group relative flex flex-col p-8 rounded-[2rem] bg-card/60 backdrop-blur-xl border border-border/50 transition-all duration-500 hover:-translate-y-3 hover:border-secondary/60 hover:shadow-[0_20px_40px_-15px_rgba(194,178,143,0.15)]',
+                'group relative flex flex-col p-8 rounded-[2rem] bg-card backdrop-blur-xl border transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl',
                 plan.highlight
-                  ? 'border-secondary/50 shadow-[0_10px_30px_-10px_rgba(194,178,143,0.1)] md:-translate-y-2 xl:scale-105 bg-card z-10'
-                  : 'shadow-subtle',
+                  ? 'border-secondary/80 shadow-[0_20px_50px_-15px_rgba(194,178,143,0.3)] md:-translate-y-4 xl:scale-110 bg-gradient-to-b from-card to-secondary/10 z-20 ring-2 ring-secondary/20'
+                  : 'border-border/50 shadow-subtle hover:border-secondary/40',
               )}
             >
               {plan.highlight && (
@@ -105,7 +105,12 @@ export function PricingSection() {
               )}
 
               <div className="text-center pb-6 border-b border-border/50">
-                <div className="text-sm font-bold text-secondary mb-3 tracking-wide">
+                <div
+                  className={cn(
+                    'text-sm font-bold mb-3 tracking-wide',
+                    plan.highlight ? 'text-primary dark:text-secondary' : 'text-secondary',
+                  )}
+                >
                   {plan.level}
                 </div>
                 <h4 className="text-xl font-bold text-primary h-14 flex items-center justify-center leading-tight">
@@ -116,7 +121,14 @@ export function PricingSection() {
 
               <div className="flex-1 py-6 flex flex-col gap-6">
                 <div className="text-center">
-                  <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2 font-medium">
+                  <p
+                    className={cn(
+                      'text-xs uppercase tracking-wider mb-2 font-bold',
+                      plan.highlight
+                        ? 'text-primary/70 dark:text-muted-foreground'
+                        : 'text-muted-foreground',
+                    )}
+                  >
                     Pagamento Único
                   </p>
                   <p className="text-3xl font-bold text-primary transition-colors group-hover:text-secondary">

@@ -5,7 +5,8 @@ export function CtaSection() {
   return (
     <section className="py-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-primary" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(194,178,143,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(194,178,143,0.1)_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(194,178,143,0.15)_0,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:3rem_3rem]" />
 
       <div className="container mx-auto px-4 relative z-10 text-center">
         <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
@@ -19,7 +20,7 @@ export function CtaSection() {
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <Button
             size="lg"
-            className="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white gap-2 h-14 px-8 rounded-full"
+            className="w-full sm:w-auto bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all duration-300 gap-2 h-14 px-8 rounded-full shadow-xl shadow-secondary/20"
             asChild
           >
             <a href="https://wa.me/5511999999999" target="_blank" rel="noreferrer">
