@@ -16,7 +16,6 @@ export function HeroSection() {
         <div className="max-w-2xl animate-fade-in-up z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted border border-border/50 text-sm font-medium text-primary mb-6">
             <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse" />
-            Engenharia de Software Premium
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-primary mb-6 leading-[1.1]">
