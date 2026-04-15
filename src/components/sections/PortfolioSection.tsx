@@ -95,7 +95,7 @@ export function PortfolioSection() {
                   </Badge>
                   <Badge
                     variant="outline"
-                    className="border-secondary/50 text-secondary-foreground flex items-center gap-1.5 py-1 backdrop-blur-md"
+                    className="border-secondary/50 flex items-center gap-1.5 py-1 backdrop-blur-md text-[#ffffff]"
                   >
                     <Target className="w-3.5 h-3.5" />
                     {project.niche}
