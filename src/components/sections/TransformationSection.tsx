@@ -117,7 +117,7 @@ export function TransformationSection() {
                   <div className="flex flex-wrap items-center gap-2 mb-4">
                     <Badge
                       variant="outline"
-                      className="border-secondary/50 text-secondary-foreground bg-secondary/10 font-bold"
+                      className="border-secondary/50 bg-secondary/10 font-bold text-[#ffffff]"
                     >
                       {item.niche}
                     </Badge>
