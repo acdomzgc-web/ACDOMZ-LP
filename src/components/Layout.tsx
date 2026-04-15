@@ -2,8 +2,9 @@ import { Outlet } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { Menu, Zap } from 'lucide-react'
+import { Menu, Zap, Sun, Moon } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useTheme } from '@/components/theme-provider'
 
 const navLinks = [
   { name: 'Expertise', href: '#expertise' },
@@ -15,6 +16,7 @@ const navLinks = [
 
 export default function Layout() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const { theme, setTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20)
@@ -28,7 +30,7 @@ export default function Layout() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b',
           isScrolled
-            ? 'bg-white/80 backdrop-blur-md border-border/50 shadow-sm py-3'
+            ? 'bg-background/80 backdrop-blur-md border-border/50 shadow-sm py-3'
             : 'bg-transparent border-transparent py-5',
         )}
       >
@@ -49,6 +51,18 @@ export default function Layout() {
                 {link.name}
               </a>
             ))}
+
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="rounded-full mr-2 hover:bg-secondary/20 hover:text-secondary"
+            >
+              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <span className="sr-only">Toggle theme</span>
+            </Button>
+
             <Button
               className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-6"
               asChild
@@ -77,6 +91,21 @@ export default function Layout() {
                     {link.name}
                   </a>
                 ))}
+
+                <div className="flex items-center justify-between mt-4 border-t border-border pt-4">
+                  <span className="font-medium text-muted-foreground">Alternar Tema</span>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                    className="rounded-full"
+                  >
+                    <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                    <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                    <span className="sr-only">Toggle theme</span>
+                  </Button>
+                </div>
+
                 <Button className="bg-accent text-accent-foreground mt-4" size="lg" asChild>
                   <a href="https://wa.me/5511999999999" target="_blank" rel="noreferrer">
                     Falar com Especialista
@@ -92,13 +121,13 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      <footer className="bg-primary text-primary-foreground py-16 border-t border-primary-foreground/10">
+      <footer className="bg-slate-900 dark:bg-background text-slate-100 py-16 border-t border-slate-800 dark:border-border">
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             <a href="#" className="flex items-center gap-2 text-2xl font-bold mb-4">
               <Zap className="w-6 h-6 text-secondary fill-secondary" /> ACDOMZ Tech
             </a>
-            <p className="text-primary-foreground/70 max-w-sm">
+            <p className="text-slate-300 dark:text-muted-foreground max-w-sm">
               Transformando visão estratégica em engenharia de software de alto padrão para empresas
               que buscam liderança no mercado digital.
             </p>
@@ -110,7 +139,7 @@ export default function Layout() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-primary-foreground/70 hover:text-secondary transition-colors"
+                    className="text-slate-300 dark:text-muted-foreground hover:text-secondary dark:hover:text-secondary transition-colors"
                   >
                     {link.name}
                   </a>
@@ -120,19 +149,19 @@ export default function Layout() {
           </div>
           <div>
             <h4 className="text-lg font-semibold mb-4 text-secondary">Contato</h4>
-            <div className="space-y-2 text-primary-foreground/70">
+            <div className="space-y-2 text-slate-300 dark:text-muted-foreground">
               <p>contato@acdomz.com.br</p>
               <p>+55 (11) 99999-9999</p>
               <div className="flex gap-4 mt-6">
                 <a
                   href="#"
-                  className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all"
+                  className="w-10 h-10 rounded-full bg-slate-800 dark:bg-card flex items-center justify-center hover:bg-secondary hover:text-slate-900 dark:hover:text-background transition-all"
                 >
                   In
                 </a>
                 <a
                   href="#"
-                  className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all"
+                  className="w-10 h-10 rounded-full bg-slate-800 dark:bg-card flex items-center justify-center hover:bg-secondary hover:text-slate-900 dark:hover:text-background transition-all"
                 >
                   Ig
                 </a>
@@ -140,7 +169,7 @@ export default function Layout() {
             </div>
           </div>
         </div>
-        <div className="container mx-auto px-4 mt-12 pt-8 border-t border-primary-foreground/10 text-center text-primary-foreground/50 text-sm">
+        <div className="container mx-auto px-4 mt-12 pt-8 border-t border-slate-800 dark:border-border text-center text-slate-400 dark:text-muted-foreground text-sm">
           <p>© 2026 ACDOMZ Tech. Todos os direitos reservados.</p>
         </div>
       </footer>
