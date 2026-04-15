@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { getProjects, getProjectImageUrl, type ProjectRecord } from '@/services/projects'
 import { CheckCircle2, Building2, Target } from 'lucide-react'
+import eleveImage from '@/assets/image-73d8e.png'
 
 export function PortfolioSection() {
   const [projects, setProjects] = useState<ProjectRecord[]>([])
@@ -68,7 +69,11 @@ export function PortfolioSection() {
               <div className="h-48 sm:h-56 w-full bg-muted relative overflow-hidden shrink-0 border-b border-border/50">
                 {project.image ? (
                   <img
-                    src={getProjectImageUrl(project)!}
+                    src={
+                      project.image === 'src/assets/image-73d8e.png'
+                        ? eleveImage
+                        : getProjectImageUrl(project)!
+                    }
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
