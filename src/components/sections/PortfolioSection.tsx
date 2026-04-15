@@ -1,26 +1,32 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { getProjects, getProjectImageUrl, type ProjectRecord } from '@/services/projects'
 import { CheckCircle2, Building2, Target } from 'lucide-react'
+import { useRealtime } from '@/hooks/use-realtime'
 
 export function PortfolioSection() {
   const [projects, setProjects] = useState<ProjectRecord[]>([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    async function loadProjects() {
-      try {
-        const data = await getProjects()
-        setProjects(data)
-      } catch (error) {
-        console.error('Failed to load projects', error)
-      } finally {
-        setLoading(false)
-      }
+  const loadProjects = useCallback(async () => {
+    try {
+      const data = await getProjects()
+      setProjects(data)
+    } catch (error) {
+      console.error('Failed to load projects', error)
+    } finally {
+      setLoading(false)
     }
-    loadProjects()
   }, [])
+
+  useEffect(() => {
+    loadProjects()
+  }, [loadProjects])
+
+  useRealtime('projects', () => {
+    loadProjects()
+  })
 
   if (loading) {
     return (
