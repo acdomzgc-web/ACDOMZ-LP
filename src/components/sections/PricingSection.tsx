@@ -60,19 +60,19 @@ export function PricingSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-[1200px] mx-auto items-center">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-8 max-w-[1200px] mx-auto items-stretch">
           {plans.map((plan, i) => (
             <div
               key={i}
               className={cn(
-                'group relative flex flex-col p-6 sm:p-8 rounded-[2rem] bg-card/60 backdrop-blur-xl border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl',
+                'group relative flex flex-col p-6 sm:p-8 rounded-[2rem] bg-card/60 backdrop-blur-xl border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl flex-1',
                 plan.highlight
-                  ? 'border-secondary shadow-[0_20px_50px_-15px_rgba(194,178,143,0.2)] md:-translate-y-4 md:scale-105 bg-gradient-to-b from-card/90 via-card/80 to-secondary/10 z-20 ring-1 ring-secondary'
+                  ? 'border-secondary shadow-[0_20px_50px_-15px_rgba(194,178,143,0.2)] lg:-translate-y-4 lg:scale-105 scale-[1.02] bg-gradient-to-b from-card/90 via-card/80 to-secondary/10 z-20 ring-1 ring-secondary'
                   : 'border-border/50 shadow-subtle hover:border-secondary/40',
               )}
             >
               {plan.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-secondary-foreground px-5 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full flex items-center gap-1.5 shadow-[0_0_20px_rgba(194,178,143,0.4)]">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-secondary-foreground px-5 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full flex items-center gap-1.5 shadow-[0_0_20px_rgba(194,178,143,0.4)] whitespace-nowrap">
                   <Sparkles className="w-3.5 h-3.5" />
                   Recomendado
                 </div>
@@ -140,7 +140,7 @@ export function PricingSection() {
               <div className="pt-6 mt-auto">
                 <Button
                   className={cn(
-                    'w-full rounded-xl h-12 min-h-[44px] text-sm font-bold transition-all duration-300',
+                    'w-full rounded-xl h-14 min-h-[56px] text-base font-bold transition-all duration-300',
                     plan.highlight
                       ? 'bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:shadow-[0_0_20px_rgba(194,178,143,0.3)]'
                       : 'bg-card text-foreground border-border hover:bg-secondary hover:text-secondary-foreground',

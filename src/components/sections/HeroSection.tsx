@@ -1,5 +1,9 @@
 import { Button } from '@/components/ui/button'
-import { ArrowRight, ChevronRight } from 'lucide-react'
+import { ArrowRight, ChevronRight, Mail, Phone } from 'lucide-react'
+
+import macbookImg from '@/assets/macbook-air-acdomz.goskip.app-e38d5.png'
+import tabletImg from '@/assets/galaxy-tab-s7-acdomz.goskip.app-6ff31.png'
+import phoneImg from '@/assets/iphone-14-plus-acdomz.goskip.app-752fc.png'
 
 export function HeroSection() {
   return (
@@ -60,21 +64,70 @@ export function HeroSection() {
               </a>
             </Button>
           </div>
+
+          <div
+            className="mt-8 flex flex-wrap items-center gap-4 text-sm text-muted-foreground animate-fade-in"
+            style={{ animationDelay: '0.3s' }}
+          >
+            <a
+              href="mailto:acdomz.gc@gmail.com"
+              className="hover:text-secondary transition-colors flex items-center gap-2"
+            >
+              <Mail className="w-4 h-4" /> acdomz.gc@gmail.com
+            </a>
+            <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-border" />
+            <a
+              href="https://wa.me/5541987322926"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-secondary transition-colors flex items-center gap-2"
+            >
+              <Phone className="w-4 h-4" /> (41) 98732-2926
+            </a>
+          </div>
         </div>
 
-        <div className="relative animate-fade-in lg:ml-auto z-10 mt-10 lg:mt-0">
-          <div className="relative animate-float group">
-            <div className="absolute inset-0 bg-gradient-to-tr from-secondary/20 to-primary/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-50" />
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(194,178,143,0.2)_0%,transparent_100%)] rounded-2xl opacity-50 mix-blend-overlay pointer-events-none" />
-            <img
-              src="https://img.usecurling.com/p/800/600?q=futuristic%20dashboard%20analytics%20dark&color=blue&dpr=2"
-              alt="Plataforma ACDOMZ"
-              className="relative rounded-2xl shadow-[0_0_50px_rgba(6,41,69,0.5)] border border-border/50 bg-card object-cover ring-1 ring-white/10"
-            />
+        <div className="relative animate-fade-in lg:ml-auto z-10 mt-16 lg:mt-0 w-full">
+          <div className="relative group mx-auto max-w-[600px] lg:max-w-full z-10">
+            <div className="absolute inset-0 bg-gradient-to-tr from-secondary/20 to-primary/20 rounded-full blur-[100px] transition-all duration-500 opacity-40 pointer-events-none" />
+
+            {/* Macbook (Center/Back) */}
+            <div className="relative z-10 w-full animate-float">
+              <img
+                src={macbookImg}
+                alt="Plataforma ACDOMZ no Macbook"
+                className="w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] object-contain"
+              />
+            </div>
+
+            {/* Tablet (Left/Bottom) */}
+            <div
+              className="absolute -left-4 sm:-left-12 -bottom-10 sm:-bottom-16 w-[45%] sm:w-[40%] z-20 animate-float"
+              style={{ animationDelay: '0.2s' }}
+            >
+              <img
+                src={tabletImg}
+                alt="Plataforma ACDOMZ no Tablet"
+                className="w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] object-contain hover:-translate-y-2 transition-transform duration-500"
+              />
+            </div>
+
+            {/* Phone (Right/Bottom) */}
+            <div
+              className="absolute -right-2 sm:-right-8 -bottom-6 sm:-bottom-12 w-[25%] sm:w-[22%] z-30 animate-float"
+              style={{ animationDelay: '0.4s' }}
+            >
+              <img
+                src={phoneImg}
+                alt="Plataforma ACDOMZ no Smartphone"
+                className="w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] object-contain hover:-translate-y-2 transition-transform duration-500"
+              />
+            </div>
+
             {/* Floating Element 1 */}
             <div
-              className="absolute -bottom-8 -left-8 md:-bottom-12 md:-left-12 bg-card/80 backdrop-blur-xl p-4 rounded-xl shadow-2xl border border-border/50 flex items-center gap-4 animate-fade-in-up"
-              style={{ animationDelay: '0.5s' }}
+              className="absolute -top-10 right-0 lg:-right-10 bg-card/80 backdrop-blur-xl p-4 rounded-xl shadow-2xl border border-border/50 flex items-center gap-4 animate-fade-in-up z-40 hidden sm:flex"
+              style={{ animationDelay: '0.6s' }}
             >
               <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-bold text-lg shadow-[0_0_15px_rgba(194,178,143,0.2)]">
                 +85%
@@ -83,18 +136,6 @@ export function HeroSection() {
                 <p className="text-sm font-bold text-white">Conversão Média</p>
                 <p className="text-xs text-muted-foreground">Em nossos sistemas</p>
               </div>
-            </div>
-            {/* Floating Element 2 */}
-            <div
-              className="absolute -top-8 -right-8 md:-top-12 md:-right-12 rounded-2xl shadow-2xl border border-border/50 w-32 md:w-48 hidden sm:block animate-fade-in-up overflow-hidden bg-card/50 backdrop-blur-md"
-              style={{ animationDelay: '0.7s' }}
-            >
-              <img
-                src="https://img.usecurling.com/p/300/600?q=mobile%20app%20futuristic%20dark&color=blue"
-                alt="Mobile App"
-                className="w-full h-full object-cover opacity-90 mix-blend-lighten"
-              />
-              <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl" />
             </div>
           </div>
         </div>
