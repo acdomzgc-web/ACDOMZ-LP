@@ -26,13 +26,13 @@ function PlanCard({ plan, mode }: { plan: Plan; mode: 'subscription' | 'onetime'
         </div>
       )}
 
-      <div className="text-center pb-6 border-b border-border/50">
+      <div className="text-center pb-6 border-b border-border/50 shrink-0">
         <h4 className="text-xl font-bold text-foreground mb-3">{plan.name}</h4>
-        <p className="text-sm text-muted-foreground h-16">{plan.description}</p>
+        <p className="text-sm text-muted-foreground min-h-[4rem]">{plan.description}</p>
       </div>
 
       <div className="flex-1 py-6 flex flex-col gap-6">
-        <div className="text-center h-20 flex flex-col justify-center">
+        <div className="text-center min-h-[5rem] flex flex-col justify-center shrink-0">
           {mode === 'onetime' ? (
             <p className="text-3xl font-bold text-foreground transition-colors group-hover:text-secondary">
               {plan.price_one_time}
@@ -49,42 +49,46 @@ function PlanCard({ plan, mode }: { plan: Plan; mode: 'subscription' | 'onetime'
           )}
         </div>
 
-        <div>
-          <p className="text-xs uppercase tracking-wider font-bold text-muted-foreground mb-4">
-            Incluso:
-          </p>
-          <ul className="space-y-3 text-sm">
-            {plan.features.map((feat, j) => (
-              <li key={j} className="flex items-start gap-3">
-                <div className="rounded-full bg-secondary/10 p-1 shrink-0">
-                  <Check className="w-3 h-3 text-secondary" />
-                </div>
-                <span className="text-muted-foreground font-medium leading-tight">{feat}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-2">
-          <p className="text-xs uppercase tracking-wider font-bold text-muted-foreground mb-4">
-            {mode === 'onetime' ? 'Condições (Único):' : 'Condições (Assinatura):'}
-          </p>
-          <ul className="space-y-3 text-sm">
-            {(mode === 'onetime' ? plan.one_time_benefits : plan.subscription_benefits).map(
-              (benefit, j) => (
+        <div className="flex flex-col gap-6 flex-1">
+          <div className="flex-1">
+            <p className="text-xs uppercase tracking-wider font-bold text-muted-foreground mb-4">
+              Incluso:
+            </p>
+            <ul className="space-y-3 text-sm">
+              {plan.features.map((feat, j) => (
                 <li key={j} className="flex items-start gap-3">
-                  <div className="rounded-full bg-primary/10 p-1 shrink-0">
-                    <Check className="w-3 h-3 text-primary" />
+                  <div className="rounded-full bg-secondary/10 p-1 shrink-0 mt-0.5">
+                    <Check className="w-3 h-3 text-secondary" />
                   </div>
-                  <span className="text-muted-foreground font-medium leading-tight">{benefit}</span>
+                  <span className="text-muted-foreground font-medium leading-tight">{feat}</span>
                 </li>
-              ),
-            )}
-          </ul>
+              ))}
+            </ul>
+          </div>
+
+          <div className="shrink-0 pt-6 border-t border-border/50">
+            <p className="text-xs uppercase tracking-wider font-bold text-muted-foreground mb-4">
+              {mode === 'onetime' ? 'Condições (Único):' : 'Condições (Assinatura):'}
+            </p>
+            <ul className="space-y-3 text-sm">
+              {(mode === 'onetime' ? plan.one_time_benefits : plan.subscription_benefits).map(
+                (benefit, j) => (
+                  <li key={j} className="flex items-start gap-3">
+                    <div className="rounded-full bg-primary/10 p-1 shrink-0 mt-0.5">
+                      <Check className="w-3 h-3 text-primary" />
+                    </div>
+                    <span className="text-muted-foreground font-medium leading-tight">
+                      {benefit}
+                    </span>
+                  </li>
+                ),
+              )}
+            </ul>
+          </div>
         </div>
       </div>
 
-      <div className="pt-6 mt-auto">
+      <div className="pt-6 mt-auto shrink-0">
         <Button
           className={cn(
             'w-full rounded-xl h-14 min-h-[56px] text-base font-bold transition-all duration-300',
@@ -150,12 +154,12 @@ export function PricingSection() {
             {Array.from({ length: 4 }).map((_, i) => (
               <div
                 key={i}
-                className="flex flex-col p-6 sm:p-8 rounded-[2rem] border border-border/50 gap-6 h-[800px]"
+                className="flex flex-col p-6 sm:p-8 rounded-[2rem] border border-border/50 gap-6 h-full min-h-[600px]"
               >
-                <Skeleton className="h-8 w-3/4 mx-auto" />
-                <Skeleton className="h-16 w-full" />
-                <Skeleton className="h-20 w-32 mx-auto" />
-                <Skeleton className="h-full w-full" />
+                <Skeleton className="h-8 w-3/4 mx-auto shrink-0" />
+                <Skeleton className="h-16 w-full shrink-0" />
+                <Skeleton className="h-20 w-32 mx-auto shrink-0" />
+                <Skeleton className="h-full w-full flex-1" />
               </div>
             ))}
           </div>
