@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-15T23:50:41.648Z",
+  "generatedAt": "2026-04-30T02:56:05.103Z",
   "collections": [
     {
       "name": "users",
@@ -110,6 +110,88 @@
         "CREATE INDEX idx_projects_company ON projects (company)",
         "CREATE INDEX idx_projects_niche ON projects (niche)"
       ]
+    },
+    {
+      "name": "plans",
+      "type": "base",
+      "apiRules": {
+        "list": "",
+        "view": "",
+        "create": "@request.auth.id != ''",
+        "update": "@request.auth.id != ''",
+        "delete": "@request.auth.id != ''"
+      },
+      "fields": [
+        {
+          "name": "name",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "price_one_time",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "price_sub_setup",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "price_sub_monthly",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "features",
+          "type": "json",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "one_time_benefits",
+          "type": "json",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "subscription_benefits",
+          "type": "json",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "order",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": ["onCreate"]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": ["onCreate", "onUpdate"]
+        }
+      ],
+      "indexes": []
     }
   ]
 }
