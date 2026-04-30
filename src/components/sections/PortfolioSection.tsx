@@ -8,6 +8,7 @@ import { useRealtime } from '@/hooks/use-realtime'
 import { cn } from '@/lib/utils'
 import blessedImg from '@/assets/design-sem-nome-8-2b3e6.png'
 import lpPilatesImg from '@/assets/image-53904.png'
+import acdomzGestaoImg from '@/assets/image-02184.png'
 
 export function PortfolioSection() {
   const [projects, setProjects] = useState<ProjectRecord[]>([])
@@ -78,10 +79,13 @@ export function PortfolioSection() {
               <div
                 className={cn(
                   'h-48 sm:h-56 w-full bg-muted relative overflow-hidden shrink-0 border-b border-border/50',
-                  project.company === 'Acdomz' && project.image && 'bg-fixed bg-cover bg-center',
+                  project.company === 'Acdomz' &&
+                    project.image &&
+                    project.id !== 'x9e7fvaiai6sdbd' &&
+                    'bg-fixed bg-cover bg-center',
                 )}
                 style={
-                  project.company === 'Acdomz' && project.image
+                  project.company === 'Acdomz' && project.image && project.id !== 'x9e7fvaiai6sdbd'
                     ? {
                         backgroundImage: `url(${
                           project.image.startsWith('http')
@@ -103,6 +107,12 @@ export function PortfolioSection() {
                     src={lpPilatesImg}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : project.id === 'x9e7fvaiai6sdbd' ? (
+                  <img
+                    src={acdomzGestaoImg}
+                    alt={project.title}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   />
                 ) : project.company !== 'Acdomz' && project.image ? (
                   <img
