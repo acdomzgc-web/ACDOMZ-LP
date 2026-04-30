@@ -7,6 +7,7 @@ import { CheckCircle2, Building2, Target } from 'lucide-react'
 import { useRealtime } from '@/hooks/use-realtime'
 import { cn } from '@/lib/utils'
 import blessedImg from '@/assets/design-sem-nome-8-2b3e6.png'
+import lpPilatesImg from '@/assets/image-53904.png'
 
 export function PortfolioSection() {
   const [projects, setProjects] = useState<ProjectRecord[]>([])
@@ -96,6 +97,12 @@ export function PortfolioSection() {
                     src={blessedImg}
                     alt={project.title}
                     className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : project.id === 's3ipzbqyx91n0j1' ? (
+                  <img
+                    src={lpPilatesImg}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 ) : project.company !== 'Acdomz' && project.image ? (
                   <img
