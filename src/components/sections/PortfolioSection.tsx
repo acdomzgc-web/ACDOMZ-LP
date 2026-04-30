@@ -6,6 +6,7 @@ import pb from '@/lib/pocketbase/client'
 import { CheckCircle2, Building2, Target } from 'lucide-react'
 import { useRealtime } from '@/hooks/use-realtime'
 import { cn } from '@/lib/utils'
+import blessedImg from '@/assets/design-sem-nome-8-2b3e6.png'
 
 export function PortfolioSection() {
   const [projects, setProjects] = useState<ProjectRecord[]>([])
@@ -90,7 +91,13 @@ export function PortfolioSection() {
                     : undefined
                 }
               >
-                {project.company !== 'Acdomz' && project.image ? (
+                {project.company === 'Blessed' ? (
+                  <img
+                    src={blessedImg}
+                    alt={project.title}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : project.company !== 'Acdomz' && project.image ? (
                   <img
                     src={
                       project.image.startsWith('http')
@@ -142,7 +149,7 @@ export function PortfolioSection() {
                     Destaques do Projeto
                   </p>
                   <ul className="space-y-3">
-                    {project.features.split(';').map((feature, i) => {
+                    {(project.features || '').split(';').map((feature, i) => {
                       const feat = feature.trim()
                       if (!feat) return null
                       return (
