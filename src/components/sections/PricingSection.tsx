@@ -53,7 +53,7 @@ function PlanCard({ plan }: { plan: Plan }) {
           <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-3">
             Setup Inicial
           </p>
-          <p className="text-4xl lg:text-5xl font-black text-foreground transition-colors group-hover:text-secondary tracking-tighter">
+          <p className="text-3xl lg:text-4xl font-black text-foreground transition-colors group-hover:text-secondary tracking-tighter break-words px-2 w-full">
             {plan.price_sub_setup}
           </p>
           <div className="flex items-center justify-center gap-2 mt-4">
@@ -184,7 +184,7 @@ export function PricingSection() {
                     'SEO (com diferentes níveis)',
                     'Meta descrição para Google',
                     'Exportação via GitHub',
-                    'Hospedagem por 12 meses',
+                    'A recorrência garante a hospedagem, atualização e suporte contínuo',
                     'Certificado SSL',
                   ].map((feat, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
