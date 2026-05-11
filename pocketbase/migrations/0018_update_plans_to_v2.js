@@ -27,8 +27,8 @@ migrate(
           'Exportação via GitHub',
           'Domínio: nomesite.goskip.app',
         ],
-        one_time_benefits: [],
-        subscription_benefits: [],
+        one_time_benefits: ['Design responsivo', 'Configuração de domínio', 'SEO Básico'],
+        subscription_benefits: ['Hospedagem', 'Suporte via Email'],
         order: 1,
       },
       {
@@ -51,8 +51,13 @@ migrate(
           'FAQ',
           'Card de preço resumido',
         ],
-        one_time_benefits: [],
-        subscription_benefits: [],
+        one_time_benefits: [
+          'Design responsivo',
+          'Configuração de domínio',
+          'SEO Otimizado',
+          'Integração WhatsApp',
+        ],
+        subscription_benefits: ['Hospedagem', 'Suporte Prioritário WhatsApp', 'Manutenção Mensal'],
         order: 2,
       },
       {
@@ -74,8 +79,18 @@ migrate(
           'API para integrações',
           'Análise de comportamento',
         ],
-        one_time_benefits: [],
-        subscription_benefits: [],
+        one_time_benefits: [
+          'Design responsivo',
+          'Configuração IA',
+          'Integração de Pagamentos',
+          'Setup Completo',
+        ],
+        subscription_benefits: [
+          'Hospedagem Dedicada',
+          'Suporte 24/7',
+          'Gestão de Banco de Dados',
+          'Evolução Contínua',
+        ],
         order: 3,
       },
     ]
