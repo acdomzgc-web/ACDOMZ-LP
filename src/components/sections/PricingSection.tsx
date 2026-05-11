@@ -1,14 +1,29 @@
 import { useEffect, useState } from 'react'
-import { Check, Sparkles } from 'lucide-react'
+import {
+  Check,
+  Sparkles,
+  AlertTriangle,
+  Server,
+  Headset,
+  ShieldX,
+  HelpCircle,
+  ArrowRight,
+  CheckCircle2,
+} from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Skeleton } from '@/components/ui/skeleton'
 import { getPlans, type Plan } from '@/services/plans'
 import { useRealtime } from '@/hooks/use-realtime'
 
-function PlanCard({ plan, mode }: { plan: Plan; mode: 'subscription' | 'onetime' }) {
+function PlanCard({ plan }: { plan: Plan }) {
   const isHighlighted = plan.name.toUpperCase() === 'MEDIUM'
+
+  const handleWhatsApp = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    const text = `Olá! Gostaria de saber mais sobre o plano ${plan.name} e como ele pode ajudar o meu negócio.`
+    window.open(`https://wa.me/5541987322926?text=${encodeURIComponent(text)}`, '_blank')
+  }
 
   return (
     <div
@@ -22,37 +37,39 @@ function PlanCard({ plan, mode }: { plan: Plan; mode: 'subscription' | 'onetime'
       {isHighlighted && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-secondary-foreground px-5 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full flex items-center gap-1.5 shadow-[0_0_20px_rgba(194,178,143,0.4)] whitespace-nowrap">
           <Sparkles className="w-3.5 h-3.5" />
-          Recomendado
+          Mais Popular
         </div>
       )}
 
       <div className="text-center pb-6 border-b border-border/50 shrink-0">
-        <h4 className="text-xl font-bold text-foreground mb-3">{plan.name}</h4>
-        <p className="text-sm text-muted-foreground min-h-[4rem]">{plan.description}</p>
+        <h4 className="text-2xl font-bold text-foreground mb-3">{plan.name}</h4>
+        <p className="text-sm text-muted-foreground min-h-[4rem] flex items-center justify-center">
+          {plan.description}
+        </p>
       </div>
 
-      <div className="flex-1 py-6 flex flex-col gap-6">
-        <div className="text-center min-h-[5rem] flex flex-col justify-center shrink-0">
-          {mode === 'onetime' ? (
-            <p className="text-3xl font-bold text-foreground transition-colors group-hover:text-secondary">
-              {plan.price_one_time}
-            </p>
-          ) : (
-            <>
-              <p className="text-3xl font-bold text-foreground transition-colors group-hover:text-secondary">
-                {plan.price_sub_setup}
-              </p>
-              <p className="text-sm text-muted-foreground font-medium mt-1">
-                + {plan.price_sub_monthly}
-              </p>
-            </>
-          )}
+      <div className="flex-1 py-8 flex flex-col gap-8">
+        <div className="text-center min-h-[7rem] flex flex-col justify-center shrink-0 items-center">
+          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-3">
+            Setup Inicial
+          </p>
+          <p className="text-4xl lg:text-5xl font-black text-foreground transition-colors group-hover:text-secondary tracking-tighter">
+            {plan.price_sub_setup}
+          </p>
+          <div className="flex items-center justify-center gap-2 mt-4">
+            <span className="text-sm text-muted-foreground font-medium">
+              + {plan.price_sub_monthly}
+            </span>
+            <span className="text-[10px] font-bold border border-secondary/50 text-secondary bg-secondary/10 rounded px-1.5 py-0.5 tracking-wider">
+              OPCIONAL
+            </span>
+          </div>
         </div>
 
         <div className="flex flex-col gap-6 flex-1">
           <div className="flex-1">
             <p className="text-xs uppercase tracking-wider font-bold text-muted-foreground mb-4">
-              Incluso:
+              O que está incluso:
             </p>
             <ul className="space-y-3 text-sm">
               {plan.features.map((feat, j) => (
@@ -65,33 +82,13 @@ function PlanCard({ plan, mode }: { plan: Plan; mode: 'subscription' | 'onetime'
               ))}
             </ul>
           </div>
-
-          <div className="shrink-0 pt-6 border-t border-border/50">
-            <p className="text-xs uppercase tracking-wider font-bold text-muted-foreground mb-4">
-              {mode === 'onetime' ? 'Condições (Único):' : 'Condições (Assinatura):'}
-            </p>
-            <ul className="space-y-3 text-sm">
-              {(mode === 'onetime' ? plan.one_time_benefits : plan.subscription_benefits).map(
-                (benefit, j) => (
-                  <li key={j} className="flex items-start gap-3">
-                    <div className="rounded-full bg-primary/10 p-1 shrink-0 mt-0.5">
-                      <Check className="w-3 h-3 text-primary" />
-                    </div>
-                    <span className="text-muted-foreground font-medium leading-tight">
-                      {benefit}
-                    </span>
-                  </li>
-                ),
-              )}
-            </ul>
-          </div>
         </div>
       </div>
 
-      <div className="pt-6 mt-auto shrink-0">
+      <div className="pt-6 mt-auto shrink-0 border-t border-border/50">
         <Button
           className={cn(
-            'w-full rounded-xl h-14 min-h-[56px] text-base font-bold transition-all duration-300',
+            'w-full rounded-xl h-14 min-h-[56px] text-base font-bold transition-all duration-300 mt-2',
             isHighlighted
               ? 'bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:shadow-[0_0_20px_rgba(194,178,143,0.3)]'
               : 'bg-card text-foreground border-border hover:bg-secondary hover:text-secondary-foreground',
@@ -99,8 +96,8 @@ function PlanCard({ plan, mode }: { plan: Plan; mode: 'subscription' | 'onetime'
           variant={isHighlighted ? 'default' : 'outline'}
           asChild
         >
-          <a href="https://wa.me/5541987322926" target="_blank" rel="noreferrer">
-            Selecionar Plano
+          <a href="#" onClick={handleWhatsApp}>
+            Escolher {plan.name}
           </a>
         </Button>
       </div>
@@ -141,17 +138,17 @@ export function PricingSection() {
             Investimento Transparente
           </h2>
           <h3 className="text-3xl md:text-5xl font-bold text-primary mb-6 tracking-tight">
-            Soluções na Medida do Seu Crescimento
+            Planos Sob Medida Para o Seu Negócio
           </h3>
           <p className="text-lg text-muted-foreground">
-            Escolha entre pagamento único ou modelo de assinatura com suporte contínuo garantido.
-            Adaptável à sua visão de negócio.
+            Oferecemos uma estrutura de investimento flexível, com setup inicial claro e recorrência
+            opcional para suporte contínuo e infraestrutura de ponta.
           </p>
         </div>
 
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-[1400px] mx-auto items-stretch">
-            {Array.from({ length: 4 }).map((_, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-[1200px] mx-auto items-stretch">
+            {Array.from({ length: 3 }).map((_, i) => (
               <div
                 key={i}
                 className="flex flex-col p-6 sm:p-8 rounded-[2rem] border border-border/50 gap-6 h-full min-h-[600px]"
@@ -164,37 +161,113 @@ export function PricingSection() {
             ))}
           </div>
         ) : (
-          <Tabs defaultValue="subscription" className="w-full">
-            <div className="flex justify-center mb-10">
-              <TabsList className="bg-card/60 backdrop-blur-md border border-border/50 h-auto p-1.5 max-w-[500px] w-full rounded-full grid grid-cols-2">
-                <TabsTrigger
-                  value="subscription"
-                  className="rounded-full py-3 text-base font-medium"
-                >
-                  Assinatura Mensal
-                </TabsTrigger>
-                <TabsTrigger value="onetime" className="rounded-full py-3 text-base font-medium">
-                  Pagamento Único
-                </TabsTrigger>
-              </TabsList>
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-[1200px] mx-auto items-stretch">
+              {plans.map((plan) => (
+                <PlanCard key={plan.id} plan={plan} />
+              ))}
             </div>
 
-            <TabsContent value="subscription" className="mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-[1400px] mx-auto items-stretch">
-                {plans.map((plan) => (
-                  <PlanCard key={plan.id} plan={plan} mode="subscription" />
-                ))}
+            <div className="mt-20 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-[1200px] mx-auto">
+              {/* Common Features */}
+              <div className="bg-card/50 border border-border/50 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                  </div>
+                  <h4 className="text-lg font-bold">Funcionalidades Comuns em Todos os Planos</h4>
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    'Design responsivo (PC, Mobile, Tablet)',
+                    'Favicon personalizado',
+                    'SEO (com diferentes níveis)',
+                    'Meta descrição para Google',
+                    'Exportação via GitHub',
+                    'Hospedagem por 12 meses',
+                    'Certificado SSL',
+                  ].map((feat, i) => (
+                    <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary shrink-0" />
+                      {feat}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </TabsContent>
 
-            <TabsContent value="onetime" className="mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-[1400px] mx-auto items-stretch">
-                {plans.map((plan) => (
-                  <PlanCard key={plan.id} plan={plan} mode="onetime" />
-                ))}
+              {/* Single Payment Logic */}
+              <div className="bg-destructive/5 border border-destructive/20 rounded-2xl p-6 md:p-8 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none">
+                  <AlertTriangle className="w-32 h-32 text-destructive" />
+                </div>
+                <div className="flex items-center gap-3 mb-6 relative z-10">
+                  <div className="p-2 bg-destructive/10 rounded-lg">
+                    <AlertTriangle className="w-5 h-5 text-destructive" />
+                  </div>
+                  <h4 className="text-lg font-bold text-destructive">
+                    Opção de Pagamento Único (Não Recomendado)
+                  </h4>
+                </div>
+                <p className="text-sm text-muted-foreground mb-4 relative z-10 font-medium leading-relaxed">
+                  Ao optar por não aderir à mensalidade, o cliente torna-se totalmente responsável
+                  por:
+                </p>
+                <ul className="space-y-3 relative z-10">
+                  <li className="flex items-start gap-3 text-sm text-muted-foreground">
+                    <Server className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
+                    Custos e gestão de hospedagem e domínio próprio.
+                  </li>
+                  <li className="flex items-start gap-3 text-sm text-muted-foreground">
+                    <ShieldX className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
+                    Atualizações do sistema, backups periódicos e segurança.
+                  </li>
+                  <li className="flex items-start gap-3 text-sm text-muted-foreground">
+                    <Headset className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
+                    Perda do suporte contínuo e melhorias da ACDOMZ Tech.
+                  </li>
+                </ul>
               </div>
-            </TabsContent>
-          </Tabs>
+
+              {/* Ideal Plan Guidance */}
+              <div className="bg-card/50 border border-border/50 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-secondary/10 rounded-lg">
+                    <HelpCircle className="w-5 h-5 text-secondary" />
+                  </div>
+                  <h4 className="text-lg font-bold">Qual plano é ideal para mim?</h4>
+                </div>
+                <div className="space-y-5">
+                  <div>
+                    <h5 className="text-sm font-bold text-foreground flex items-center gap-2 mb-1">
+                      Starter <ArrowRight className="w-3 h-3 text-muted-foreground" />
+                    </h5>
+                    <p className="text-xs text-muted-foreground">
+                      Para quem está começando e precisa de uma presença online básica, elegante e
+                      profissional.
+                    </p>
+                  </div>
+                  <div>
+                    <h5 className="text-sm font-bold text-foreground flex items-center gap-2 mb-1">
+                      Medium <ArrowRight className="w-3 h-3 text-muted-foreground" />
+                    </h5>
+                    <p className="text-xs text-muted-foreground">
+                      Para negócios que querem captar leads ativamente pelo WhatsApp e maior
+                      dinamismo.
+                    </p>
+                  </div>
+                  <div>
+                    <h5 className="text-sm font-bold text-foreground flex items-center gap-2 mb-1">
+                      Expert <ArrowRight className="w-3 h-3 text-muted-foreground" />
+                    </h5>
+                    <p className="text-xs text-muted-foreground">
+                      Para operações robustas que necessitam de IA, automações, catálogos e
+                      integrações.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
         )}
       </div>
     </section>
