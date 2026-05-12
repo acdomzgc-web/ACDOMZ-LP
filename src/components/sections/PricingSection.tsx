@@ -21,7 +21,7 @@ function PlanCard({ plan }: { plan: Plan }) {
 
   const handleWhatsApp = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
-    const text = `Olá! Gostaria de saber mais sobre o plano ${plan.name} e como ele pode ajudar o meu negócio.`
+    const text = `Quero o plano ${plan.name}`
     window.open(`https://wa.me/5541987322926?text=${encodeURIComponent(text)}`, '_blank')
   }
 
