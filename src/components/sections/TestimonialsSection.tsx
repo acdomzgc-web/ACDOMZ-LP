@@ -1,36 +1,6 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel'
 import { Card, CardContent } from '@/components/ui/card'
 import { Star, Quote } from 'lucide-react'
-
-const testimonials = [
-  {
-    name: 'Ana Paula S.',
-    role: 'CEO, Startup Tech',
-    text: 'A ACDOMZ mudou nossa perspectiva sobre desenvolvimento. A plataforma que criaram não apenas resolveu nossos problemas internos como encantou nossos clientes.',
-    rating: 5,
-    img: 'https://img.usecurling.com/ppl/thumbnail?gender=female&seed=ana',
-  },
-  {
-    name: 'Roberto C.',
-    role: 'Diretor, Franquia Alimentícia',
-    text: 'O nível de gestão estratégica que eles trazem para a mesa é surreal. O sistema web customizado reduziu nosso custo operacional em 30%.',
-    rating: 5,
-    img: 'https://img.usecurling.com/ppl/thumbnail?gender=male&seed=roberto',
-  },
-  {
-    name: 'Mariana L.',
-    role: 'Fundadora, E-commerce Moda X',
-    text: 'Entregaram antes do prazo e o suporte é incrível. Nossas vendas online saltaram logo no primeiro mês após o lançamento do novo site.',
-    rating: 5,
-    img: 'https://img.usecurling.com/ppl/thumbnail?gender=female&seed=mariana',
-  },
-]
+import claraImg from '@/assets/icone-clara-freitas-f3f8e.png'
 
 export function TestimonialsSection() {
   return (
@@ -48,43 +18,37 @@ export function TestimonialsSection() {
           <h3 className="text-3xl md:text-4xl font-bold mb-6">O Que Dizem Nossos Clientes</h3>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-          <Carousel opts={{ align: 'start', loop: true }} className="w-full">
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {testimonials.map((test, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="bg-white/5 border-white/10 h-full backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
-                    <CardContent className="p-6 flex flex-col h-full relative">
-                      <Quote className="absolute top-4 right-4 w-8 h-8 text-secondary/20" />
-                      <div className="flex gap-1 mb-4">
-                        {[...Array(test.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-secondary text-secondary" />
-                        ))}
-                      </div>
-                      <p className="text-white/80 text-sm flex-1 mb-6 leading-relaxed italic">
-                        "{test.text}"
-                      </p>
-                      <div className="flex items-center gap-3 mt-auto">
-                        <img
-                          src={test.img}
-                          alt={test.name}
-                          className="w-10 h-10 rounded-full border border-secondary/30"
-                        />
-                        <div>
-                          <p className="font-bold text-sm text-white">{test.name}</p>
-                          <p className="text-xs text-secondary/80">{test.role}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="flex justify-center gap-4 mt-8">
-              <CarouselPrevious className="static translate-y-0 bg-white/5 border-white/10 hover:bg-white/20 hover:text-white transition-all text-white/70" />
-              <CarouselNext className="static translate-y-0 bg-white/5 border-white/10 hover:bg-white/20 hover:text-white transition-all text-white/70" />
-            </div>
-          </Carousel>
+        <div className="max-w-4xl mx-auto">
+          <Card className="bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
+            <CardContent className="p-8 md:p-12 flex flex-col relative">
+              <Quote className="absolute top-6 right-6 w-12 h-12 text-secondary/20" />
+              <div className="flex gap-1 mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-secondary text-secondary" />
+                ))}
+              </div>
+              <p className="text-white/90 text-lg md:text-xl lg:text-2xl flex-1 mb-10 leading-relaxed italic">
+                "A entrega do site foi surpreendentemente rápida e totalmente personalizada,
+                refletindo com precisão as necessidades e a identidade do studio. Com isso, nosso
+                fluxo se tornou muito mais organizado e ágil, simplificando processos, otimizando o
+                tempo da equipe e proporcionando uma experiência mais prática, fluida e profissional
+                para nossos clientes."
+              </p>
+              <div className="flex items-center gap-4 mt-auto">
+                <img
+                  src={claraImg}
+                  alt="Clara Freitas"
+                  className="w-16 h-16 rounded-full border-2 border-secondary/30 object-cover"
+                />
+                <div>
+                  <p className="font-bold text-lg text-white">Clara Freitas</p>
+                  <p className="text-sm md:text-base text-secondary/80">
+                    CEO da Eleve Pilates e Performance
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
