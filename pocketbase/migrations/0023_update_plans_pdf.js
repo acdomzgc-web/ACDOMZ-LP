@@ -20,7 +20,7 @@ migrate(
       'Domínio: nomesite.goskip.app',
       'Certificado SSL e GitHub Export',
     ])
-    plan1.set('one_time_benefits', [])
+    plan1.set('one_time_benefits', ['Criação e implementação da estrutura'])
     plan1.set('subscription_benefits', [
       'Hospedagem e backups semanais',
       'Suporte via email (48h)',
@@ -45,7 +45,7 @@ migrate(
       'Até 2 integrações (Maps, Calendly)',
       'Domínio .com ou .com.br (1 ano)',
     ])
-    plan2.set('one_time_benefits', [])
+    plan2.set('one_time_benefits', ['Criação e implementação da estrutura'])
     plan2.set('subscription_benefits', [
       'Hospedagem e backups diários',
       'Suporte prioritário via email (24h)',
@@ -70,7 +70,7 @@ migrate(
       'Vitrine de produtos e Dashboards',
       'Integrações avançadas (CRM, Webhooks)',
     ])
-    plan3.set('one_time_benefits', [])
+    plan3.set('one_time_benefits', ['Criação e implementação da estrutura'])
     plan3.set('subscription_benefits', [
       'Manutenção da IA e hospedagem premium',
       'Suporte via WhatsApp 24/7',
