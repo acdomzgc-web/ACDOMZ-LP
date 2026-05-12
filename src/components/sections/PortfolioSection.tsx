@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils'
 import blessedImg from '@/assets/design-sem-nome-8-2b3e6.png'
 import lpPilatesImg from '@/assets/image-53904.png'
 import acdomzGestaoImg from '@/assets/image-02184.png'
+import lpStarsImg from '@/assets/lp-stars-c2f4f.png'
 
 export function PortfolioSection() {
   const [projects, setProjects] = useState<ProjectRecord[]>([])
@@ -111,6 +112,13 @@ export function PortfolioSection() {
                 ) : project.id === 'x9e7fvaiai6sdbd' ? (
                   <img
                     src={acdomzGestaoImg}
+                    alt={project.title}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : project.title === 'LP Stars Treinamento' ||
+                  project.company === 'Stars Treinamento' ? (
+                  <img
+                    src={lpStarsImg}
                     alt={project.title}
                     className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   />
