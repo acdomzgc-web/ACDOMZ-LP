@@ -77,10 +77,7 @@ export function TestimonialsSection() {
                 />
                 <div>
                   <p className="font-bold text-lg text-white">David Fonseca</p>
-                  <p className="text-sm md:text-base text-secondary/80">
-                    CEO da Blessed <span className="hidden md:inline">•</span>
-                    <br className="md:hidden" /> cliente da acdomz tech
-                  </p>
+                  <p className="text-sm md:text-base text-secondary/80">CEO da Blessed</p>
                 </div>
               </div>
             </CardContent>
