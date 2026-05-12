@@ -10,6 +10,7 @@ import blessedImg from '@/assets/design-sem-nome-8-2b3e6.png'
 import lpPilatesImg from '@/assets/image-53904.png'
 import acdomzGestaoImg from '@/assets/image-02184.png'
 import lpStarsImg from '@/assets/lp-stars-c2f4f.png'
+import sistemaAcdomzImg from '@/assets/sistema-acdomz-5dcda.png'
 
 export function PortfolioSection() {
   const [projects, setProjects] = useState<ProjectRecord[]>([])
@@ -122,6 +123,15 @@ export function PortfolioSection() {
                     alt={project.title}
                     className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   />
+                ) : project.title === 'Sistema gestão condominal' ||
+                  project.title === 'Sistema ACDOMZ' ? (
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-background to-secondary/20">
+                    <img
+                      src={sistemaAcdomzImg}
+                      alt={project.title}
+                      className="w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-500 mix-blend-overlay"
+                    />
+                  </div>
                 ) : project.company !== 'Acdomz' && project.image ? (
                   <img
                     src={
