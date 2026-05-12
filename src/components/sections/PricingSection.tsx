@@ -24,7 +24,7 @@ import {
 } from '@/components/ui/table'
 
 function PlanCard({ plan }: { plan: Plan }) {
-  const isHighlighted = plan.name.toUpperCase().includes('2')
+  const isHighlighted = plan.name.toUpperCase().includes('MEDIUM')
 
   const handleWhatsApp = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
@@ -186,13 +186,13 @@ export function PricingSection() {
                           Aspecto
                         </TableHead>
                         <TableHead className="font-bold text-center text-foreground">
-                          SETUP 1
+                          STARTER
                         </TableHead>
                         <TableHead className="font-bold text-center text-foreground">
-                          SETUP 2
+                          MEDIUM
                         </TableHead>
                         <TableHead className="font-bold text-center text-foreground">
-                          SETUP 3
+                          EXPERT
                         </TableHead>
                       </TableRow>
                     </TableHeader>
@@ -279,7 +279,7 @@ export function PricingSection() {
                 <div className="space-y-5">
                   <div>
                     <h5 className="text-sm font-bold text-foreground flex items-center gap-2 mb-1">
-                      SETUP 1 <ArrowRight className="w-3 h-3 text-muted-foreground" />
+                      STARTER <ArrowRight className="w-3 h-3 text-muted-foreground" />
                     </h5>
                     <p className="text-xs text-muted-foreground">
                       Sua necessidade é informativa, com baixo volume de conteúdo e sem exigência de
@@ -288,7 +288,7 @@ export function PricingSection() {
                   </div>
                   <div>
                     <h5 className="text-sm font-bold text-foreground flex items-center gap-2 mb-1">
-                      SETUP 2 <ArrowRight className="w-3 h-3 text-muted-foreground" />
+                      MEDIUM <ArrowRight className="w-3 h-3 text-muted-foreground" />
                     </h5>
                     <p className="text-xs text-muted-foreground">
                       Você busca crescimento, deseja um domínio próprio (.com.br) e quer utilizar o
@@ -297,7 +297,7 @@ export function PricingSection() {
                   </div>
                   <div>
                     <h5 className="text-sm font-bold text-foreground flex items-center gap-2 mb-1">
-                      SETUP 3 <ArrowRight className="w-3 h-3 text-muted-foreground" />
+                      EXPERT <ArrowRight className="w-3 h-3 text-muted-foreground" />
                     </h5>
                     <p className="text-xs text-muted-foreground">
                       Você precisa de um site mais detalhado e completo em termos de conteúdo e

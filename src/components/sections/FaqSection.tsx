@@ -8,7 +8,7 @@ import {
 const faqs = [
   {
     q: 'Qual o tempo médio de entrega dos projetos?',
-    a: 'O tempo médio de entrega é de 3 a 5 dias, dependendo da complexidade e do plano escolhido (SETUP 1, 2 ou 3).',
+    a: 'O tempo médio de entrega é de 3 a 5 dias, dependendo da complexidade e do plano escolhido (STARTER, MEDIUM ou EXPERT).',
   },
   {
     q: 'Por que a Recorrência Mensal é importante?',
