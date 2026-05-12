@@ -10,7 +10,7 @@ export function ExpertiseSection() {
       icon: <Briefcase className="w-6 h-6 text-accent" />,
     },
     {
-      value: '1 semana',
+      value: '3 a 5 dias',
       label: 'Tempo médio de entrega (com todos os dados em mãos)',
       icon: <Zap className="w-6 h-6 text-accent" />,
     },
@@ -34,10 +34,10 @@ export function ExpertiseSection() {
             Autoridade e Confiança
           </h3>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Não desenvolvemos soluções genéricas. Construímos extensões digitais da sua visão única
-            — alinhadas à sua cultura, ao seu mercado e aos seus objetivos estratégicos. Com contato
-            direto e consultivo, entendemos profundamente sua essência antes de criar, garantindo
-            100% de satisfação, qualidade impecável, velocidade comprovada e eficiência máxima.
+            Nossas soluções atuam como um verdadeiro funil de conversão e redirecionamento,
+            transformando visitantes em leads qualificados com benefícios progressivos a cada nível
+            de investimento. Com metodologias que dominamos plenamente, entregamos um produto
+            estável, focado em resultados, qualidade impecável e velocidade comprovada.
           </p>
         </div>
 

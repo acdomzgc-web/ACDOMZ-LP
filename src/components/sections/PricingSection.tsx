@@ -8,16 +8,23 @@ import {
   ShieldX,
   HelpCircle,
   ArrowRight,
-  CheckCircle2,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { Skeleton } from '@/components/ui/skeleton'
 import { getPlans, type Plan } from '@/services/plans'
 import { useRealtime } from '@/hooks/use-realtime'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 
 function PlanCard({ plan }: { plan: Plan }) {
-  const isHighlighted = plan.name.toUpperCase() === 'MEDIUM'
+  const isHighlighted = plan.name.toUpperCase().includes('2')
 
   const handleWhatsApp = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
@@ -37,7 +44,7 @@ function PlanCard({ plan }: { plan: Plan }) {
       {isHighlighted && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-secondary-foreground px-5 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full flex items-center gap-1.5 shadow-[0_0_20px_rgba(194,178,143,0.4)] whitespace-nowrap">
           <Sparkles className="w-3.5 h-3.5" />
-          Mais Popular
+          Recomendado
         </div>
       )}
 
@@ -61,7 +68,7 @@ function PlanCard({ plan }: { plan: Plan }) {
               + {plan.price_sub_monthly}
             </span>
             <span className="text-[10px] font-bold border border-secondary/50 text-secondary bg-secondary/10 rounded px-1.5 py-0.5 tracking-wider">
-              OPCIONAL
+              RECORRÊNCIA
             </span>
           </div>
         </div>
@@ -142,7 +149,7 @@ export function PricingSection() {
           </h3>
           <p className="text-lg text-muted-foreground">
             Oferecemos uma estrutura de investimento flexível, com setup inicial claro e recorrência
-            opcional para suporte contínuo e infraestrutura de ponta.
+            para suporte contínuo, hospedagem e segurança de ponta.
           </p>
         </div>
 
@@ -168,34 +175,68 @@ export function PricingSection() {
               ))}
             </div>
 
-            <div className="mt-20 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-[1200px] mx-auto">
-              {/* Common Features */}
-              <div className="bg-card/50 border border-border/50 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
-                  </div>
-                  <h4 className="text-lg font-bold">Funcionalidades Comuns em Todos os Planos</h4>
+            <div className="mt-20 max-w-[1200px] mx-auto overflow-x-auto pb-4">
+              <div className="min-w-[800px]">
+                <h4 className="text-2xl font-bold text-center mb-8">Resumo Comparativo</h4>
+                <div className="rounded-xl border border-border/50 bg-card/40 backdrop-blur-sm overflow-hidden">
+                  <Table>
+                    <TableHeader className="bg-muted/50">
+                      <TableRow>
+                        <TableHead className="w-[250px] font-bold text-foreground">
+                          Aspecto
+                        </TableHead>
+                        <TableHead className="font-bold text-center text-foreground">
+                          SETUP 1
+                        </TableHead>
+                        <TableHead className="font-bold text-center text-foreground">
+                          SETUP 2
+                        </TableHead>
+                        <TableHead className="font-bold text-center text-foreground">
+                          SETUP 3
+                        </TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {[
+                        ['Páginas', '3 a 5', '5 a 10', '8 a 15'],
+                        ['Fotos / Vídeos', '5 Fotos / Não', '10 Fotos / Sim', '20+ Fotos / Sim'],
+                        ['Domínio', 'goskip.app', 'Personalizado', 'Personalizado'],
+                        ['Banco de Dados', 'Não', 'Não', 'Sim (Supabase Pro)'],
+                        ['Integrações', '0', 'Até 2', 'Até 3 Avançadas'],
+                        ['WhatsApp Flutuante', 'Não', 'Sim (Direto)', 'Sim (Msg Automática)'],
+                        ['Chatbot / IA', 'Não / Não', 'Básico / Não', 'IA GPT-4 / Claude'],
+                        ['FAQ / Vitrine', 'Não / Não', 'Sim / Não', 'Sim / Sim'],
+                        ['Dashboard', 'Não', 'Não', 'Sim (Gráficos)'],
+                        [
+                          'Favicon / SEO / Meta Desc. / GitHub',
+                          'Sim / Básico / Sim / Sim',
+                          'Sim / Otimizado / Sim / Sim',
+                          'Sim / Avançado / Sim / Sim',
+                        ],
+                        ['Preço Setup', 'R$ 497,00', 'R$ 997,00', 'R$ 1.497,00'],
+                        ['Recorrência', 'R$ 97,00/mês', 'R$ 147,00/mês', 'R$ 197,00/mês'],
+                        ['Ajustes / Mês', '2 por mês', '4 por mês (1/sem)', '8 por mês (2/sem)'],
+                      ].map((row, i) => (
+                        <TableRow key={i} className="hover:bg-muted/30">
+                          <TableCell className="font-medium text-foreground">{row[0]}</TableCell>
+                          <TableCell className="text-center text-muted-foreground">
+                            {row[1]}
+                          </TableCell>
+                          <TableCell className="text-center text-muted-foreground">
+                            {row[2]}
+                          </TableCell>
+                          <TableCell className="text-center text-muted-foreground">
+                            {row[3]}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
                 </div>
-                <ul className="space-y-3">
-                  {[
-                    'Design responsivo (PC, Mobile, Tablet)',
-                    'Favicon personalizado',
-                    'SEO (com diferentes níveis)',
-                    'Meta descrição para Google',
-                    'Exportação via GitHub',
-                    'A recorrência garante a hospedagem, atualização e suporte contínuo',
-                    'Certificado SSL',
-                  ].map((feat, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
-                      <Check className="w-4 h-4 text-primary shrink-0" />
-                      {feat}
-                    </li>
-                  ))}
-                </ul>
               </div>
+            </div>
 
-              {/* Single Payment Logic */}
+            <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[1200px] mx-auto">
               <div className="bg-destructive/5 border border-destructive/20 rounded-2xl p-6 md:p-8 backdrop-blur-sm relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none">
                   <AlertTriangle className="w-32 h-32 text-destructive" />
@@ -205,7 +246,7 @@ export function PricingSection() {
                     <AlertTriangle className="w-5 h-5 text-destructive" />
                   </div>
                   <h4 className="text-lg font-bold text-destructive">
-                    Opção de Pagamento Único (Não Recomendado)
+                    Pagamento Único sem Recorrência
                   </h4>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4 relative z-10 font-medium leading-relaxed">
@@ -223,45 +264,44 @@ export function PricingSection() {
                   </li>
                   <li className="flex items-start gap-3 text-sm text-muted-foreground">
                     <Headset className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
-                    Perda do suporte contínuo e melhorias da ACDOMZ Tech.
+                    Perda do suporte contínuo e evoluções aplicadas pela ACDOMZ Tech.
                   </li>
                 </ul>
               </div>
 
-              {/* Ideal Plan Guidance */}
               <div className="bg-card/50 border border-border/50 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-2 bg-secondary/10 rounded-lg">
                     <HelpCircle className="w-5 h-5 text-secondary" />
                   </div>
-                  <h4 className="text-lg font-bold">Qual plano é ideal para mim?</h4>
+                  <h4 className="text-lg font-bold">Guia de Escolha (Benefícios Progressivos)</h4>
                 </div>
                 <div className="space-y-5">
                   <div>
                     <h5 className="text-sm font-bold text-foreground flex items-center gap-2 mb-1">
-                      Starter <ArrowRight className="w-3 h-3 text-muted-foreground" />
+                      SETUP 1 <ArrowRight className="w-3 h-3 text-muted-foreground" />
                     </h5>
                     <p className="text-xs text-muted-foreground">
-                      Para quem está começando e precisa de uma presença online básica, elegante e
-                      profissional.
+                      Sua necessidade é informativa, com baixo volume de conteúdo e sem exigência de
+                      automações ou domínio próprio imediato.
                     </p>
                   </div>
                   <div>
                     <h5 className="text-sm font-bold text-foreground flex items-center gap-2 mb-1">
-                      Medium <ArrowRight className="w-3 h-3 text-muted-foreground" />
+                      SETUP 2 <ArrowRight className="w-3 h-3 text-muted-foreground" />
                     </h5>
                     <p className="text-xs text-muted-foreground">
-                      Para negócios que querem captar leads ativamente pelo WhatsApp e maior
-                      dinamismo.
+                      Você busca crescimento, deseja um domínio próprio (.com.br) e quer utilizar o
+                      WhatsApp e o FAQ como ferramentas ativas de conversão de leads.
                     </p>
                   </div>
                   <div>
                     <h5 className="text-sm font-bold text-foreground flex items-center gap-2 mb-1">
-                      Expert <ArrowRight className="w-3 h-3 text-muted-foreground" />
+                      SETUP 3 <ArrowRight className="w-3 h-3 text-muted-foreground" />
                     </h5>
                     <p className="text-xs text-muted-foreground">
-                      Para operações robustas que necessitam de IA, automações, catálogos e
-                      integrações.
+                      Você precisa de um site mais detalhado e completo em termos de conteúdo e
+                      páginas. A principal diferença é a inclusão do chatbot com IA integrado.
                     </p>
                   </div>
                 </div>

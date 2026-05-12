@@ -8,35 +8,27 @@ import {
 const faqs = [
   {
     q: 'Qual o tempo médio de entrega dos projetos?',
-    a: 'O tempo varia conforme a complexidade. Uma Landing Page (Nível 1) leva cerca de 7 a 14 dias. Um sistema web customizado (Nível 4) pode levar de 4 a 8 semanas.',
+    a: 'O tempo médio de entrega é de 3 a 5 dias, dependendo da complexidade e do plano escolhido (SETUP 1, 2 ou 3).',
   },
   {
-    q: 'Vocês oferecem manutenção após o lançamento?',
-    a: 'Sim! Nos planos de assinatura, a manutenção, hospedagem e suporte estão totalmente inclusos para garantir que seu sistema opere perfeitamente.',
+    q: 'Por que a Recorrência Mensal é importante?',
+    a: 'A Recorrência Mensal é o motor que mantém sua presença digital ativa e eficiente. Ela cobre hospedagem, atualizações constantes contra vulnerabilidades, backups diários/semanais e suporte técnico contínuo.',
   },
   {
     q: 'Como funciona o pagamento?',
-    a: 'Aceitamos PIX, boleto e cartão de crédito. Você pode optar pelo pagamento único (com 50% de entrada e 50% na entrega) ou pelo plano de assinatura mensal.',
+    a: 'Aceitamos o pagamento via PIX, garantindo agilidade e segurança na negociação.',
   },
   {
-    q: 'Vocês fazem integrações com outros sistemas?',
-    a: 'Absolutamente. Desde ferramentas simples como RD Station e WhatsApp, até ERPs complexos via APIs RESTful.',
-  },
-  {
-    q: 'O código fonte será meu?',
-    a: 'Nos planos de pagamento único (Níveis 4 e 5), o código é 100% de sua propriedade. Nos planos de assinatura, a licença de uso é atrelada à mensalidade.',
-  },
-  {
-    q: 'Preciso ter o design pronto?',
-    a: 'Não. Nossa equipe cuida de toda a jornada, desde a ideação, UX/UI Design, até o desenvolvimento final.',
+    q: 'Quais são as limitações técnicas dos projetos?',
+    a: 'Nossos projetos não contemplam notificações push em tempo real, sistemas de autenticação (login/área de membros), gestão interna de dados (ERP/estoque) ou processamento financeiro interno (o site atua apenas como redirecionador para checkout externo).',
   },
   {
     q: 'O site será responsivo para celulares?',
-    a: 'Garantimos 100% de responsividade. O acesso móvel é prioritário em nossos desenvolvimentos (Mobile First).',
+    a: 'Sim. A otimização para múltiplos dispositivos (PC, Mobile e Tablet) é um padrão em todos os nossos planos, garantindo uma navegação perfeita sem custo adicional.',
   },
   {
-    q: 'Como é feito o alinhamento durante o projeto?',
-    a: 'Temos reuniões de checkpoints semanais e um canal direto no WhatsApp/Slack com os gestores de projeto.',
+    q: 'O que acontece se eu optar pelo pagamento único sem recorrência?',
+    a: 'Ao optar por não aderir à mensalidade, você torna-se totalmente responsável pelos custos de hospedagem, domínio, atualizações do sistema, backups periódicos, segurança e perde o suporte contínuo da nossa equipe.',
   },
 ]
 
