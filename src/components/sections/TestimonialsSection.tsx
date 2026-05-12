@@ -1,6 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { Star, Quote } from 'lucide-react'
 import claraImg from '@/assets/icone-clara-freitas-f3f8e.png'
+import davidImg from '@/assets/icone-david-fonseca-181e0.png'
 
 export function TestimonialsSection() {
   return (
@@ -70,7 +71,7 @@ export function TestimonialsSection() {
               </p>
               <div className="flex items-center gap-4 mt-auto">
                 <img
-                  src="https://img.usecurling.com/ppl/thumbnail?gender=male&seed=david"
+                  src={davidImg}
                   alt="David Fonseca"
                   className="w-16 h-16 rounded-full border-2 border-secondary/30 object-cover"
                 />
