@@ -11,6 +11,7 @@ import lpPilatesImg from '@/assets/image-53904.png'
 import acdomzGestaoImg from '@/assets/image-02184.png'
 import lpStarsImg from '@/assets/lp-stars-c2f4f.png'
 import sistemaAcdomzImg from '@/assets/sistema-acdomz-5dcda.png'
+import lpOdontologiaImg from '@/assets/plano-de-fundo-isa-bialy-4b954.png'
 
 export function PortfolioSection() {
   const [projects, setProjects] = useState<ProjectRecord[]>([])
@@ -131,6 +132,14 @@ export function PortfolioSection() {
                   project.company === 'Stars Treinamento' ? (
                   <img
                     src={lpStarsImg}
+                    alt={project.title}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : project.title === 'LP Odontologia' ||
+                  project.niche === 'Odontologia' ||
+                  project.title.toLowerCase().includes('odontologia') ? (
+                  <img
+                    src={lpOdontologiaImg}
                     alt={project.title}
                     className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   />
