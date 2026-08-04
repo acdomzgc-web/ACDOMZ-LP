@@ -10,6 +10,7 @@ export interface ProjectRecord {
   image: string
   created: string
   updated: string
+  site_url: string
   collectionId: string
 }
 

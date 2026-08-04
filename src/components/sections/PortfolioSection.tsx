@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { getProjects, type ProjectRecord } from '@/services/projects'
 import pb from '@/lib/pocketbase/client'
-import { CheckCircle2, Building2, Target } from 'lucide-react'
+import { CheckCircle2, Building2, Target, ArrowUpRight } from 'lucide-react'
 import { useRealtime } from '@/hooks/use-realtime'
 import { cn } from '@/lib/utils'
 import blessedImg from '@/assets/design-sem-nome-8-2b3e6.png'
@@ -78,6 +78,17 @@ export function PortfolioSection() {
               key={project.id}
               className="bg-card/40 backdrop-blur-xl border-border/50 hover:border-secondary/50 hover:shadow-[0_0_30px_rgba(6,41,69,0.5)] transition-all duration-500 overflow-hidden flex flex-col group h-full"
             >
+              {project.site_url && (
+                <a
+                  href={project.site_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute top-3 right-3 z-20 flex items-center justify-center w-9 h-9 rounded-full bg-primary/80 backdrop-blur-md text-white hover:bg-primary hover:scale-110 transition-all duration-300 shadow-lg"
+                  aria-label={`Visitar ${project.title}`}
+                >
+                  <ArrowUpRight className="w-4.5 h-4.5" />
+                </a>
+              )}
               <div
                 className={cn(
                   'h-48 sm:h-56 w-full bg-muted relative overflow-hidden shrink-0 border-b border-border/50',
