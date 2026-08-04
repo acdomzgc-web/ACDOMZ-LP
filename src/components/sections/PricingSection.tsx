@@ -198,24 +198,24 @@ export function PricingSection() {
                     </TableHeader>
                     <TableBody>
                       {[
-                        ['Páginas', '3 a 5', '5 a 10', '8 a 15'],
-                        ['Fotos / Vídeos', '5 Fotos / Não', '10 Fotos / Sim', '20+ Fotos / Sim'],
-                        ['Domínio', 'goskip.app', 'Personalizado', 'Personalizado'],
+                        ['Páginas', '3 a 5', '5 a 10', '10 dobras'],
+                        ['Fotos / Vídeos', '5 Fotos / Não', '10 Fotos / Não', 'Ilimitadas / Não'],
+                        ['Domínio', 'goskip.app', 'goskip.app', 'Personalizado'],
                         ['Banco de Dados', 'Não', 'Não', 'Sim (Supabase Pro)'],
-                        ['Integrações', '0', 'Até 2', 'Até 3 Avançadas'],
+                        ['Integrações', '0', 'Até 2', '3+ Avançadas'],
                         ['WhatsApp Flutuante', 'Não', 'Sim (Direto)', 'Sim (Msg Automática)'],
-                        ['Chatbot / IA', 'Não / Não', 'Básico / Não', 'IA GPT-4 / Claude'],
+                        ['Chatbot / IA', 'Não / Não', 'Não / Não', 'IA GPT-4 / Claude'],
                         ['FAQ / Vitrine', 'Não / Não', 'Sim / Não', 'Sim / Sim'],
                         ['Dashboard', 'Não', 'Não', 'Sim (Gráficos)'],
                         [
                           'Favicon / SEO / Meta Desc. / GitHub',
                           'Sim / Básico / Sim / Sim',
-                          'Sim / Otimizado / Sim / Sim',
+                          'Não / Avançado / Sim / Sim',
                           'Sim / Avançado / Sim / Sim',
                         ],
                         ['Preço Setup', 'R$ 497,00', 'R$ 997,00', 'R$ 1.497,00'],
                         ['Recorrência', 'R$ 97,00/mês', 'R$ 147,00/mês', 'R$ 197,00/mês'],
-                        ['Ajustes / Mês', '2 por mês', '4 por mês (1/sem)', '8 por mês (2/sem)'],
+                        ['Ajustes / Mês', '2 por mês', '4 por mês (1/sem)', 'Ilimitados'],
                       ].map((row, i) => (
                         <TableRow key={i} className="hover:bg-muted/30">
                           <TableCell className="font-medium text-foreground">{row[0]}</TableCell>
