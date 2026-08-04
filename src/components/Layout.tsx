@@ -58,7 +58,7 @@ export default function Layout() {
               className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full px-6 min-h-[44px]"
               asChild
             >
-              <a href="https://wa.me/5541987322926" target="_blank" rel="noreferrer">
+              <a href="https://wa.me/5541987322926" target="_blank" rel="noopener noreferrer">
                 Falar com Especialista
               </a>
             </Button>
@@ -94,7 +94,7 @@ export default function Layout() {
                     size="lg"
                     asChild
                   >
-                    <a href="https://wa.me/5541987322926" target="_blank" rel="noreferrer">
+                    <a href="https://wa.me/5541987322926" target="_blank" rel="noopener noreferrer">
                       Falar com Especialista
                     </a>
                   </Button>
@@ -144,7 +144,12 @@ export default function Layout() {
               >
                 acdomz.gc@gmail.com
               </a>
-              <a href="tel:+5541987322926" className="block hover:text-secondary transition-colors">
+              <a
+                href="https://wa.me/5541987322926"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block hover:text-secondary transition-colors"
+              >
                 (41) 98732-2926
               </a>
               <div className="flex gap-4 mt-6">

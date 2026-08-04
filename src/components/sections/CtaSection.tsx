@@ -23,7 +23,7 @@ export function CtaSection() {
             className="w-full sm:w-auto bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all duration-300 gap-2 h-14 min-h-[56px] px-8 rounded-full shadow-[0_0_30px_rgba(194,178,143,0.3)]"
             asChild
           >
-            <a href="tel:+5541987322926" target="_blank" rel="noreferrer">
+            <a href="https://wa.me/5541987322926" target="_blank" rel="noopener noreferrer">
               <MessageCircle className="w-5 h-5" /> (41) 98732-2926
             </a>
           </Button>

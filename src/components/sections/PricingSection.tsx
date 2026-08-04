@@ -14,6 +14,7 @@ import { cn } from '@/lib/utils'
 import { Skeleton } from '@/components/ui/skeleton'
 import { getPlans, type Plan } from '@/services/plans'
 import { useRealtime } from '@/hooks/use-realtime'
+import { buildPlanWhatsAppUrl } from '@/lib/whatsapp'
 import {
   Table,
   TableBody,
@@ -25,12 +26,7 @@ import {
 
 function PlanCard({ plan }: { plan: Plan }) {
   const isHighlighted = plan.name.toUpperCase().includes('MEDIUM')
-
-  const handleWhatsApp = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
-    const text = `Quero o plano ${plan.name}`
-    window.open(`https://wa.me/5541987322926?text=${encodeURIComponent(text)}`, '_blank')
-  }
+  const whatsappUrl = buildPlanWhatsAppUrl(plan.name)
 
   return (
     <div
@@ -103,7 +99,7 @@ function PlanCard({ plan }: { plan: Plan }) {
           variant={isHighlighted ? 'default' : 'outline'}
           asChild
         >
-          <a href="#" onClick={handleWhatsApp}>
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
             Escolher {plan.name}
           </a>
         </Button>
