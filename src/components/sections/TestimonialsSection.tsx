@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Star, Quote } from 'lucide-react'
 import claraImg from '@/assets/icone-clara-freitas-f3f8e.png'
 import davidImg from '@/assets/icone-david-fonseca-181e0.png'
-import isaImg from '@/assets/plano-de-fundo-isa-bialy-4b954.png'
+import isaImg from '@/assets/isa-insta-ff725.jpg'
 import pb from '@/lib/pocketbase/client'
 import { useRealtime } from '@/hooks/use-realtime'
 import { getTestimonials, Testimonial } from '@/services/testimonials'
@@ -64,7 +64,7 @@ export function TestimonialsSection() {
   })
 
   const getAvatar = (item: Testimonial) => {
-    if (item.avatar) {
+    if (item.avatar && !item.avatar.startsWith('src/assets/')) {
       return pb.files.getURL(item, item.avatar)
     }
     return FALLBACK_IMAGES[item.name] || isaImg
