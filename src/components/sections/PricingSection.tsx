@@ -210,7 +210,7 @@ export function PricingSection() {
                           'Sim / Avançado / Sim / Sim',
                         ],
                         ['Preço Setup', 'R$ 497,00', 'R$ 997,00', 'R$ 1.497,00'],
-                        ['Recorrência', 'R$ 97,00/mês', 'R$ 147,00/mês', 'R$ 197,00/mês'],
+                        ['Recorrência', 'R$ 47,00/mês', 'R$ 97,00/mês', 'R$ 147,00/mês'],
                         ['Ajustes / Mês', '2 por mês', '4 por mês (1/sem)', 'Ilimitados'],
                       ].map((row, i) => (
                         <TableRow key={i} className="hover:bg-muted/30">
