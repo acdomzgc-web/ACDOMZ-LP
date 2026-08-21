@@ -243,7 +243,7 @@ export function PricingSection() {
                           'R$ 997,00',
                           'R$ 1.497,00',
                           'R$ 2.997,00',
-                          'R$ 6.997,00',
+                          'R$ 4.997,00',
                         ],
                         ['Cobrança Mensal', 'Nenhuma', 'Nenhuma', 'Nenhuma', 'Nenhuma'],
                         [
