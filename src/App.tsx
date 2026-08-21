@@ -12,7 +12,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 // AVOID REMOVING ANY CONTEXT PROVIDERS FROM THIS FILE (e.g. TooltipProvider, Toaster, Sonner)
 
 const App = () => (
-  <BrowserRouter future={{ v7_startTransition: false, v7_relativeSplatPath: false }}>
+  <BrowserRouter>
     <ThemeProvider defaultTheme="dark" storageKey="acdomz-theme">
       <TooltipProvider>
         <Toaster />

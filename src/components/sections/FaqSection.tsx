@@ -8,27 +8,27 @@ import {
 const faqs = [
   {
     q: 'Qual o tempo médio de entrega dos projetos?',
-    a: 'O tempo médio de entrega é de 3 a 5 dias, dependendo da complexidade e do plano escolhido (STARTER, MEDIUM ou EXPERT).',
+    a: 'O tempo médio de entrega é de 3 a 7 dias úteis, dependendo da complexidade e do plano escolhido (STARTER, MEDIUM, EXPERT ou PREMIUM).',
   },
   {
-    q: 'Por que a Recorrência Mensal é importante?',
-    a: 'A Recorrência Mensal é o motor que mantém sua presença digital ativa e eficiente. Ela cobre hospedagem, atualizações constantes contra vulnerabilidades, backups diários/semanais e suporte técnico contínuo.',
+    q: 'Existe alguma mensalidade ou taxa recorrente?',
+    a: 'Não. Todos os nossos planos são em pagamento único (setup completo). Você paga uma única vez pela criação do site e o projeto é seu, sem cobranças mensais surpresa.',
   },
   {
     q: 'Como funciona o pagamento?',
-    a: 'Aceitamos o pagamento via PIX, garantindo agilidade e segurança na negociação.',
+    a: 'Aceitamos o pagamento via PIX e transferência, garantindo agilidade, transparência e segurança na negociação.',
   },
   {
-    q: 'Quais são as limitações técnicas dos projetos?',
-    a: 'Nossos projetos não contemplam notificações push em tempo real, sistemas de autenticação (login/área de membros), gestão interna de dados (ERP/estoque) ou processamento financeiro interno (o site atua apenas como redirecionador para checkout externo).',
+    q: 'Como funciona a hospedagem e o domínio?',
+    a: 'Todos os planos incluem domínio gratuito (nomesite.goskip.app), certificado SSL e exportação para GitHub. Caso queira utilizar seu domínio próprio (.com, .com.br), ajudamos você a configurar sem custo extra.',
   },
   {
     q: 'O site será responsivo para celulares?',
-    a: 'Sim. A otimização para múltiplos dispositivos (PC, Mobile e Tablet) é um padrão em todos os nossos planos, garantindo uma navegação perfeita sem custo adicional.',
+    a: 'Sim. A otimização para múltiplos dispositivos (Smartphones, Tablets e Computadores) é um padrão rigoroso em todos os nossos planos, garantindo uma navegação impecável.',
   },
   {
-    q: 'O que acontece se eu optar pelo pagamento único sem recorrência?',
-    a: 'Ao optar por não aderir à mensalidade, você torna-se totalmente responsável pelos custos de hospedagem, domínio, atualizações do sistema, backups periódicos, segurança e perde o suporte contínuo da nossa equipe.',
+    q: 'Quais são as limitações técnicas dos projetos?',
+    a: 'Nossos projetos são focados em landing pages de alta conversão, portfólios e sites institucionais modernos. Não contemplam painéis ERP internos complexos ou processamento financeiro nativo (o site atua como integrador com WhatsApp e checkouts externos).',
   },
 ]
 
