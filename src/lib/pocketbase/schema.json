@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T13:09:03.808Z",
+  "generatedAt": "2026-09-09T15:28:20.140Z",
   "collections": [
     {
       "name": "users",
@@ -174,6 +174,12 @@
         },
         {
           "name": "tagline",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "maintenance_monthly_price",
           "type": "text",
           "required": false,
           "system": false

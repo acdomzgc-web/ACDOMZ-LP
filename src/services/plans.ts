@@ -6,6 +6,7 @@ export interface Plan {
   tagline?: string
   description: string
   price_one_time: string
+  maintenance_monthly_price?: string
   features: string[]
   order: number
 }

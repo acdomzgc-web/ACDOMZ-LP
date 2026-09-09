@@ -1,11 +1,23 @@
 import { useEffect, useState } from 'react'
-import { Check, Sparkles, Crown, Info, HelpCircle, ArrowRight, ShieldCheck } from 'lucide-react'
+import {
+  Check,
+  Sparkles,
+  Crown,
+  HelpCircle,
+  ArrowRight,
+  ShieldCheck,
+  Wrench,
+  UserCheck,
+  Headphones,
+  CheckCircle2,
+  ExternalLink,
+} from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { Skeleton } from '@/components/ui/skeleton'
 import { getPlans, type Plan } from '@/services/plans'
 import { useRealtime } from '@/hooks/use-realtime'
-import { buildPlanWhatsAppUrl } from '@/lib/whatsapp'
+import { buildPlanWhatsAppUrl, buildMaintenanceWhatsAppUrl } from '@/lib/whatsapp'
 import {
   Table,
   TableBody,
@@ -207,6 +219,234 @@ export function PricingSection() {
                     gratuito (nomesite.goskip.app). Domínio próprio (.com, .com.br) fica por conta
                     do cliente — te ajudamos a configurar sem custo extra.
                   </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bloco de Manutenção Mensal Opcional com 2 Modalidades de Contratação */}
+            <div className="mt-12 max-w-5xl mx-auto">
+              <div className="relative rounded-[2rem] border border-secondary/30 bg-gradient-to-b from-card/90 via-card/75 to-secondary/5 p-6 sm:p-8 md:p-10 backdrop-blur-xl shadow-2xl overflow-hidden">
+                {/* Efeito decorativo sutil de fundo */}
+                <div className="absolute -right-20 -top-20 w-72 h-72 bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
+
+                {/* Cabeçalho do Bloco */}
+                <div className="relative text-center max-w-2xl mx-auto mb-8">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-secondary/15 border border-secondary/30 text-secondary text-xs font-bold uppercase tracking-wider mb-3">
+                    <Wrench className="w-3.5 h-3.5" />
+                    Manutenção Mensal Opcional
+                  </div>
+                  <h4 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight mb-2">
+                    Você escolhe como quer gerenciar o seu projeto
+                  </h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Nossos planos continuam 100% pagamento único para desenvolvimento. Se você
+                    quiser tranquilidade total pós-entrega, oferecemos suporte contínuo com valores
+                    mensais acessíveis.
+                  </p>
+                </div>
+
+                {/* As Duas Modalidades: Você assume tudo vs A ACDOMZ cuida de tudo */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8">
+                  {/* Opção 1: Cliente assume tudo */}
+                  <div className="rounded-2xl border border-border/60 bg-background/50 p-5 sm:p-6 flex flex-col justify-between transition-colors hover:border-border">
+                    <div>
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="p-2 rounded-xl bg-muted text-muted-foreground">
+                          <UserCheck className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                            Modalidade 1
+                          </span>
+                          <h5 className="text-base font-bold text-foreground">
+                            Você assume tudo (Sem recorrência)
+                          </h5>
+                        </div>
+                      </div>
+                      <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
+                        Pagamento único de setup e nada mais. O código, os arquivos e o deploy são
+                        100% seus. Você gerencia alterações de conteúdo, fotos e configurações por
+                        conta própria.
+                      </p>
+                      <ul className="space-y-2 text-xs text-muted-foreground">
+                        <li className="flex items-center gap-2">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-secondary shrink-0" />
+                          <span>Total autonomia e liberdade sobre o site</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-secondary shrink-0" />
+                          <span>Zero mensalidades ou compromissos recorrentes</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-secondary shrink-0" />
+                          <span>Código entregue limpo e pronto para produção</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="mt-5 pt-4 border-t border-border/40 text-center">
+                      <span className="text-xs font-semibold text-muted-foreground">
+                        Incluso no valor do setup de cada plano
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Opção 2: ACDOMZ cuida de tudo */}
+                  <div className="rounded-2xl border border-secondary/50 bg-secondary/[0.08] p-5 sm:p-6 flex flex-col justify-between relative shadow-sm">
+                    <div className="absolute -top-3 right-5 bg-secondary text-secondary-foreground text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full shadow-sm">
+                      Mais Tranquilidade
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="p-2 rounded-xl bg-secondary/20 text-secondary">
+                          <Headphones className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-secondary">
+                            Modalidade 2
+                          </span>
+                          <h5 className="text-base font-bold text-foreground">
+                            A ACDOMZ cuida de tudo para você
+                          </h5>
+                        </div>
+                      </div>
+                      <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
+                        Nós assumimos a sustentação, atualizações periódicas de textos, fotos,
+                        monitoramento de estabilidade, segurança e suporte prioritário no WhatsApp
+                        sem dor de cabeça.
+                      </p>
+                      <ul className="space-y-2 text-xs text-muted-foreground">
+                        <li className="flex items-center gap-2">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-secondary shrink-0" />
+                          <span>Ajustes de texto, fotos, contatos e banners</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-secondary shrink-0" />
+                          <span>Monitoramento de uptime, SSL e segurança</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-secondary shrink-0" />
+                          <span>Suporte prioritário direto via WhatsApp</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="mt-5 pt-4 border-t border-secondary/20 text-center">
+                      <span className="text-xs font-semibold text-secondary">
+                        Opcional — contrate apenas se fizer sentido para você
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Grade com os 4 Valores de Manutenção Mensal por Plano */}
+                <div>
+                  <div className="text-center mb-4">
+                    <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                      Valores de Manutenção Mensal Opcional por Plano
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                    {[
+                      {
+                        name: 'STARTER',
+                        price:
+                          plans.find((p) => p.name.toUpperCase().includes('STARTER'))
+                            ?.maintenance_monthly_price || 'R$ 47/mês',
+                        isRecommended: false,
+                        isPremium: false,
+                        description: 'Ajustes pontuais e monitoramento essencial',
+                      },
+                      {
+                        name: 'MEDIUM',
+                        price:
+                          plans.find((p) => p.name.toUpperCase().includes('MEDIUM'))
+                            ?.maintenance_monthly_price || 'R$ 67/mês',
+                        isRecommended: true,
+                        isPremium: false,
+                        description: 'Suporte a leads, WhatsApp e atualizações',
+                      },
+                      {
+                        name: 'EXPERT',
+                        price:
+                          plans.find((p) => p.name.toUpperCase().includes('EXPERT'))
+                            ?.maintenance_monthly_price || 'R$ 87/mês',
+                        isRecommended: false,
+                        isPremium: false,
+                        description: 'Monitoramento de IA, integrações e dados',
+                      },
+                      {
+                        name: 'PREMIUM',
+                        price:
+                          plans.find((p) => p.name.toUpperCase().includes('PREMIUM'))
+                            ?.maintenance_monthly_price || 'R$ 97/mês',
+                        isRecommended: false,
+                        isPremium: true,
+                        description: 'Sustentação 3D, WebGL e performance máxima',
+                      },
+                    ].map((item, idx) => (
+                      <div
+                        key={idx}
+                        className={cn(
+                          'rounded-2xl p-4 sm:p-5 flex flex-col justify-between transition-all bg-background/60 border text-center',
+                          item.isRecommended &&
+                            'border-secondary/60 bg-secondary/[0.05] ring-1 ring-secondary/40',
+                          item.isPremium &&
+                            'border-amber-400/50 bg-amber-400/[0.04] ring-1 ring-amber-400/30',
+                          !item.isRecommended && !item.isPremium && 'border-border/50',
+                        )}
+                      >
+                        <div>
+                          <div className="flex items-center justify-center gap-1.5 mb-1">
+                            <span className="text-xs font-bold text-foreground tracking-wide">
+                              {item.name}
+                            </span>
+                            {item.isRecommended && (
+                              <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-secondary/20 text-secondary uppercase">
+                                Recomendado
+                              </span>
+                            )}
+                            {item.isPremium && (
+                              <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-400/20 text-amber-400 uppercase">
+                                Topo
+                              </span>
+                            )}
+                          </div>
+                          <p
+                            className={cn(
+                              'text-2xl font-black tracking-tight my-2',
+                              item.isPremium
+                                ? 'text-amber-400'
+                                : item.isRecommended
+                                  ? 'text-secondary'
+                                  : 'text-foreground',
+                            )}
+                          >
+                            {item.price}
+                          </p>
+                          <p className="text-[11px] text-muted-foreground leading-snug">
+                            {item.description}
+                          </p>
+                        </div>
+                        <div className="mt-4 pt-3 border-t border-border/30">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="w-full text-xs font-semibold h-9 rounded-xl hover:bg-secondary/15 hover:text-secondary"
+                            asChild
+                          >
+                            <a
+                              href={buildMaintenanceWhatsAppUrl(item.name)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center justify-center gap-1.5"
+                            >
+                              Contratar com Suporte
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
