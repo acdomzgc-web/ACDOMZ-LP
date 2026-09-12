@@ -6,6 +6,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { getPlans, type Plan } from '@/services/plans'
 import { useRealtime } from '@/hooks/use-realtime'
 import { buildPlanWhatsAppUrl, buildMaintenanceWhatsAppUrl } from '@/lib/whatsapp'
+import { Reveal } from '@/components/motion/Reveal'
 import {
   Table,
   TableBody,
@@ -15,87 +16,93 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-function PlanCard({ plan }: { plan: Plan }) {
+function PlanCard({ plan, index = 0 }: { plan: Plan; index?: number }) {
   const isRecommended = plan.name.toUpperCase().includes('MEDIUM')
   const isPremium = plan.name.toUpperCase().includes('PREMIUM')
   const whatsappUrl = buildPlanWhatsAppUrl(plan.name)
 
   return (
-    <div
-      className={cn(
-        'relative flex flex-col p-6 bg-[#121212] border transition-colors flex-1',
-        isRecommended && 'border-[#FFFFFF] bg-[#171717]',
-        isPremium && 'border-[#FFFFFF]',
-        !isRecommended && !isPremium && 'border-[#262626]',
-      )}
-    >
-      {/* Badge Recomendado */}
-      {isRecommended && (
-        <div className="absolute -top-3 left-6 bg-[#FFFFFF] text-[#0A0A0A] px-2.5 py-0.5 font-mono text-[10px] font-extrabold uppercase tracking-widest border border-[#FFFFFF]">
-          Recomendado
-        </div>
-      )}
+    <Reveal delay={index * 100} distance={20} className="flex flex-col flex-1 h-full">
+      <div
+        className={cn(
+          'relative flex flex-col p-6 bg-[#121212] border transition-all duration-300 flex-1 h-full hover-lift group',
+          isRecommended && 'border-[#FFFFFF] bg-[#171717] shadow-xl shadow-black/40',
+          isPremium && 'border-[#FFFFFF] shadow-xl shadow-black/40',
+          !isRecommended && !isPremium && 'border-[#262626] hover:border-[#737373]',
+        )}
+      >
+        {/* Badge Recomendado */}
+        {isRecommended && (
+          <div className="absolute -top-3 left-6 bg-[#FFFFFF] text-[#0A0A0A] px-2.5 py-0.5 font-mono text-[10px] font-extrabold uppercase tracking-widest border border-[#FFFFFF] flex items-center gap-1.5 shadow-md">
+            <span className="inline-block w-1.5 h-1.5 bg-[#0A0A0A] animate-pulse-subtle" />
+            Recomendado
+          </div>
+        )}
 
-      {/* Badge Topo de linha */}
-      {isPremium && (
-        <div className="absolute -top-3 left-6 bg-[#FFFFFF] text-[#0A0A0A] px-2.5 py-0.5 font-mono text-[10px] font-extrabold uppercase tracking-widest border border-[#FFFFFF]">
-          Topo de Linha
-        </div>
-      )}
+        {/* Badge Topo de linha */}
+        {isPremium && (
+          <div className="absolute -top-3 left-6 bg-[#FFFFFF] text-[#0A0A0A] px-2.5 py-0.5 font-mono text-[10px] font-extrabold uppercase tracking-widest border border-[#FFFFFF] flex items-center gap-1.5 shadow-md">
+            <span className="inline-block w-1.5 h-1.5 bg-[#0A0A0A]" />
+            Topo de Linha
+          </div>
+        )}
 
-      {/* Header: Nome + Tagline */}
-      <div className="pb-5 border-b border-[#262626] shrink-0">
-        <h4 className="text-2xl font-extrabold text-[#FFFFFF] mb-1 tracking-tight">{plan.name}</h4>
-        <p className="text-xs text-[#A3A3A3] min-h-[2.5rem] flex items-center leading-snug">
-          {plan.tagline || plan.description}
-        </p>
-      </div>
-
-      {/* Preço Único */}
-      <div className="flex-1 py-6 flex flex-col gap-6">
-        <div className="min-h-[5rem] flex flex-col justify-center shrink-0">
-          <p className="text-[10px] font-mono uppercase tracking-widest text-[#737373] mb-1">
-            Pagamento Único
+        {/* Header: Nome + Tagline */}
+        <div className="pb-5 border-b border-[#262626] shrink-0">
+          <h4 className="text-2xl font-extrabold text-[#FFFFFF] mb-1 tracking-tight">
+            {plan.name}
+          </h4>
+          <p className="text-xs text-[#A3A3A3] min-h-[2.5rem] flex items-center leading-snug">
+            {plan.tagline || plan.description}
           </p>
-          <p className="text-3xl sm:text-4xl font-extrabold text-[#FFFFFF] tracking-tight font-mono">
-            {plan.price_one_time}
-          </p>
-          <p className="text-xs font-mono text-[#737373] mt-1">Sem mensalidades</p>
         </div>
 
-        {/* Lista de Recursos */}
-        <div className="flex flex-col gap-3 flex-1">
-          <p className="font-mono text-[10px] uppercase tracking-widest text-[#737373]">
-            Escopo Incluso:
-          </p>
-          <ul className="space-y-2.5 text-xs text-[#D4D4D4]">
-            {plan.features.map((feat, j) => (
-              <li key={j} className="flex items-start gap-2">
-                <Check className="w-3.5 h-3.5 text-[#FFFFFF] shrink-0 mt-0.5" />
-                <span className="leading-tight">{feat}</span>
-              </li>
-            ))}
-          </ul>
+        {/* Preço Único */}
+        <div className="flex-1 py-6 flex flex-col gap-6">
+          <div className="min-h-[5rem] flex flex-col justify-center shrink-0">
+            <p className="text-[10px] font-mono uppercase tracking-widest text-[#737373] mb-1">
+              Pagamento Único
+            </p>
+            <p className="text-3xl sm:text-4xl font-extrabold text-[#FFFFFF] tracking-tight font-mono">
+              {plan.price_one_time}
+            </p>
+            <p className="text-xs font-mono text-[#737373] mt-1">Sem mensalidades</p>
+          </div>
+
+          {/* Lista de Recursos */}
+          <div className="flex flex-col gap-3 flex-1">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-[#737373]">
+              Escopo Incluso:
+            </p>
+            <ul className="space-y-2.5 text-xs text-[#D4D4D4]">
+              {plan.features.map((feat, j) => (
+                <li key={j} className="flex items-start gap-2">
+                  <Check className="w-3.5 h-3.5 text-[#FFFFFF] shrink-0 mt-0.5 transition-transform group-hover:scale-110" />
+                  <span className="leading-tight">{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* CTA Button com micro-interação */}
+        <div className="pt-5 mt-auto shrink-0 border-t border-[#262626]">
+          <Button
+            className={cn(
+              'w-full h-11 text-xs font-extrabold uppercase tracking-wider transition-all duration-200 hover:-translate-y-0.5',
+              isRecommended
+                ? 'bg-[#FFFFFF] text-[#0A0A0A] hover:bg-[#F4F4F2] border border-[#FFFFFF]'
+                : 'bg-transparent text-[#FFFFFF] border border-[#262626] hover:bg-[#1F1F1F] hover:border-[#FFFFFF]',
+            )}
+            asChild
+          >
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+              Escolher {plan.name}
+            </a>
+          </Button>
         </div>
       </div>
-
-      {/* CTA Button */}
-      <div className="pt-5 mt-auto shrink-0 border-t border-[#262626]">
-        <Button
-          className={cn(
-            'w-full h-11 text-xs font-extrabold uppercase tracking-wider',
-            isRecommended
-              ? 'bg-[#FFFFFF] text-[#0A0A0A] hover:bg-[#F4F4F2] border border-[#FFFFFF]'
-              : 'bg-transparent text-[#FFFFFF] border border-[#262626] hover:bg-[#1F1F1F] hover:border-[#FFFFFF]',
-          )}
-          asChild
-        >
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-            Escolher {plan.name}
-          </a>
-        </Button>
-      </div>
-    </div>
+    </Reveal>
   )
 }
 
@@ -123,9 +130,12 @@ export function PricingSection() {
   })
 
   return (
-    <section id="planos" className="py-24 bg-[#0A0A0A] text-[#FFFFFF] border-b border-[#262626]">
+    <section
+      id="planos"
+      className="py-24 bg-[#0A0A0A] text-[#FFFFFF] border-b border-[#262626] relative"
+    >
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
-        <div className="max-w-3xl mb-16">
+        <Reveal direction="up" distance={20} className="max-w-3xl mb-16">
           <p className="font-mono text-xs uppercase tracking-widest text-[#737373] mb-3">
             03 &middot; Investimento e Escopo
           </p>
@@ -136,7 +146,7 @@ export function PricingSection() {
             Desenvolvimento completo em pagamento único. Sem taxas ocultas e com total propriedade
             do seu código e do seu deploy.
           </p>
-        </div>
+        </Reveal>
 
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-stretch">
@@ -154,16 +164,16 @@ export function PricingSection() {
           </div>
         ) : (
           <>
-            {/* Grid de 4 Cards lado a lado */}
+            {/* Grid de 4 Cards lado a lado com animação suave e hover lift */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-stretch">
-              {plans.map((plan) => (
-                <PlanCard key={plan.id} plan={plan} />
+              {plans.map((plan, i) => (
+                <PlanCard key={plan.id} plan={plan} index={i} />
               ))}
             </div>
 
             {/* NOTA ÚNICA abaixo dos 4 cards */}
-            <div className="mt-8 max-w-5xl mx-auto">
-              <div className="border border-[#262626] bg-[#121212] p-5 sm:p-6 flex items-start gap-4">
+            <Reveal direction="up" distance={16} delay={200} className="mt-8 max-w-5xl mx-auto">
+              <div className="border border-[#262626] bg-[#121212] p-5 sm:p-6 flex items-start gap-4 transition-colors hover:border-[#404040]">
                 <div className="p-2 border border-[#262626] bg-[#0A0A0A] text-[#FFFFFF] shrink-0 mt-0.5">
                   <ShieldCheck className="w-4 h-4" />
                 </div>
@@ -178,10 +188,15 @@ export function PricingSection() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Reveal>
 
             {/* Bloco de Manutenção Mensal Opcional com 2 Modalidades de Contratação */}
-            <div className="mt-16 max-w-5xl mx-auto border border-[#262626] bg-[#121212] p-6 sm:p-8 md:p-10">
+            <Reveal
+              direction="up"
+              distance={20}
+              delay={250}
+              className="mt-16 max-w-5xl mx-auto border border-[#262626] bg-[#121212] p-6 sm:p-8 md:p-10 transition-colors hover:border-[#404040]"
+            >
               {/* Cabeçalho do Bloco */}
               <div className="max-w-2xl mx-auto text-center mb-10">
                 <div className="inline-flex items-center gap-2 px-3 py-1 border border-[#262626] bg-[#0A0A0A] text-[#FFFFFF] font-mono text-xs uppercase tracking-widest mb-3">
@@ -335,8 +350,10 @@ export function PricingSection() {
                     <div
                       key={idx}
                       className={cn(
-                        'p-5 flex flex-col justify-between bg-[#0A0A0A] border text-center',
-                        item.isRecommended ? 'border-[#FFFFFF]' : 'border-[#262626]',
+                        'p-5 flex flex-col justify-between bg-[#0A0A0A] border text-center transition-all duration-200 hover:-translate-y-1',
+                        item.isRecommended
+                          ? 'border-[#FFFFFF] shadow-md shadow-black/30'
+                          : 'border-[#262626] hover:border-[#737373]',
                       )}
                     >
                       <div>
@@ -380,10 +397,15 @@ export function PricingSection() {
                   ))}
                 </div>
               </div>
-            </div>
+            </Reveal>
 
             {/* Resumo Comparativo com 4 Planos */}
-            <div className="mt-20 max-w-6xl mx-auto overflow-x-auto pb-4">
+            <Reveal
+              direction="up"
+              distance={20}
+              delay={150}
+              className="mt-20 max-w-6xl mx-auto overflow-x-auto pb-4"
+            >
               <div className="min-w-[900px]">
                 <h3 className="text-xl sm:text-2xl font-extrabold text-center mb-8 uppercase font-mono tracking-tight text-[#FFFFFF]">
                   Resumo Comparativo de Escopo
@@ -501,10 +523,15 @@ export function PricingSection() {
                   </Table>
                 </div>
               </div>
-            </div>
+            </Reveal>
 
             {/* Guia de Escolha dos 4 Planos */}
-            <div className="mt-12 max-w-5xl mx-auto border border-[#262626] bg-[#121212] p-6 sm:p-8">
+            <Reveal
+              direction="up"
+              distance={20}
+              delay={150}
+              className="mt-12 max-w-5xl mx-auto border border-[#262626] bg-[#121212] p-6 sm:p-8 transition-colors hover:border-[#404040]"
+            >
               <div className="flex items-center gap-3 mb-6">
                 <span className="font-mono text-xs uppercase tracking-widest text-[#FFFFFF]">
                   Guia de Decisão Rápida
@@ -548,7 +575,7 @@ export function PricingSection() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </>
         )}
       </div>

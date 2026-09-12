@@ -19,11 +19,53 @@ const navLinks = [
 
 export default function Layout() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [activeSection, setActiveSection] = useState<string>('')
 
   useEffect(() => {
     document.documentElement.classList.add('scroll-smooth')
-    const handleScroll = () => setIsScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handleScroll)
+
+    let lastScrollY = window.scrollY
+    let ticking = false
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(currentScrollY > 20)
+
+          // Header inteligente: esconde ao rolar para baixo após 100px, reaparece ao rolar para cima
+          if (currentScrollY > 100 && currentScrollY > lastScrollY + 5) {
+            setIsVisible(false)
+          } else if (currentScrollY < lastScrollY - 5 || currentScrollY <= 100) {
+            setIsVisible(true)
+          }
+
+          lastScrollY = currentScrollY
+
+          // Detector de seção ativa para indicador visual
+          const sections = ['expertise', 'cases', 'planos', 'diferenciais', 'faq']
+          let current = ''
+          for (const sectionId of sections) {
+            const el = document.getElementById(sectionId)
+            if (el) {
+              const rect = el.getBoundingClientRect()
+              if (rect.top <= 200 && rect.bottom >= 150) {
+                current = `#${sectionId}`
+                break
+              }
+            }
+          }
+          setActiveSection(current)
+
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => {
       window.removeEventListener('scroll', handleScroll)
       document.documentElement.classList.remove('scroll-smooth')
@@ -34,10 +76,13 @@ export default function Layout() {
     <div className="flex flex-col min-h-screen bg-[#0A0A0A] text-[#FFFFFF]">
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-colors duration-200 border-b',
+          'fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 backdrop-blur-md',
           isScrolled
-            ? 'bg-[#0A0A0A] border-[#262626] py-3.5'
-            : 'bg-[#0A0A0A]/95 border-[#1F1F1F] py-4',
+            ? 'bg-[#0A0A0A]/95 border-[#262626] py-3 shadow-lg shadow-black/20'
+            : 'bg-[#0A0A0A]/80 border-[#1F1F1F] py-4',
+          isVisible
+            ? 'translate-y-0 opacity-100'
+            : '-translate-y-full opacity-0 pointer-events-none',
         )}
       >
         <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between">
@@ -46,26 +91,38 @@ export default function Layout() {
             className="flex items-center gap-3 text-xl font-extrabold tracking-tight text-[#FFFFFF] group"
           >
             {/* Logo Zhera: Imagem 3 (fundo preto com Z branco) em header escuro */}
-            <div className="h-9 w-9 bg-black border border-[#262626] flex items-center justify-center p-1.5 shrink-0">
+            <div className="h-9 w-9 bg-black border border-[#262626] flex items-center justify-center p-1.5 shrink-0 transition-colors group-hover:border-[#FFFFFF]">
               <img src={logoWhiteOnDark} alt="Zhera" className="h-full w-full object-contain" />
             </div>
-            <span className="text-xl font-extrabold tracking-tight">Zhera</span>
+            <span className="text-xl font-extrabold tracking-tight flex items-center gap-1.5">
+              Zhera
+              <span className="inline-block w-1.5 h-1.5 bg-[#FFFFFF] animate-pulse-subtle" />
+            </span>
           </a>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-xs uppercase tracking-widest font-mono text-[#A3A3A3] hover:text-[#FFFFFF] transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
+          {/* Desktop Nav com indicador visual de seção ativa */}
+          <nav className="hidden md:flex items-center gap-7">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className={cn(
+                    'text-xs uppercase tracking-widest font-mono transition-colors relative py-1 link-underline-expand',
+                    isActive ? 'text-[#FFFFFF] font-bold' : 'text-[#A3A3A3] hover:text-[#FFFFFF]',
+                  )}
+                >
+                  {link.name}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#FFFFFF]" />
+                  )}
+                </a>
+              )
+            })}
 
             <Button
-              className="bg-[#FFFFFF] text-[#0A0A0A] hover:bg-[#F4F4F2] font-extrabold text-xs tracking-wider uppercase px-5 h-10 border border-[#FFFFFF]"
+              className="bg-[#FFFFFF] text-[#0A0A0A] hover:bg-[#F4F4F2] font-extrabold text-xs tracking-wider uppercase px-5 h-10 border border-[#FFFFFF] transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
               asChild
             >
               <a href="https://wa.me/5541987322926" target="_blank" rel="noopener noreferrer">

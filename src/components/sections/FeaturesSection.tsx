@@ -62,15 +62,17 @@ const features = [
   },
 ]
 
+import { Reveal } from '@/components/motion/Reveal'
+
 export function FeaturesSection() {
   return (
     <section
       id="diferenciais"
-      className="py-24 bg-[#F4F4F2] text-[#0A0A0A] border-b border-[#E5E5E5]"
+      className="py-24 bg-[#F4F4F2] text-[#0A0A0A] border-b border-[#E5E5E5] relative"
     >
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 border border-[#0A0A0A] bg-[#FFFFFF] px-3 py-1 mb-4">
+        <Reveal direction="up" distance={20} className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-2 border border-[#0A0A0A] bg-[#FFFFFF] px-3 py-1 mb-4 transition-transform duration-200 hover:translate-x-1">
             <div className="h-4 w-4 bg-[#FFFFFF] flex items-center justify-center shrink-0">
               <img src={logoDarkOnLight} alt="Zhera" className="h-full w-full object-contain" />
             </div>
@@ -85,13 +87,15 @@ export function FeaturesSection() {
           <p className="text-base text-[#525252] leading-relaxed">
             Menos promessas vazias, mais velocidade e entrega técnica comprovada.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 border border-[#0A0A0A] bg-[#FFFFFF]">
           {features.map((feat, i) => (
-            <div
+            <Reveal
               key={i}
-              className={`p-6 sm:p-8 border-[#0A0A0A] flex flex-col justify-between ${
+              delay={(i % 3) * 80 + Math.floor(i / 3) * 60}
+              distance={16}
+              className={`p-6 sm:p-8 border-[#0A0A0A] flex flex-col justify-between transition-colors duration-200 hover:bg-[#FAF9F6] group ${
                 i % 3 !== 0 ? 'lg:border-l' : ''
               } ${i % 2 !== 0 ? 'sm:max-lg:border-l' : ''} ${
                 i >= 3 ? 'lg:border-t' : ''
@@ -99,10 +103,10 @@ export function FeaturesSection() {
             >
               <div>
                 <div className="flex items-center justify-between mb-5">
-                  <span className="font-mono text-xs uppercase tracking-widest text-[#737373]">
+                  <span className="font-mono text-xs uppercase tracking-widest text-[#737373] group-hover:text-[#0A0A0A] transition-colors">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <div className="p-2 border border-[#0A0A0A] bg-[#F4F4F2] text-[#0A0A0A]">
+                  <div className="p-2 border border-[#0A0A0A] bg-[#F4F4F2] text-[#0A0A0A] transition-transform duration-200 group-hover:scale-110 group-hover:rotate-6">
                     <feat.icon className="w-4 h-4" />
                   </div>
                 </div>
@@ -111,7 +115,7 @@ export function FeaturesSection() {
                 </h3>
                 <p className="text-xs sm:text-sm text-[#525252] leading-relaxed">{feat.desc}</p>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

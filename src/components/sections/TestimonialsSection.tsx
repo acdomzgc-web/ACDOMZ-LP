@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import pb from '@/lib/pocketbase/client'
 import { useRealtime } from '@/hooks/use-realtime'
 import { getTestimonials, Testimonial } from '@/services/testimonials'
+import { Reveal } from '@/components/motion/Reveal'
 import claraImg from '@/assets/icone-clara-freitas-f3f8e.png'
 import davidImg from '@/assets/icone-david-fonseca-181e0.png'
 import isaImg from '@/assets/isa-insta-ff725.jpg'
@@ -73,10 +74,10 @@ export function TestimonialsSection() {
   }
 
   return (
-    <section className="py-24 bg-[#0A0A0A] text-[#FFFFFF] border-b border-[#262626]">
+    <section className="py-24 bg-[#0A0A0A] text-[#FFFFFF] border-b border-[#262626] relative">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 border border-[#262626] bg-[#121212] px-3 py-1 mb-4">
+        <Reveal direction="up" distance={20} className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-2 border border-[#262626] bg-[#121212] px-3 py-1 mb-4 transition-transform duration-200 hover:translate-x-1">
             <div className="h-4 w-4 bg-black flex items-center justify-center shrink-0">
               <img src={logoWhiteOnDark} alt="Zhera" className="h-full w-full object-contain" />
             </div>
@@ -91,39 +92,41 @@ export function TestimonialsSection() {
           <p className="text-base text-[#A3A3A3] leading-relaxed">
             Feedbacks de fundadores e profissionais que colocaram seus projetos no ar conosco.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl">
           {items.map((item, idx) => (
-            <div
-              key={item.id || item.name}
-              className="bg-[#121212] border border-[#262626] p-6 sm:p-8 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between border-b border-[#262626] pb-4 mb-6">
-                  <span className="font-mono text-xs uppercase tracking-widest text-[#737373]">
-                    Case 0{idx + 1}
-                  </span>
-                  <span className="font-mono text-xs text-[#FFFFFF]">Avaliação 5.0</span>
-                </div>
-
-                <p className="text-sm sm:text-base text-[#D4D4D4] leading-relaxed mb-8">
-                  "{item.content}"
-                </p>
-              </div>
-
-              <div className="flex items-center gap-3 pt-4 border-t border-[#1F1F1F]">
-                <img
-                  src={getAvatar(item)}
-                  alt={item.name}
-                  className="w-11 h-11 border border-[#262626] object-cover shrink-0"
-                />
+            <Reveal key={item.id || item.name} delay={idx * 120} distance={20} className="h-full">
+              <div className="bg-[#121212] border border-[#262626] p-6 sm:p-8 flex flex-col justify-between h-full transition-all duration-300 hover:border-[#FFFFFF] hover-lift group">
                 <div>
-                  <p className="font-extrabold text-sm text-[#FFFFFF]">{item.name}</p>
-                  <p className="font-mono text-xs text-[#737373]">{item.role}</p>
+                  <div className="flex items-center justify-between border-b border-[#262626] pb-4 mb-6">
+                    <span className="font-mono text-xs uppercase tracking-widest text-[#737373]">
+                      Case 0{idx + 1}
+                    </span>
+                    <span className="font-mono text-xs text-[#FFFFFF] flex items-center gap-1.5">
+                      <span className="inline-block w-1.5 h-1.5 bg-[#FFFFFF]" />
+                      Avaliação 5.0
+                    </span>
+                  </div>
+
+                  <p className="text-sm sm:text-base text-[#D4D4D4] leading-relaxed mb-8">
+                    "{item.content}"
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3 pt-4 border-t border-[#1F1F1F]">
+                  <img
+                    src={getAvatar(item)}
+                    alt={item.name}
+                    className="w-11 h-11 border border-[#262626] object-cover shrink-0 transition-transform duration-200 group-hover:scale-105 group-hover:border-[#FFFFFF]"
+                  />
+                  <div>
+                    <p className="font-extrabold text-sm text-[#FFFFFF]">{item.name}</p>
+                    <p className="font-mono text-xs text-[#737373]">{item.role}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

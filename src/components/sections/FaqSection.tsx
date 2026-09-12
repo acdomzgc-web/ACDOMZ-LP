@@ -36,12 +36,17 @@ const faqs = [
   },
 ]
 
+import { Reveal } from '@/components/motion/Reveal'
+
 export function FaqSection() {
   return (
-    <section id="faq" className="py-24 bg-[#F4F4F2] text-[#0A0A0A] border-b border-[#E5E5E5]">
+    <section
+      id="faq"
+      className="py-24 bg-[#F4F4F2] text-[#0A0A0A] border-b border-[#E5E5E5] relative"
+    >
       <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
-        <div className="mb-14">
-          <div className="inline-flex items-center gap-2 border border-[#0A0A0A] bg-[#FFFFFF] px-3 py-1 mb-4">
+        <Reveal direction="up" distance={20} className="mb-14">
+          <div className="inline-flex items-center gap-2 border border-[#0A0A0A] bg-[#FFFFFF] px-3 py-1 mb-4 transition-transform duration-200 hover:translate-x-1">
             <div className="h-4 w-4 bg-[#FFFFFF] flex items-center justify-center shrink-0">
               <img src={logoDarkOnLight} alt="Zhera" className="h-full w-full object-contain" />
             </div>
@@ -56,20 +61,28 @@ export function FaqSection() {
           <p className="text-base text-[#525252]">
             Respostas diretas sobre prazos, escopos e propriedade do seu projeto na Zhera.
           </p>
-        </div>
+        </Reveal>
 
-        <Accordion type="single" collapsible className="w-full border-t border-[#0A0A0A]">
-          {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border-b border-[#0A0A0A] py-1">
-              <AccordionTrigger className="text-left font-extrabold text-[#0A0A0A] hover:no-underline py-5 text-base sm:text-lg">
-                {faq.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-[#404040] leading-relaxed text-sm sm:text-base pb-5">
-                {faq.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <Reveal direction="up" distance={20} delay={150}>
+          <Accordion type="single" collapsible className="w-full border-t border-[#0A0A0A]">
+            {faqs.map((faq, i) => (
+              <AccordionItem
+                key={i}
+                value={`item-${i}`}
+                className="border-b border-[#0A0A0A] py-1 transition-colors hover:bg-[#FFFFFF]/60 px-2"
+              >
+                <AccordionTrigger className="text-left font-extrabold text-[#0A0A0A] hover:no-underline py-5 text-base sm:text-lg transition-transform group">
+                  <span className="group-hover:translate-x-1 transition-transform inline-block">
+                    {faq.q}
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className="text-[#404040] leading-relaxed text-sm sm:text-base pb-5">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Reveal>
       </div>
     </section>
   )
