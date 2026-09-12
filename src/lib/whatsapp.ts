@@ -7,14 +7,14 @@ export function buildWhatsAppUrl(message?: string): string {
 }
 
 export function buildPlanWhatsAppUrl(planName: string): string {
-  return buildWhatsAppUrl(`Quero entender mais sobre o Plano ${planName} da ACDOMZ Tech`)
+  return buildWhatsAppUrl(`Quero entender mais sobre o Plano ${planName} da Zhera`)
 }
 
 export function buildMaintenanceWhatsAppUrl(planName?: string): string {
   if (planName) {
     return buildWhatsAppUrl(
-      `Quero saber mais sobre a Manutenção Mensal do Plano ${planName} da ACDOMZ Tech`,
+      `Quero saber mais sobre a Manutenção Mensal do Plano ${planName} da Zhera`,
     )
   }
-  return buildWhatsAppUrl('Quero saber mais sobre a Manutenção Mensal Opcional da ACDOMZ Tech')
+  return buildWhatsAppUrl('Quero saber mais sobre a Manutenção Mensal Opcional da Zhera')
 }

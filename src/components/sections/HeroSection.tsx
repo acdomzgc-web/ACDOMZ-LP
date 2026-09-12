@@ -1,6 +1,9 @@
 import { Button } from '@/components/ui/button'
 import { ArrowRight, ChevronRight, Mail, Phone } from 'lucide-react'
 
+// Logo oficial Zhera Imagem 3 (fundo preto com Z branco) para fundo escuro do Hero
+import logoWhiteOnDark from '@/assets/zhera-logo-aedcd.jpg'
+
 import macbookImg from '@/assets/macbook-air-acdomz.goskip.app-e38d5.png'
 import tabletImg from '@/assets/galaxy-tab-s7-acdomz.goskip.app-6ff31.png'
 import phoneImg from '@/assets/iphone-14-plus-acdomz.goskip.app-752fc.png'
@@ -9,132 +12,124 @@ export function HeroSection() {
   return (
     <section
       id="inicio"
-      className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-background"
+      className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-[#0A0A0A] text-[#FFFFFF] border-b border-[#262626]"
     >
-      {/* Futuristic Background decorations */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(194,178,143,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(194,178,143,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(6,41,69,0.8),rgba(0,0,0,0))] pointer-events-none" />
-
-      {/* High-tech glowing elements */}
-      <div className="absolute top-1/4 right-0 -translate-y-1/2 translate-x-1/3 opacity-50 pointer-events-none">
-        <div className="w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] rounded-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-[#0a487a]/40 via-primary/10 to-transparent blur-[100px]" />
-      </div>
-      <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/4 opacity-50 pointer-events-none">
-        <div className="w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] rounded-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-secondary/20 via-[#0a487a]/10 to-transparent blur-[100px]" />
-      </div>
-
-      <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
-        <div className="max-w-2xl animate-fade-in-up z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted border border-border/50 text-sm font-medium text-primary mb-6">
-            <span className="flex h-2 w-2 rounded-full animate-pulse bg-[#2eff00]" />
+      <div className="container mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-12 items-center relative z-10">
+        <div className="lg:col-span-7 max-w-2xl">
+          {/* Logo Hero Zhera: Imagem 3 (fundo preto com 'Z' branca) com área de proteção e regras estritas */}
+          <div className="inline-flex items-center gap-3 border border-[#262626] bg-[#0A0A0A] px-3.5 py-2 mb-8">
+            <div className="h-6 w-6 bg-black flex items-center justify-center p-0.5 shrink-0">
+              <img src={logoWhiteOnDark} alt="Zhera" className="h-full w-full object-contain" />
+            </div>
+            <span className="font-mono text-xs uppercase tracking-widest text-[#A3A3A3]">
+              Zhera Studio &middot; Curitiba
+            </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.1] drop-shadow-lg">
-            Sites que Vendem. <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-white to-secondary bg-[length:200%_auto] animate-gradient drop-shadow-sm">
-              Sistemas que Crescem.
-            </span>
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-[#FFFFFF] mb-6 leading-[1.05]">
+            Sites que Vendem. <br />
+            Sistemas que Crescem.
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-xl">
-            Transforme seu negócio com presença digital profissional, inovadora e funcional.
-            Credibilidade que converte visitantes em clientes fiéis.
+          <p className="text-base sm:text-lg text-[#A3A3A3] mb-4 leading-relaxed max-w-xl font-normal">
+            Site pronto em 3 a 5 dias, a partir de R$ 997. Desenvolvimento de alto padrão, sem
+            mensalidades e com total propriedade do seu código.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-5">
+          <p className="text-xs sm:text-sm font-mono text-[#737373] mb-8 uppercase tracking-wider">
+            +85% de conversão &middot; +50 projetos entregues &middot; Entrega em 3 a 5 dias
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-3">
             <Button
               size="lg"
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 gap-2 h-14 min-h-[56px] px-8 text-base rounded-full shadow-[0_0_30px_rgba(194,178,143,0.3)] hover:shadow-[0_0_40px_rgba(194,178,143,0.5)] hover:scale-105 transition-all duration-300 ring-1 ring-secondary/50 w-full sm:w-auto"
+              className="bg-[#FFFFFF] text-[#0A0A0A] hover:bg-[#F4F4F2] gap-2 h-12 px-7 text-xs font-extrabold uppercase tracking-wider border border-[#FFFFFF] w-full sm:w-auto"
               asChild
             >
               <a href="https://wa.me/5541987322926" target="_blank" rel="noopener noreferrer">
                 Falar com Especialista
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4" />
               </a>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="h-14 min-h-[56px] px-8 text-base rounded-full gap-2 border-border bg-card/30 backdrop-blur-md hover:bg-secondary/10 hover:border-secondary/50 text-foreground hover:text-secondary transition-all duration-300 w-full sm:w-auto shadow-sm"
+              className="h-12 px-7 text-xs font-extrabold uppercase tracking-wider gap-2 border-[#262626] bg-transparent hover:bg-[#171717] text-[#FFFFFF] w-full sm:w-auto"
               asChild
             >
-              <a href="#portfolio">
+              <a href="#cases">
                 Ver Portfólio
-                <ChevronRight className="w-5 h-5 opacity-70" />
+                <ChevronRight className="w-4 h-4 text-[#737373]" />
               </a>
             </Button>
           </div>
 
-          <div
-            className="mt-8 flex flex-wrap items-center gap-4 text-sm text-muted-foreground animate-fade-in"
-            style={{ animationDelay: '0.3s' }}
-          >
+          <div className="mt-10 flex flex-wrap items-center gap-6 text-xs font-mono text-[#737373] border-t border-[#1F1F1F] pt-6">
             <a
               href="mailto:acdomz.gc@gmail.com"
-              className="hover:text-secondary transition-colors flex items-center gap-2"
+              className="hover:text-[#FFFFFF] transition-colors flex items-center gap-2"
             >
-              <Mail className="w-4 h-4" /> acdomz.gc@gmail.com
+              <Mail className="w-3.5 h-3.5" /> acdomz.gc@gmail.com
             </a>
-            <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-border" />
+            <span className="hidden sm:inline-block text-[#262626]">/</span>
             <a
               href="https://wa.me/5541987322926"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-secondary transition-colors flex items-center gap-2"
+              className="hover:text-[#FFFFFF] transition-colors flex items-center gap-2"
             >
-              <Phone className="w-4 h-4" /> (41) 98732-2926
+              <Phone className="w-3.5 h-3.5" /> (41) 98732-2926
             </a>
           </div>
         </div>
 
-        <div className="relative animate-fade-in lg:ml-auto z-10 mt-16 lg:mt-0 w-full">
-          <div className="relative group mx-auto max-w-[600px] lg:max-w-full z-10">
-            <div className="absolute inset-0 bg-gradient-to-tr from-secondary/20 to-primary/20 rounded-full blur-[100px] transition-all duration-500 opacity-40 pointer-events-none" />
-
-            {/* Macbook (Center/Back) */}
-            <div className="relative z-10 w-full animate-float">
-              <img
-                src={macbookImg}
-                alt="Plataforma ACDOMZ no Macbook"
-                className="w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] object-contain"
-              />
+        <div className="lg:col-span-5 relative mt-8 lg:mt-0 w-full">
+          <div className="border border-[#262626] bg-[#121212] p-4 sm:p-6">
+            <div className="flex items-center justify-between border-b border-[#262626] pb-3 mb-4 text-xs font-mono text-[#A3A3A3]">
+              <span className="uppercase tracking-wider">Preview de Plataforma</span>
+              <span className="text-[#FFFFFF] font-bold">+85% conversão</span>
             </div>
 
-            {/* Tablet (Left/Bottom) */}
-            <div
-              className="absolute -left-4 sm:-left-12 -bottom-10 sm:-bottom-16 w-[45%] sm:w-[40%] z-20 animate-float"
-              style={{ animationDelay: '0.2s' }}
-            >
-              <img
-                src={tabletImg}
-                alt="Plataforma ACDOMZ no Tablet"
-                className="w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] object-contain hover:-translate-y-2 transition-transform duration-500"
-              />
-            </div>
-
-            {/* Phone (Right/Bottom) */}
-            <div
-              className="absolute -right-2 sm:-right-8 -bottom-6 sm:-bottom-12 w-[25%] sm:w-[22%] z-30 animate-float"
-              style={{ animationDelay: '0.4s' }}
-            >
-              <img
-                src={phoneImg}
-                alt="Plataforma ACDOMZ no Smartphone"
-                className="w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.6)] object-contain hover:-translate-y-2 transition-transform duration-500"
-              />
-            </div>
-
-            {/* Floating Element 1 */}
-            <div
-              className="absolute -top-10 right-0 lg:-right-10 bg-card/80 backdrop-blur-xl p-4 rounded-xl shadow-2xl border border-border/50 flex items-center gap-4 animate-fade-in-up z-40 hidden sm:flex"
-              style={{ animationDelay: '0.6s' }}
-            >
-              <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-bold text-lg shadow-[0_0_15px_rgba(194,178,143,0.2)]">
-                +85%
+            {/* Mockups com apresentação seca e editorial */}
+            <div className="relative">
+              <div className="relative z-10 w-full border border-[#262626] bg-[#0A0A0A]">
+                <img
+                  src={macbookImg}
+                  alt="Plataforma Zhera no Macbook"
+                  className="w-full h-auto object-contain"
+                />
               </div>
-              <div>
-                <p className="text-sm font-bold text-white">Conversão Média</p>
-                <p className="text-xs text-muted-foreground">Em nossos sistemas</p>
+
+              <div className="grid grid-cols-2 gap-3 mt-3">
+                <div className="border border-[#262626] bg-[#0A0A0A] p-1">
+                  <img
+                    src={tabletImg}
+                    alt="Plataforma Zhera no Tablet"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+                <div className="border border-[#262626] bg-[#0A0A0A] p-1">
+                  <img
+                    src={phoneImg}
+                    alt="Plataforma Zhera no Smartphone"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-[#262626] text-center font-mono">
+              <div className="border border-[#1F1F1F] p-2 bg-[#0A0A0A]">
+                <p className="text-base sm:text-lg font-bold text-[#FFFFFF]">+50</p>
+                <p className="text-[10px] uppercase text-[#737373]">Projetos</p>
+              </div>
+              <div className="border border-[#1F1F1F] p-2 bg-[#0A0A0A]">
+                <p className="text-base sm:text-lg font-bold text-[#FFFFFF]">3-5d</p>
+                <p className="text-[10px] uppercase text-[#737373]">Entrega</p>
+              </div>
+              <div className="border border-[#1F1F1F] p-2 bg-[#0A0A0A]">
+                <p className="text-base sm:text-lg font-bold text-[#FFFFFF]">+85%</p>
+                <p className="text-[10px] uppercase text-[#737373]">Conversão</p>
               </div>
             </div>
           </div>

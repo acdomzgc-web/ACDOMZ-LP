@@ -1,4 +1,3 @@
-import { Card, CardContent } from '@/components/ui/card'
 import {
   Zap,
   DollarSign,
@@ -11,85 +10,108 @@ import {
   ShieldCheck,
 } from 'lucide-react'
 
+// Seção clara de diferenciais (#F4F4F2)
+// Usa a Imagem 1: fundo branco, 'Z' preta
+import logoDarkOnLight from '@/assets/zhera-logo-white-964be.png'
+
 const features = [
   {
     icon: Zap,
     title: 'Velocidade de Entrega',
-    desc: 'Processos ágeis que garantem seu projeto no ar em tempo recorde.',
+    desc: '3 a 5 dias úteis com material completo. Sem reuniões desnecessárias.',
   },
   {
     icon: DollarSign,
-    title: 'Preço Competitivo',
-    desc: 'Soluções premium com o melhor custo-benefício do mercado.',
+    title: 'Preço Direto',
+    desc: 'Pagamento único a partir de R$ 997. Sem mensalidade obrigatória.',
   },
   {
     icon: RefreshCw,
-    title: 'Flexibilidade',
-    desc: 'Arquitetura modular que permite adaptações conforme seu negócio muda.',
+    title: 'Flexibilidade de Código',
+    desc: 'Arquitetura limpa em React. O projeto pertence integralmente a você.',
   },
   {
     icon: Briefcase,
     title: 'Portfólio Comprovado',
-    desc: 'Dezenas de cases de sucesso em diversos nichos de atuação.',
+    desc: '+50 projetos em produção com métricas reais de conversão.',
   },
   {
     icon: Globe,
-    title: 'Expertise Multissetorial',
-    desc: 'Visão de mercado ampla, do varejo à indústria.',
+    title: 'Foco em Conversão',
+    desc: 'Cada dobra e botão direciona o lead para fechar no WhatsApp.',
   },
   {
     icon: LifeBuoy,
-    title: 'Suporte Contínuo',
-    desc: 'Nossa equipe acompanha você mesmo após o lançamento.',
+    title: 'Suporte Opcional',
+    desc: 'Planos de manutenção mensal a partir de R$ 47/mês, apenas se você quiser.',
   },
   {
     icon: Users,
-    title: 'Relacionamento Consultivo',
-    desc: 'Atendimento próximo, entendendo a fundo suas dores.',
+    title: 'Comunicação Direta',
+    desc: 'Contato transparente com os desenvolvedores responsáveis pela entrega.',
   },
   {
     icon: Code,
-    title: 'Tecnologia Moderna',
-    desc: 'Utilizamos o estado da arte: SKIP, React, Supabase.',
+    title: 'IA Aplicada',
+    desc: 'Automação inteligente de atendimento onde realmente gera valor.',
   },
   {
     icon: ShieldCheck,
-    title: 'Transparência Radical',
-    desc: 'Sem surpresas no escopo ou no orçamento final.',
+    title: 'Contrato Seguro',
+    desc: 'Escopo claro e transparente sem cobranças adicionais pós-fechamento.',
   },
 ]
 
 export function FeaturesSection() {
   return (
-    <section id="diferenciais" className="py-24 bg-muted/20 border-t border-border/50">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-sm font-bold text-accent tracking-widest uppercase mb-3">
-            Por que a ACDOMZ?
+    <section
+      id="diferenciais"
+      className="py-24 bg-[#F4F4F2] text-[#0A0A0A] border-b border-[#E5E5E5]"
+    >
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-2 border border-[#0A0A0A] bg-[#FFFFFF] px-3 py-1 mb-4">
+            <div className="h-4 w-4 bg-[#FFFFFF] flex items-center justify-center shrink-0">
+              <img src={logoDarkOnLight} alt="Zhera" className="h-full w-full object-contain" />
+            </div>
+            <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#0A0A0A]">
+              Por que a Zhera?
+            </span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0A0A0A] mb-4 tracking-tight leading-[1.1]">
+            Diferenciais de Execução
           </h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-primary mb-6">Nossos Diferenciais</h3>
-          <p className="text-lg text-muted-foreground">
-            O que nos torna o parceiro ideal para a transformação digital da sua empresa.
+          <p className="text-base text-[#525252] leading-relaxed">
+            Menos promessas vazias, mais velocidade e entrega técnica comprovada.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 border border-[#0A0A0A] bg-[#FFFFFF]">
           {features.map((feat, i) => (
-            <Card
+            <div
               key={i}
-              className="group hover:-translate-y-1 sm:hover:-translate-y-2 transition-all duration-500 bg-card/40 backdrop-blur-md border-border/50 hover:border-secondary/60 hover:shadow-[0_10px_30px_-10px_rgba(6,41,69,0.5)] relative overflow-hidden"
+              className={`p-6 sm:p-8 border-[#0A0A0A] flex flex-col justify-between ${
+                i % 3 !== 0 ? 'lg:border-l' : ''
+              } ${i % 2 !== 0 ? 'sm:max-lg:border-l' : ''} ${
+                i >= 3 ? 'lg:border-t' : ''
+              } ${i >= 2 ? 'sm:max-lg:border-t' : ''} ${i >= 1 ? 'max-sm:border-t' : ''}`}
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-[50px] group-hover:bg-secondary/10 transition-colors duration-500" />
-              <CardContent className="p-5 sm:p-6">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4 sm:mb-5 group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors duration-300 text-secondary shadow-sm">
-                  <feat.icon className="w-5 h-5 sm:w-6 sm:h-6" />
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <span className="font-mono text-xs uppercase tracking-widest text-[#737373]">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div className="p-2 border border-[#0A0A0A] bg-[#F4F4F2] text-[#0A0A0A]">
+                    <feat.icon className="w-4 h-4" />
+                  </div>
                 </div>
-                <h4 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">
+                <h3 className="text-lg font-extrabold text-[#0A0A0A] mb-2 leading-tight">
                   {feat.title}
-                </h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">{feat.desc}</p>
-              </CardContent>
-            </Card>
+                </h3>
+                <p className="text-xs sm:text-sm text-[#525252] leading-relaxed">{feat.desc}</p>
+              </div>
+            </div>
           ))}
         </div>
       </div>

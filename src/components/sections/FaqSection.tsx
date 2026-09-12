@@ -5,51 +5,66 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 
+// FAQ em fundo claro (#F4F4F2)
+// Usa a Imagem 1: fundo branco, 'Z' preta
+import logoDarkOnLight from '@/assets/zhera-logo-white-964be.png'
+
 const faqs = [
   {
-    q: 'Qual o tempo médio de entrega dos projetos?',
-    a: 'O tempo médio de entrega é de 3 a 7 dias úteis, dependendo da complexidade e do plano escolhido (STARTER, MEDIUM, EXPERT ou PREMIUM).',
+    q: 'Qual o tempo de entrega do site na Zhera?',
+    a: 'Entrega rápida em 3 a 5 dias úteis com todos os dados e materiais em mãos. Projetos mais complexos do plano PREMIUM podem levar até 7 dias úteis.',
   },
   {
-    q: 'Existe alguma mensalidade ou taxa recorrente?',
-    a: 'Não. Todos os nossos planos são em pagamento único (setup completo). Você paga uma única vez pela criação do site e o projeto é seu, sem cobranças mensais surpresa.',
+    q: 'Existe cobrança de mensalidade?',
+    a: 'Não. O desenvolvimento é 100% em pagamento único. O código, os arquivos e o deploy são de sua propriedade. Caso queira suporte e atualizações contínuas, disponibilizamos a manutenção mensal opcional a partir de R$ 47/mês.',
   },
   {
-    q: 'Como funciona o pagamento?',
-    a: 'Aceitamos o pagamento via PIX e transferência, garantindo agilidade, transparência e segurança na negociação.',
+    q: 'Como funciona o pagamento do setup?',
+    a: 'Pagamento facilitado via PIX ou transferência com emissão de nota e termos claros de entrega.',
   },
   {
-    q: 'Como funciona a hospedagem e o domínio?',
-    a: 'Todos os planos incluem domínio gratuito (nomesite.goskip.app), certificado SSL e exportação para GitHub. Caso queira utilizar seu domínio próprio (.com, .com.br), ajudamos você a configurar sem custo extra.',
+    q: 'Como funciona a hospedagem e domínio do projeto?',
+    a: 'Todos os planos já incluem certificado SSL, favicon e subdomínio gratuito (nomesite.goskip.app). Caso você já possua ou queira registrar domínio próprio (.com, .com.br), configuramos os apontamentos sem custos adicionais.',
   },
   {
-    q: 'O site será responsivo para celulares?',
-    a: 'Sim. A otimização para múltiplos dispositivos (Smartphones, Tablets e Computadores) é um padrão rigoroso em todos os nossos planos, garantindo uma navegação impecável.',
+    q: 'O site funciona bem em celulares e tablets?',
+    a: 'Sim. Todo o design é concebido mobile-first, com carregamento rápido e legibilidade garantida em smartphones, tablets e desktops.',
   },
   {
-    q: 'Quais são as limitações técnicas dos projetos?',
-    a: 'Nossos projetos são focados em landing pages de alta conversão, portfólios e sites institucionais modernos. Não contemplam painéis ERP internos complexos ou processamento financeiro nativo (o site atua como integrador com WhatsApp e checkouts externos).',
+    q: 'Quais tipos de soluções a Zhera desenvolve?',
+    a: 'Desenvolvemos landing pages de alta conversão, sites institucionais modernos, páginas para infoprodutores e sistemas web com integração a WhatsApp e checkouts externos.',
   },
 ]
 
 export function FaqSection() {
   return (
-    <section id="faq" className="py-24 bg-background">
-      <div className="container mx-auto px-4 max-w-3xl">
-        <div className="text-center mb-12">
-          <h2 className="text-sm font-bold text-accent tracking-widest uppercase mb-3">
+    <section id="faq" className="py-24 bg-[#F4F4F2] text-[#0A0A0A] border-b border-[#E5E5E5]">
+      <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
+        <div className="mb-14">
+          <div className="inline-flex items-center gap-2 border border-[#0A0A0A] bg-[#FFFFFF] px-3 py-1 mb-4">
+            <div className="h-4 w-4 bg-[#FFFFFF] flex items-center justify-center shrink-0">
+              <img src={logoDarkOnLight} alt="Zhera" className="h-full w-full object-contain" />
+            </div>
+            <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#0A0A0A]">
+              05 &middot; FAQ
+            </span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0A0A0A] mb-3 tracking-tight leading-[1.1]">
             Dúvidas Frequentes
           </h2>
-          <h3 className="text-3xl font-bold text-primary">Respondendo suas perguntas</h3>
+          <p className="text-base text-[#525252]">
+            Respostas diretas sobre prazos, escopos e propriedade do seu projeto na Zhera.
+          </p>
         </div>
 
-        <Accordion type="single" collapsible className="w-full">
+        <Accordion type="single" collapsible className="w-full border-t border-[#0A0A0A]">
           {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border-border/60">
-              <AccordionTrigger className="text-left font-semibold text-foreground hover:text-secondary py-5 text-base sm:text-lg transition-colors">
+            <AccordionItem key={i} value={`item-${i}`} className="border-b border-[#0A0A0A] py-1">
+              <AccordionTrigger className="text-left font-extrabold text-[#0A0A0A] hover:no-underline py-5 text-base sm:text-lg">
                 {faq.q}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground leading-relaxed text-sm sm:text-base pb-5">
+              <AccordionContent className="text-[#404040] leading-relaxed text-sm sm:text-base pb-5">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>

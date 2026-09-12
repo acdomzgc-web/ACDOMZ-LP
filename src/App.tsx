@@ -13,7 +13,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 
 const App = () => (
   <BrowserRouter>
-    <ThemeProvider defaultTheme="dark" storageKey="acdomz-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="zhera-theme">
       <TooltipProvider>
         <Toaster />
         <Sonner />

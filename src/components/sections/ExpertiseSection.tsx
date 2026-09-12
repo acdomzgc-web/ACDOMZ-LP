@@ -1,92 +1,90 @@
-import { Card, CardContent } from '@/components/ui/card'
-import { Briefcase, Zap, Star, ShieldCheck, Cpu } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { Briefcase, Zap, Star } from 'lucide-react'
+
+// Seção clara com papel/suporte (#F4F4F2 e fundo branco)
+// Usa a Imagem 1: fundo branco, 'Z' preta sobre fundos claros
+import logoDarkOnLight from '@/assets/zhera-logo-white-964be.png'
 
 export function ExpertiseSection() {
   const metrics = [
     {
       value: '+50',
       label: 'projetos entregues com sucesso',
-      icon: <Briefcase className="w-6 h-6 text-accent" />,
+      icon: <Briefcase className="w-5 h-5 text-[#0A0A0A]" />,
     },
     {
       value: '3 a 5 dias',
-      label: 'Tempo médio de entrega (com todos os dados em mãos)',
-      icon: <Zap className="w-6 h-6 text-accent" />,
+      label: 'tempo médio de entrega com dados completos',
+      icon: <Zap className="w-5 h-5 text-[#0A0A0A]" />,
     },
     {
-      value: '100%',
-      label: 'de satisfação dos clientes',
-      icon: <Star className="w-6 h-6 text-accent" />,
+      value: '+85%',
+      label: 'conversão média obtida em nossos sistemas',
+      icon: <Star className="w-5 h-5 text-[#0A0A0A]" />,
     },
   ]
 
-  const partners = ['GitHub', 'Supabase', 'SkipCloud', 'Adapta', '+25 IA do mercado']
+  const partners = ['GitHub', 'React', 'TypeScript', 'Tailwind CSS', 'PocketBase', 'OpenAI']
 
   return (
-    <section id="expertise" className="py-24 bg-muted/30 relative">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-sm font-bold text-accent tracking-widest uppercase mb-3">
-            Garantia de Resultados
+    <section id="expertise" className="py-24 bg-[#F4F4F2] text-[#0A0A0A] border-b border-[#E5E5E5]">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-2 border border-[#0A0A0A] bg-[#FFFFFF] px-3 py-1 mb-4">
+            <div className="h-4 w-4 bg-[#FFFFFF] flex items-center justify-center shrink-0">
+              <img src={logoDarkOnLight} alt="Zhera" className="h-full w-full object-contain" />
+            </div>
+            <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#0A0A0A]">
+              Prova e Autoridade
+            </span>
+          </div>
+
+          <h2 className="text-3xl md:text-5xl font-extrabold text-[#0A0A0A] mb-5 tracking-tight leading-[1.1]">
+            Engenharia Direta. Resultados Medidos.
           </h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-            Autoridade e Confiança
-          </h3>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Nossas soluções atuam como um verdadeiro funil de conversão e redirecionamento,
-            transformando visitantes em leads qualificados com benefícios progressivos a cada nível
-            de investimento. Com metodologias que dominamos plenamente, entregamos um produto
-            estável, focado em resultados, qualidade impecável e velocidade comprovada.
+          <p className="text-base md:text-lg text-[#404040] leading-relaxed">
+            Estrutura técnica desenhada para converter tráfego em vendas imediatas. Sem
+            intermediários, sem atrasos e com código otimizado para velocidade máxima.
           </p>
         </div>
 
-        {/* Metrics Grid */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-20 relative z-10">
+        {/* Metrics Grid em estilo editorial seco */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-0 border border-[#0A0A0A] bg-[#FFFFFF] mb-16">
           {metrics.map((metric, i) => (
-            <Card
+            <div
               key={i}
-              className={cn(
-                'border-border/50 bg-card/40 backdrop-blur-xl hover:shadow-[0_0_30px_rgba(6,41,69,0.5)] hover:-translate-y-1 hover:border-secondary/70 transition-all duration-500 group relative overflow-hidden',
-                i === 2 ? 'sm:col-span-2 md:col-span-1' : '',
-              )}
+              className={`p-8 md:p-10 flex flex-col justify-between border-[#0A0A0A] ${
+                i > 0 ? 'border-t sm:border-t-0 sm:border-l' : ''
+              } ${i === 2 ? 'sm:col-span-2 md:col-span-1 border-t md:border-t-0' : ''}`}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full justify-center">
-                <div className="mb-6 p-4 rounded-2xl bg-secondary/10 group-hover:bg-secondary/20 group-hover:scale-110 transition-transform duration-300">
-                  {metric.icon}
-                </div>
-                <h4 className="text-4xl md:text-5xl font-bold text-foreground mb-3 tracking-tight drop-shadow-sm">
+              <div className="flex items-center justify-between mb-8">
+                <span className="font-mono text-xs uppercase tracking-widest text-[#737373]">
+                  0{i + 1} &middot; Métrica
+                </span>
+                <div className="p-2 border border-[#0A0A0A] bg-[#F4F4F2]">{metric.icon}</div>
+              </div>
+              <div>
+                <h3 className="text-4xl md:text-5xl font-extrabold text-[#0A0A0A] mb-3 tracking-tight font-mono">
                   {metric.value}
-                </h4>
-                <p className="text-muted-foreground font-medium text-sm md:text-base">
-                  {metric.label}
-                </p>
-              </CardContent>
-            </Card>
+                </h3>
+                <p className="text-sm font-medium text-[#525252]">{metric.label}</p>
+              </div>
+            </div>
           ))}
         </div>
 
-        {/* Partners Display */}
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-8">
-            Parcerias e Tecnologias
+        {/* Parcerias e stack técnica */}
+        <div className="border-t border-[#D4D4D4] pt-10">
+          <p className="font-mono text-xs uppercase tracking-widest text-[#525252] mb-5">
+            Stack e Ferramentas Técnicas
           </p>
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+          <div className="flex flex-wrap gap-2">
             {partners.map((partner, i) => (
-              <div
+              <span
                 key={i}
-                className="flex items-center gap-2 px-5 py-3 rounded-full border border-border/50 bg-card/40 backdrop-blur-md shadow-sm hover:border-secondary/60 hover:shadow-[0_0_15px_rgba(194,178,143,0.15)] transition-all duration-300 group cursor-default"
+                className="font-mono text-xs font-semibold px-3 py-1.5 border border-[#0A0A0A] bg-[#FFFFFF] text-[#0A0A0A]"
               >
-                {partner.includes('IA') ? (
-                  <Cpu className="w-4 h-4 text-secondary group-hover:scale-110 transition-transform" />
-                ) : (
-                  <ShieldCheck className="w-4 h-4 text-secondary group-hover:scale-110 transition-transform" />
-                )}
-                <span className="font-semibold text-foreground text-sm sm:text-base">
-                  {partner}
-                </span>
-              </div>
+                {partner}
+              </span>
             ))}
           </div>
         </div>

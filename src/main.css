@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,48 +7,98 @@
 @layer base {
   :root,
   .dark {
-    --background: 215 50% 4%; /* Very deep futuristic blue/black */
-    --foreground: 0 0% 100%;
+    /* Brandbook Zhera:
+       Tinta/preto: #0A0A0A
+       Papel/branco: #FFFFFF
+       Suporte/cinza claro: #F4F4F2
+       Sem cantos arredondados, sem sombras, visual seco e editorial
+    */
+    --background: 0 0% 4%; /* #0A0A0A */
+    --foreground: 0 0% 100%; /* #FFFFFF */
 
-    --card: 207 60% 8%; /* Dark Blue */
+    --card: 0 0% 7%; /* #121212 - preto seco */
     --card-foreground: 0 0% 100%;
 
-    --popover: 207 60% 8%;
+    --popover: 0 0% 7%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 207 84% 30%; /* Vibrant Blue for elements */
-    --primary-foreground: 0 0% 100%;
+    --primary: 0 0% 100%; /* #FFFFFF */
+    --primary-foreground: 0 0% 4%; /* #0A0A0A */
 
-    --secondary: 41 40% 60%; /* Richer Gold */
-    --secondary-foreground: 215 50% 4%; /* Deep Blue text */
+    --secondary: 60 5% 96%; /* #F4F4F2 - suporte cinza claro */
+    --secondary-foreground: 0 0% 4%; /* #0A0A0A */
 
-    --muted: 207 40% 15%;
-    --muted-foreground: 215 20.2% 75%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 64%;
 
-    --accent: 41 40% 60%; /* Richer Gold */
-    --accent-foreground: 215 50% 4%;
+    --accent: 0 0% 100%;
+    --accent-foreground: 0 0% 4%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 207 40% 20%;
-    --input: 207 40% 20%;
-    --ring: 41 40% 60%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 0 0% 100%;
 
-    --radius: 1rem;
+    --radius: 0rem; /* Sem cantos arredondados */
   }
 
   html {
     scroll-behavior: smooth;
-    font-family: 'Inter', sans-serif;
+    font-family:
+      'Manrope',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      sans-serif;
+    background-color: #0a0a0a;
+    color: #ffffff;
   }
 
   body {
-    @apply bg-background text-foreground transition-colors duration-500;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    font-family:
+      'Manrope',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .font-mono,
+  .tabular-nums,
+  [data-mono='true'] {
+    font-family: 'JetBrains Mono', monospace;
   }
 }
 
 @layer utilities {
+  .font-editorial {
+    font-family: 'Manrope', sans-serif;
+  }
+
+  .font-tech {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
   @keyframes fade-in {
     from {
       opacity: 0;
@@ -57,9 +107,10 @@
       opacity: 1;
     }
   }
+
   @keyframes fade-in-up {
     from {
-      transform: translateY(20px);
+      transform: translateY(12px);
       opacity: 0;
     }
     to {
@@ -67,40 +118,12 @@
       opacity: 1;
     }
   }
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-15px);
-    }
-  }
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+
   .animate-fade-in {
-    animation: fade-in 0.8s ease-out forwards;
-  }
-  .animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out forwards;
-  }
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  .animate-gradient {
-    animation: gradient 6s ease infinite;
+    animation: fade-in 0.4s ease-out forwards;
   }
 
-  .shadow-elevation {
-    box-shadow: 0 10px 40px -10px rgba(6, 41, 69, 0.1);
+  .animate-fade-in-up {
+    animation: fade-in-up 0.4s ease-out forwards;
   }
 }

@@ -1,9 +1,8 @@
 import { useEffect, useState, useCallback } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { getProjects, type ProjectRecord } from '@/services/projects'
 import pb from '@/lib/pocketbase/client'
-import { CheckCircle2, Building2, Target, ArrowUpRight } from 'lucide-react'
+import { Check, ArrowUpRight } from 'lucide-react'
 import { useRealtime } from '@/hooks/use-realtime'
 import { cn } from '@/lib/utils'
 import blessedImg from '@/assets/design-sem-nome-8-2b3e6.png'
@@ -38,13 +37,12 @@ export function PortfolioSection() {
 
   if (loading) {
     return (
-      <section id="cases" className="py-24 bg-background relative">
-        <div className="container mx-auto px-4 text-center">
-          <div className="animate-pulse w-32 h-6 bg-muted mx-auto rounded mb-4" />
-          <div className="animate-pulse w-64 h-10 bg-muted mx-auto rounded mb-16" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <section id="cases" className="py-24 bg-[#0A0A0A] text-[#FFFFFF] border-b border-[#262626]">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="h-8 w-48 bg-[#171717] mb-8" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="h-96 bg-card/50 rounded-xl animate-pulse" />
+              <div key={i} className="h-96 bg-[#121212] border border-[#262626]" />
             ))}
           </div>
         </div>
@@ -53,46 +51,30 @@ export function PortfolioSection() {
   }
 
   return (
-    <section
-      id="cases"
-      className="py-24 bg-background relative overflow-hidden border-t border-border/50"
-    >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-sm font-bold text-accent tracking-widest uppercase mb-3">
-            Nosso Portfólio
+    <section id="cases" className="py-24 bg-[#0A0A0A] text-[#FFFFFF] border-b border-[#262626]">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="max-w-3xl mb-16">
+          <p className="font-mono text-xs uppercase tracking-widest text-[#737373] mb-3">
+            02 &middot; Portfólio de Produção
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#FFFFFF] mb-4 tracking-tight leading-[1.1]">
+            Projetos Entregues
           </h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-            Projetos Especializados
-          </h3>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Descubra como transformamos a visão de empresas em soluções digitais de alto impacto,
-            garantindo autoridade e credibilidade nos seus respectivos mercados.
+          <p className="text-base text-[#A3A3A3] leading-relaxed">
+            Casos reais em produção. Cada entrega é pensada com foco em conversão e experiência
+            profissional.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl">
           {projects.map((project) => (
             <Card
               key={project.id}
-              className="bg-card/40 backdrop-blur-xl border-border/50 hover:border-secondary/50 hover:shadow-[0_0_30px_rgba(6,41,69,0.5)] transition-all duration-500 overflow-hidden flex flex-col group h-full"
+              className="bg-[#121212] border border-[#262626] text-[#FFFFFF] rounded-none flex flex-col group h-full"
             >
-              {project.site_url && (
-                <a
-                  href={project.site_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute top-3 right-3 z-20 flex items-center justify-center w-9 h-9 rounded-full bg-primary/80 backdrop-blur-md text-white hover:bg-primary hover:scale-110 transition-all duration-300 shadow-lg"
-                  aria-label={`Visitar ${project.title}`}
-                >
-                  <ArrowUpRight className="w-4.5 h-4.5" />
-                </a>
-              )}
               <div
                 className={cn(
-                  'h-48 sm:h-56 w-full bg-muted relative overflow-hidden shrink-0 border-b border-border/50',
+                  'h-52 sm:h-56 w-full bg-[#0A0A0A] relative overflow-hidden shrink-0 border-b border-[#262626]',
                   project.company === 'Acdomz' &&
                     project.image &&
                     project.id !== 'x9e7fvaiai6sdbd' &&
@@ -114,26 +96,26 @@ export function PortfolioSection() {
                   <img
                     src={blessedImg}
                     alt={project.title}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-top"
                   />
                 ) : project.id === 's3ipzbqyx91n0j1' ? (
                   <img
                     src={lpPilatesImg}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover"
                   />
                 ) : project.id === 'x9e7fvaiai6sdbd' ? (
                   <img
                     src={acdomzGestaoImg}
                     alt={project.title}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-top"
                   />
                 ) : project.title === 'LP Stars Treinamento' ||
                   project.company === 'Stars Treinamento' ? (
                   <img
                     src={lpStarsImg}
                     alt={project.title}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-top"
                   />
                 ) : project.title === 'LP Odontologia' ||
                   project.niche === 'Odontologia' ||
@@ -141,15 +123,15 @@ export function PortfolioSection() {
                   <img
                     src={lpOdontologiaImg}
                     alt={project.title}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-top"
                   />
                 ) : project.title === 'Sistema gestão condominal' ||
                   project.title === 'Sistema ACDOMZ' ? (
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-background to-secondary/20">
+                  <div className="absolute inset-0 flex items-center justify-center bg-[#0A0A0A]">
                     <img
                       src={sistemaAcdomzImg}
                       alt={project.title}
-                      className="w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-500 mix-blend-overlay"
+                      className="w-full h-full object-cover opacity-40"
                     />
                   </div>
                 ) : project.company !== 'Acdomz' && project.image ? (
@@ -160,59 +142,59 @@ export function PortfolioSection() {
                         : pb.files.getUrl(project as any, project.image)
                     }
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover"
                   />
                 ) : !project.image ? (
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-background to-secondary/20">
+                  <div className="absolute inset-0 flex items-center justify-center bg-[#0A0A0A]">
                     <img
                       src={`https://img.usecurling.com/p/600/400?q=${encodeURIComponent(project.niche.split(' ')[0] || 'technology')}&color=black`}
                       alt={project.title}
-                      className="w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-500 mix-blend-overlay"
+                      className="w-full h-full object-cover opacity-40"
                     />
                   </div>
                 ) : null}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent pointer-events-none" />
+
+                {project.site_url && (
+                  <a
+                    href={project.site_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute top-3 right-3 z-20 flex items-center justify-center w-8 h-8 bg-[#0A0A0A] border border-[#262626] text-[#FFFFFF] hover:bg-[#FFFFFF] hover:text-[#0A0A0A] transition-colors"
+                    aria-label={`Visitar ${project.title}`}
+                  >
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                )}
               </div>
 
-              <CardContent className="p-6 md:p-8 flex flex-col flex-1 relative z-10 -mt-8">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge
-                    variant="secondary"
-                    className="bg-primary/20 hover:bg-primary/30 text-primary border-primary/30 flex items-center gap-1.5 py-1"
-                  >
-                    <Building2 className="w-3.5 h-3.5" />
+              <CardContent className="p-6 flex flex-col flex-1">
+                <div className="flex flex-wrap items-center gap-2 mb-4 font-mono text-[11px]">
+                  <span className="border border-[#262626] bg-[#0A0A0A] text-[#FFFFFF] px-2.5 py-1 uppercase">
                     {project.company}
-                  </Badge>
-                  <Badge
-                    variant="outline"
-                    className="border-secondary/50 flex items-center gap-1.5 py-1 backdrop-blur-md text-[#ffffff]"
-                  >
-                    <Target className="w-3.5 h-3.5" />
+                  </span>
+                  <span className="border border-[#1F1F1F] bg-transparent text-[#A3A3A3] px-2 py-1 uppercase">
                     {project.niche}
-                  </Badge>
+                  </span>
                 </div>
 
-                <h4 className="text-xl md:text-2xl font-bold text-foreground mb-3">
+                <h3 className="text-xl font-extrabold text-[#FFFFFF] mb-2 leading-tight">
                   {project.title}
-                </h4>
-                <p className="text-sm md:text-base text-muted-foreground mb-6 line-clamp-3">
+                </h3>
+                <p className="text-xs sm:text-sm text-[#A3A3A3] mb-6 line-clamp-3 leading-relaxed">
                   {project.description}
                 </p>
 
-                <div className="mt-auto pt-6 border-t border-border/50">
-                  <p className="text-xs font-semibold text-foreground uppercase tracking-widest mb-4">
-                    Destaques do Projeto
+                <div className="mt-auto pt-4 border-t border-[#1F1F1F]">
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-[#737373] mb-3">
+                    Escopo Entregue
                   </p>
-                  <ul className="space-y-3">
+                  <ul className="space-y-2">
                     {(project.features || '').split(';').map((feature, i) => {
                       const feat = feature.trim()
                       if (!feat) return null
                       return (
-                        <li
-                          key={i}
-                          className="flex items-start gap-2.5 text-sm text-muted-foreground"
-                        >
-                          <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                        <li key={i} className="flex items-start gap-2 text-xs text-[#A3A3A3]">
+                          <Check className="w-3.5 h-3.5 text-[#FFFFFF] mt-0.5 shrink-0" />
                           <span className="leading-snug">{feat}</span>
                         </li>
                       )

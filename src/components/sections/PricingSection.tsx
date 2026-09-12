@@ -1,17 +1,5 @@
 import { useEffect, useState } from 'react'
-import {
-  Check,
-  Sparkles,
-  Crown,
-  HelpCircle,
-  ArrowRight,
-  ShieldCheck,
-  Wrench,
-  UserCheck,
-  Headphones,
-  CheckCircle2,
-  ExternalLink,
-} from 'lucide-react'
+import { Check, ShieldCheck, Wrench, UserCheck, Headphones, ExternalLink } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -35,100 +23,71 @@ function PlanCard({ plan }: { plan: Plan }) {
   return (
     <div
       className={cn(
-        'group relative flex flex-col p-6 rounded-[2rem] bg-card/60 backdrop-blur-xl border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl flex-1',
-        isRecommended &&
-          'border-secondary shadow-[0_20px_50px_-15px_rgba(194,178,143,0.25)] lg:-translate-y-3 lg:scale-105 scale-[1.02] bg-gradient-to-b from-card/95 via-card/85 to-secondary/10 z-20 ring-1 ring-secondary',
-        isPremium &&
-          'border-amber-400/50 shadow-[0_20px_50px_-15px_rgba(251,191,36,0.2)] bg-gradient-to-b from-card/95 via-card/85 to-amber-500/10 z-10 ring-1 ring-amber-400/40 hover:border-amber-400',
-        !isRecommended && !isPremium && 'border-border/50 shadow-subtle hover:border-secondary/40',
+        'relative flex flex-col p-6 bg-[#121212] border transition-colors flex-1',
+        isRecommended && 'border-[#FFFFFF] bg-[#171717]',
+        isPremium && 'border-[#FFFFFF]',
+        !isRecommended && !isPremium && 'border-[#262626]',
       )}
     >
       {/* Badge Recomendado */}
       {isRecommended && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-secondary-foreground px-4 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full flex items-center gap-1.5 shadow-[0_0_20px_rgba(194,178,143,0.4)] whitespace-nowrap">
-          <Sparkles className="w-3.5 h-3.5" />
+        <div className="absolute -top-3 left-6 bg-[#FFFFFF] text-[#0A0A0A] px-2.5 py-0.5 font-mono text-[10px] font-extrabold uppercase tracking-widest border border-[#FFFFFF]">
           Recomendado
         </div>
       )}
 
       {/* Badge Topo de linha */}
       {isPremium && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 text-black px-4 py-1.5 text-xs font-black uppercase tracking-wider rounded-full flex items-center gap-1.5 shadow-[0_0_20px_rgba(251,191,36,0.45)] whitespace-nowrap">
-          <Crown className="w-3.5 h-3.5 text-black fill-black" />
-          Topo de linha
+        <div className="absolute -top-3 left-6 bg-[#FFFFFF] text-[#0A0A0A] px-2.5 py-0.5 font-mono text-[10px] font-extrabold uppercase tracking-widest border border-[#FFFFFF]">
+          Topo de Linha
         </div>
       )}
 
       {/* Header: Nome + Tagline */}
-      <div className="text-center pb-5 border-b border-border/50 shrink-0">
-        <h4 className="text-2xl font-bold text-foreground mb-2">{plan.name}</h4>
-        <p className="text-xs font-semibold text-secondary min-h-[2.5rem] flex items-center justify-center px-1 leading-snug">
+      <div className="pb-5 border-b border-[#262626] shrink-0">
+        <h4 className="text-2xl font-extrabold text-[#FFFFFF] mb-1 tracking-tight">{plan.name}</h4>
+        <p className="text-xs text-[#A3A3A3] min-h-[2.5rem] flex items-center leading-snug">
           {plan.tagline || plan.description}
         </p>
       </div>
 
       {/* Preço Único */}
       <div className="flex-1 py-6 flex flex-col gap-6">
-        <div className="text-center min-h-[5.5rem] flex flex-col justify-center shrink-0 items-center">
-          <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest mb-1.5">
+        <div className="min-h-[5rem] flex flex-col justify-center shrink-0">
+          <p className="text-[10px] font-mono uppercase tracking-widest text-[#737373] mb-1">
             Pagamento Único
           </p>
-          <p
-            className={cn(
-              'text-3xl xl:text-4xl font-black transition-colors tracking-tighter break-words px-1 w-full',
-              isPremium
-                ? 'text-amber-400 group-hover:text-amber-300'
-                : 'text-foreground group-hover:text-secondary',
-            )}
-          >
+          <p className="text-3xl sm:text-4xl font-extrabold text-[#FFFFFF] tracking-tight font-mono">
             {plan.price_one_time}
           </p>
-          <p className="text-xs text-muted-foreground mt-1 font-medium">Sem mensalidades</p>
+          <p className="text-xs font-mono text-[#737373] mt-1">Sem mensalidades</p>
         </div>
 
         {/* Lista de Recursos */}
-        <div className="flex flex-col gap-4 flex-1">
-          <div className="flex-1">
-            <p className="text-xs uppercase tracking-wider font-bold text-muted-foreground mb-3">
-              O que está incluso:
-            </p>
-            <ul className="space-y-2.5 text-sm">
-              {plan.features.map((feat, j) => (
-                <li key={j} className="flex items-start gap-2.5">
-                  <div
-                    className={cn(
-                      'rounded-full p-1 shrink-0 mt-0.5',
-                      isPremium
-                        ? 'bg-amber-400/15 text-amber-400'
-                        : 'bg-secondary/10 text-secondary',
-                    )}
-                  >
-                    <Check className="w-3 h-3" />
-                  </div>
-                  <span className="text-muted-foreground font-medium text-xs sm:text-sm leading-tight">
-                    {feat}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="flex flex-col gap-3 flex-1">
+          <p className="font-mono text-[10px] uppercase tracking-widest text-[#737373]">
+            Escopo Incluso:
+          </p>
+          <ul className="space-y-2.5 text-xs text-[#D4D4D4]">
+            {plan.features.map((feat, j) => (
+              <li key={j} className="flex items-start gap-2">
+                <Check className="w-3.5 h-3.5 text-[#FFFFFF] shrink-0 mt-0.5" />
+                <span className="leading-tight">{feat}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
       {/* CTA Button */}
-      <div className="pt-5 mt-auto shrink-0 border-t border-border/50">
+      <div className="pt-5 mt-auto shrink-0 border-t border-[#262626]">
         <Button
           className={cn(
-            'w-full rounded-xl h-12 min-h-[48px] text-sm sm:text-base font-bold transition-all duration-300',
-            isRecommended &&
-              'bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:shadow-[0_0_20px_rgba(194,178,143,0.3)]',
-            isPremium &&
-              'bg-gradient-to-r from-amber-500 to-amber-600 text-black hover:from-amber-400 hover:to-amber-500 hover:shadow-[0_0_20px_rgba(251,191,36,0.35)]',
-            !isRecommended &&
-              !isPremium &&
-              'bg-card text-foreground border-border hover:bg-secondary hover:text-secondary-foreground',
+            'w-full h-11 text-xs font-extrabold uppercase tracking-wider',
+            isRecommended
+              ? 'bg-[#FFFFFF] text-[#0A0A0A] hover:bg-[#F4F4F2] border border-[#FFFFFF]'
+              : 'bg-transparent text-[#FFFFFF] border border-[#262626] hover:bg-[#1F1F1F] hover:border-[#FFFFFF]',
           )}
-          variant={isRecommended || isPremium ? 'default' : 'outline'}
           asChild
         >
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
@@ -164,20 +123,18 @@ export function PricingSection() {
   })
 
   return (
-    <section id="planos" className="py-24 bg-background relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-secondary/5 rounded-full blur-[140px] pointer-events-none" />
-
-      <div className="container mx-auto px-4 relative z-10 max-w-7xl">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-sm font-bold text-secondary tracking-widest uppercase mb-3">
-            Investimento Transparente
+    <section id="planos" className="py-24 bg-[#0A0A0A] text-[#FFFFFF] border-b border-[#262626]">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+        <div className="max-w-3xl mb-16">
+          <p className="font-mono text-xs uppercase tracking-widest text-[#737373] mb-3">
+            03 &middot; Investimento e Escopo
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#FFFFFF] mb-4 tracking-tight leading-[1.1]">
+            Planos Sob Medida
           </h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-primary mb-6 tracking-tight">
-            Planos Sob Medida Para o Seu Negócio
-          </h3>
-          <p className="text-lg text-muted-foreground">
-            Desenvolvimento completo em pagamento único, sem mensalidades ou taxas ocultas. Tenha um
-            site de alta performance e alto padrão com total propriedade do seu projeto.
+          <p className="text-base text-[#A3A3A3] leading-relaxed">
+            Desenvolvimento completo em pagamento único. Sem taxas ocultas e com total propriedade
+            do seu código e do seu deploy.
           </p>
         </div>
 
@@ -186,19 +143,19 @@ export function PricingSection() {
             {Array.from({ length: 4 }).map((_, i) => (
               <div
                 key={i}
-                className="flex flex-col p-6 rounded-[2rem] border border-border/50 gap-6 h-full min-h-[560px]"
+                className="flex flex-col p-6 border border-[#262626] bg-[#121212] gap-6 h-full min-h-[560px]"
               >
-                <Skeleton className="h-8 w-3/4 mx-auto shrink-0" />
-                <Skeleton className="h-10 w-full shrink-0" />
-                <Skeleton className="h-16 w-32 mx-auto shrink-0" />
-                <Skeleton className="h-full w-full flex-1" />
+                <Skeleton className="h-8 w-3/4 mx-auto shrink-0 bg-[#262626]" />
+                <Skeleton className="h-10 w-full shrink-0 bg-[#262626]" />
+                <Skeleton className="h-16 w-32 mx-auto shrink-0 bg-[#262626]" />
+                <Skeleton className="h-full w-full flex-1 bg-[#262626]" />
               </div>
             ))}
           </div>
         ) : (
           <>
             {/* Grid de 4 Cards lado a lado */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-6 max-w-7xl mx-auto items-stretch">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-stretch">
               {plans.map((plan) => (
                 <PlanCard key={plan.id} plan={plan} />
               ))}
@@ -206,15 +163,15 @@ export function PricingSection() {
 
             {/* NOTA ÚNICA abaixo dos 4 cards */}
             <div className="mt-8 max-w-5xl mx-auto">
-              <div className="bg-secondary/10 border border-secondary/25 rounded-2xl p-5 sm:p-6 backdrop-blur-sm flex items-start gap-4 shadow-sm">
-                <div className="p-2.5 bg-secondary/20 rounded-xl text-secondary shrink-0 mt-0.5">
-                  <ShieldCheck className="w-5 h-5" />
+              <div className="border border-[#262626] bg-[#121212] p-5 sm:p-6 flex items-start gap-4">
+                <div className="p-2 border border-[#262626] bg-[#0A0A0A] text-[#FFFFFF] shrink-0 mt-0.5">
+                  <ShieldCheck className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-foreground mb-1">
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-[#FFFFFF] mb-1">
                     Incluso em todos os planos
                   </h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#A3A3A3] leading-relaxed">
                     Todos os planos incluem nome do site, favicon, certificado SSL e domínio
                     gratuito (nomesite.goskip.app). Domínio próprio (.com, .com.br) fica por conta
                     do cliente — te ajudamos a configurar sem custo extra.
@@ -224,229 +181,203 @@ export function PricingSection() {
             </div>
 
             {/* Bloco de Manutenção Mensal Opcional com 2 Modalidades de Contratação */}
-            <div className="mt-12 max-w-5xl mx-auto">
-              <div className="relative rounded-[2rem] border border-secondary/30 bg-gradient-to-b from-card/90 via-card/75 to-secondary/5 p-6 sm:p-8 md:p-10 backdrop-blur-xl shadow-2xl overflow-hidden">
-                {/* Efeito decorativo sutil de fundo */}
-                <div className="absolute -right-20 -top-20 w-72 h-72 bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="mt-16 max-w-5xl mx-auto border border-[#262626] bg-[#121212] p-6 sm:p-8 md:p-10">
+              {/* Cabeçalho do Bloco */}
+              <div className="max-w-2xl mx-auto text-center mb-10">
+                <div className="inline-flex items-center gap-2 px-3 py-1 border border-[#262626] bg-[#0A0A0A] text-[#FFFFFF] font-mono text-xs uppercase tracking-widest mb-3">
+                  <Wrench className="w-3.5 h-3.5" />
+                  Manutenção Mensal Opcional
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-[#FFFFFF] tracking-tight mb-2">
+                  Você escolhe como quer gerenciar o seu projeto
+                </h3>
+                <p className="text-xs sm:text-sm text-[#A3A3A3] leading-relaxed">
+                  Nossos planos continuam 100% pagamento único para desenvolvimento. Se você quiser
+                  tranquilidade total pós-entrega, oferecemos suporte contínuo com valores mensais
+                  acessíveis.
+                </p>
+              </div>
 
-                {/* Cabeçalho do Bloco */}
-                <div className="relative text-center max-w-2xl mx-auto mb-8">
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-secondary/15 border border-secondary/30 text-secondary text-xs font-bold uppercase tracking-wider mb-3">
-                    <Wrench className="w-3.5 h-3.5" />
-                    Manutenção Mensal Opcional
+              {/* As Duas Modalidades: Você assume tudo vs A Zhera cuida de tudo */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                {/* Opção 1: Cliente assume tudo */}
+                <div className="border border-[#262626] bg-[#0A0A0A] p-6 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 border border-[#262626] bg-[#171717] text-[#FFFFFF]">
+                        <UserCheck className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <span className="font-mono text-[10px] uppercase tracking-widest text-[#737373] block">
+                          Modalidade 1
+                        </span>
+                        <h4 className="text-sm sm:text-base font-extrabold text-[#FFFFFF]">
+                          Você assume tudo (Sem recorrência)
+                        </h4>
+                      </div>
+                    </div>
+                    <p className="text-xs text-[#A3A3A3] mb-4 leading-relaxed">
+                      Pagamento único de setup e nada mais. O código, os arquivos e o deploy são
+                      100% seus. Você gerencia alterações de conteúdo, fotos e configurações por
+                      conta própria.
+                    </p>
+                    <ul className="space-y-2 font-mono text-xs text-[#D4D4D4]">
+                      <li className="flex items-center gap-2">
+                        <Check className="w-3.5 h-3.5 text-[#FFFFFF] shrink-0" />
+                        <span>Total autonomia e liberdade sobre o site</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="w-3.5 h-3.5 text-[#FFFFFF] shrink-0" />
+                        <span>Zero mensalidades ou compromissos recorrentes</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="w-3.5 h-3.5 text-[#FFFFFF] shrink-0" />
+                        <span>Código entregue limpo e pronto para produção</span>
+                      </li>
+                    </ul>
                   </div>
-                  <h4 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight mb-2">
-                    Você escolhe como quer gerenciar o seu projeto
-                  </h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Nossos planos continuam 100% pagamento único para desenvolvimento. Se você
-                    quiser tranquilidade total pós-entrega, oferecemos suporte contínuo com valores
-                    mensais acessíveis.
+                  <div className="mt-6 pt-4 border-t border-[#1F1F1F] font-mono text-xs text-[#737373]">
+                    Incluso no valor do setup de cada plano
+                  </div>
+                </div>
+
+                {/* Opção 2: Zhera cuida de tudo */}
+                <div className="border border-[#FFFFFF] bg-[#171717] p-6 flex flex-col justify-between relative">
+                  <div className="absolute -top-3 right-6 bg-[#FFFFFF] text-[#0A0A0A] font-mono text-[10px] font-extrabold uppercase px-2.5 py-0.5 border border-[#FFFFFF]">
+                    Mais Tranquilidade
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 border border-[#FFFFFF] bg-[#0A0A0A] text-[#FFFFFF]">
+                        <Headphones className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <span className="font-mono text-[10px] uppercase tracking-widest text-[#A3A3A3] block">
+                          Modalidade 2
+                        </span>
+                        <h4 className="text-sm sm:text-base font-extrabold text-[#FFFFFF]">
+                          A Zhera cuida de tudo para você
+                        </h4>
+                      </div>
+                    </div>
+                    <p className="text-xs text-[#D4D4D4] mb-4 leading-relaxed">
+                      Nós assumimos a sustentação, atualizações periódicas de textos, fotos,
+                      monitoramento de estabilidade, segurança e suporte prioritário no WhatsApp sem
+                      dor de cabeça.
+                    </p>
+                    <ul className="space-y-2 font-mono text-xs text-[#FFFFFF]">
+                      <li className="flex items-center gap-2">
+                        <Check className="w-3.5 h-3.5 text-[#FFFFFF] shrink-0" />
+                        <span>Ajustes de texto, fotos, contatos e banners</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="w-3.5 h-3.5 text-[#FFFFFF] shrink-0" />
+                        <span>Monitoramento de uptime, SSL e segurança</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Check className="w-3.5 h-3.5 text-[#FFFFFF] shrink-0" />
+                        <span>Suporte prioritário direto via WhatsApp</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="mt-6 pt-4 border-t border-[#262626] font-mono text-xs text-[#A3A3A3]">
+                    Opcional &middot; contrate apenas se fizer sentido para você
+                  </div>
+                </div>
+              </div>
+
+              {/* Grade com os 4 Valores de Manutenção Mensal por Plano */}
+              <div>
+                <div className="text-center mb-6">
+                  <p className="font-mono text-xs uppercase tracking-widest text-[#737373]">
+                    Valores de Manutenção Mensal Opcional por Plano
                   </p>
                 </div>
-
-                {/* As Duas Modalidades: Você assume tudo vs A ACDOMZ cuida de tudo */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8">
-                  {/* Opção 1: Cliente assume tudo */}
-                  <div className="rounded-2xl border border-border/60 bg-background/50 p-5 sm:p-6 flex flex-col justify-between transition-colors hover:border-border">
-                    <div>
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="p-2 rounded-xl bg-muted text-muted-foreground">
-                          <UserCheck className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-                            Modalidade 1
-                          </span>
-                          <h5 className="text-base font-bold text-foreground">
-                            Você assume tudo (Sem recorrência)
-                          </h5>
-                        </div>
-                      </div>
-                      <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
-                        Pagamento único de setup e nada mais. O código, os arquivos e o deploy são
-                        100% seus. Você gerencia alterações de conteúdo, fotos e configurações por
-                        conta própria.
-                      </p>
-                      <ul className="space-y-2 text-xs text-muted-foreground">
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-secondary shrink-0" />
-                          <span>Total autonomia e liberdade sobre o site</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-secondary shrink-0" />
-                          <span>Zero mensalidades ou compromissos recorrentes</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-secondary shrink-0" />
-                          <span>Código entregue limpo e pronto para produção</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="mt-5 pt-4 border-t border-border/40 text-center">
-                      <span className="text-xs font-semibold text-muted-foreground">
-                        Incluso no valor do setup de cada plano
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Opção 2: ACDOMZ cuida de tudo */}
-                  <div className="rounded-2xl border border-secondary/50 bg-secondary/[0.08] p-5 sm:p-6 flex flex-col justify-between relative shadow-sm">
-                    <div className="absolute -top-3 right-5 bg-secondary text-secondary-foreground text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full shadow-sm">
-                      Mais Tranquilidade
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="p-2 rounded-xl bg-secondary/20 text-secondary">
-                          <Headphones className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-secondary">
-                            Modalidade 2
-                          </span>
-                          <h5 className="text-base font-bold text-foreground">
-                            A ACDOMZ cuida de tudo para você
-                          </h5>
-                        </div>
-                      </div>
-                      <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
-                        Nós assumimos a sustentação, atualizações periódicas de textos, fotos,
-                        monitoramento de estabilidade, segurança e suporte prioritário no WhatsApp
-                        sem dor de cabeça.
-                      </p>
-                      <ul className="space-y-2 text-xs text-muted-foreground">
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-secondary shrink-0" />
-                          <span>Ajustes de texto, fotos, contatos e banners</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-secondary shrink-0" />
-                          <span>Monitoramento de uptime, SSL e segurança</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-secondary shrink-0" />
-                          <span>Suporte prioritário direto via WhatsApp</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="mt-5 pt-4 border-t border-secondary/20 text-center">
-                      <span className="text-xs font-semibold text-secondary">
-                        Opcional — contrate apenas se fizer sentido para você
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Grade com os 4 Valores de Manutenção Mensal por Plano */}
-                <div>
-                  <div className="text-center mb-4">
-                    <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Valores de Manutenção Mensal Opcional por Plano
-                    </p>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-                    {[
-                      {
-                        name: 'STARTER',
-                        price:
-                          plans.find((p) => p.name.toUpperCase().includes('STARTER'))
-                            ?.maintenance_monthly_price || 'R$ 47/mês',
-                        isRecommended: false,
-                        isPremium: false,
-                        description: 'Ajustes pontuais e monitoramento essencial',
-                      },
-                      {
-                        name: 'MEDIUM',
-                        price:
-                          plans.find((p) => p.name.toUpperCase().includes('MEDIUM'))
-                            ?.maintenance_monthly_price || 'R$ 67/mês',
-                        isRecommended: true,
-                        isPremium: false,
-                        description: 'Suporte a leads, WhatsApp e atualizações',
-                      },
-                      {
-                        name: 'EXPERT',
-                        price:
-                          plans.find((p) => p.name.toUpperCase().includes('EXPERT'))
-                            ?.maintenance_monthly_price || 'R$ 87/mês',
-                        isRecommended: false,
-                        isPremium: false,
-                        description: 'Monitoramento de IA, integrações e dados',
-                      },
-                      {
-                        name: 'PREMIUM',
-                        price:
-                          plans.find((p) => p.name.toUpperCase().includes('PREMIUM'))
-                            ?.maintenance_monthly_price || 'R$ 97/mês',
-                        isRecommended: false,
-                        isPremium: true,
-                        description: 'Sustentação 3D, WebGL e performance máxima',
-                      },
-                    ].map((item, idx) => (
-                      <div
-                        key={idx}
-                        className={cn(
-                          'rounded-2xl p-4 sm:p-5 flex flex-col justify-between transition-all bg-background/60 border text-center',
-                          item.isRecommended &&
-                            'border-secondary/60 bg-secondary/[0.05] ring-1 ring-secondary/40',
-                          item.isPremium &&
-                            'border-amber-400/50 bg-amber-400/[0.04] ring-1 ring-amber-400/30',
-                          !item.isRecommended && !item.isPremium && 'border-border/50',
-                        )}
-                      >
-                        <div>
-                          <div className="flex items-center justify-center gap-1.5 mb-1">
-                            <span className="text-xs font-bold text-foreground tracking-wide">
-                              {item.name}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {[
+                    {
+                      name: 'STARTER',
+                      price:
+                        plans.find((p) => p.name.toUpperCase().includes('STARTER'))
+                          ?.maintenance_monthly_price || 'R$ 47/mês',
+                      isRecommended: false,
+                      isPremium: false,
+                      description: 'Ajustes pontuais e monitoramento essencial',
+                    },
+                    {
+                      name: 'MEDIUM',
+                      price:
+                        plans.find((p) => p.name.toUpperCase().includes('MEDIUM'))
+                          ?.maintenance_monthly_price || 'R$ 67/mês',
+                      isRecommended: true,
+                      isPremium: false,
+                      description: 'Suporte a leads, WhatsApp e atualizações',
+                    },
+                    {
+                      name: 'EXPERT',
+                      price:
+                        plans.find((p) => p.name.toUpperCase().includes('EXPERT'))
+                          ?.maintenance_monthly_price || 'R$ 87/mês',
+                      isRecommended: false,
+                      isPremium: false,
+                      description: 'Monitoramento de IA, integrações e dados',
+                    },
+                    {
+                      name: 'PREMIUM',
+                      price:
+                        plans.find((p) => p.name.toUpperCase().includes('PREMIUM'))
+                          ?.maintenance_monthly_price || 'R$ 97/mês',
+                      isRecommended: false,
+                      isPremium: true,
+                      description: 'Sustentação 3D, WebGL e performance máxima',
+                    },
+                  ].map((item, idx) => (
+                    <div
+                      key={idx}
+                      className={cn(
+                        'p-5 flex flex-col justify-between bg-[#0A0A0A] border text-center',
+                        item.isRecommended ? 'border-[#FFFFFF]' : 'border-[#262626]',
+                      )}
+                    >
+                      <div>
+                        <div className="flex items-center justify-center gap-2 mb-2 font-mono">
+                          <span className="text-xs font-bold text-[#FFFFFF]">{item.name}</span>
+                          {item.isRecommended && (
+                            <span className="text-[9px] font-bold px-1.5 py-0.5 bg-[#FFFFFF] text-[#0A0A0A] uppercase">
+                              Recomendado
                             </span>
-                            {item.isRecommended && (
-                              <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-secondary/20 text-secondary uppercase">
-                                Recomendado
-                              </span>
-                            )}
-                            {item.isPremium && (
-                              <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-400/20 text-amber-400 uppercase">
-                                Topo
-                              </span>
-                            )}
-                          </div>
-                          <p
-                            className={cn(
-                              'text-2xl font-black tracking-tight my-2',
-                              item.isPremium
-                                ? 'text-amber-400'
-                                : item.isRecommended
-                                  ? 'text-secondary'
-                                  : 'text-foreground',
-                            )}
-                          >
-                            {item.price}
-                          </p>
-                          <p className="text-[11px] text-muted-foreground leading-snug">
-                            {item.description}
-                          </p>
+                          )}
+                          {item.isPremium && (
+                            <span className="text-[9px] font-bold px-1.5 py-0.5 bg-[#262626] text-[#FFFFFF] uppercase">
+                              Topo
+                            </span>
+                          )}
                         </div>
-                        <div className="mt-4 pt-3 border-t border-border/30">
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="w-full text-xs font-semibold h-9 rounded-xl hover:bg-secondary/15 hover:text-secondary"
-                            asChild
-                          >
-                            <a
-                              href={buildMaintenanceWhatsAppUrl(item.name)}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center justify-center gap-1.5"
-                            >
-                              Contratar com Suporte
-                              <ExternalLink className="w-3 h-3" />
-                            </a>
-                          </Button>
-                        </div>
+                        <p className="text-2xl font-extrabold tracking-tight my-2 font-mono text-[#FFFFFF]">
+                          {item.price}
+                        </p>
+                        <p className="text-xs text-[#A3A3A3] leading-snug">{item.description}</p>
                       </div>
-                    ))}
-                  </div>
+                      <div className="mt-5 pt-3 border-t border-[#1F1F1F]">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="w-full text-xs font-mono uppercase tracking-wider h-9 border border-[#262626] hover:bg-[#FFFFFF] hover:text-[#0A0A0A]"
+                          asChild
+                        >
+                          <a
+                            href={buildMaintenanceWhatsAppUrl(item.name)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-1.5"
+                          >
+                            Contratar com Suporte
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -454,24 +385,26 @@ export function PricingSection() {
             {/* Resumo Comparativo com 4 Planos */}
             <div className="mt-20 max-w-6xl mx-auto overflow-x-auto pb-4">
               <div className="min-w-[900px]">
-                <h4 className="text-2xl font-bold text-center mb-8">Resumo Comparativo</h4>
-                <div className="rounded-xl border border-border/50 bg-card/40 backdrop-blur-sm overflow-hidden">
+                <h3 className="text-xl sm:text-2xl font-extrabold text-center mb-8 uppercase font-mono tracking-tight text-[#FFFFFF]">
+                  Resumo Comparativo de Escopo
+                </h3>
+                <div className="border border-[#262626] bg-[#121212] overflow-hidden">
                   <Table>
-                    <TableHeader className="bg-muted/50">
-                      <TableRow>
-                        <TableHead className="w-[240px] font-bold text-foreground">
+                    <TableHeader className="bg-[#0A0A0A] border-b border-[#262626]">
+                      <TableRow className="border-b border-[#262626] hover:bg-transparent">
+                        <TableHead className="w-[240px] font-mono text-xs uppercase tracking-wider text-[#FFFFFF]">
                           Aspecto
                         </TableHead>
-                        <TableHead className="font-bold text-center text-foreground">
+                        <TableHead className="font-mono text-xs uppercase tracking-wider text-center text-[#FFFFFF]">
                           STARTER
                         </TableHead>
-                        <TableHead className="font-bold text-center text-foreground">
+                        <TableHead className="font-mono text-xs uppercase tracking-wider text-center text-[#FFFFFF]">
                           MEDIUM
                         </TableHead>
-                        <TableHead className="font-bold text-center text-foreground">
+                        <TableHead className="font-mono text-xs uppercase tracking-wider text-center text-[#FFFFFF]">
                           EXPERT
                         </TableHead>
-                        <TableHead className="font-bold text-center text-amber-400">
+                        <TableHead className="font-mono text-xs uppercase tracking-wider text-center text-[#FFFFFF]">
                           PREMIUM
                         </TableHead>
                       </TableRow>
@@ -546,18 +479,20 @@ export function PricingSection() {
                         ['Certificado SSL + Favicon', 'Incluso', 'Incluso', 'Incluso', 'Incluso'],
                         ['GitHub Export', 'Incluso', 'Incluso', 'Incluso', 'Incluso'],
                       ].map((row, i) => (
-                        <TableRow key={i} className="hover:bg-muted/30">
-                          <TableCell className="font-medium text-foreground">{row[0]}</TableCell>
-                          <TableCell className="text-center text-muted-foreground">
+                        <TableRow key={i} className="border-b border-[#1F1F1F] hover:bg-[#171717]">
+                          <TableCell className="font-mono text-xs text-[#FFFFFF]">
+                            {row[0]}
+                          </TableCell>
+                          <TableCell className="font-mono text-xs text-center text-[#A3A3A3]">
                             {row[1]}
                           </TableCell>
-                          <TableCell className="text-center text-muted-foreground">
+                          <TableCell className="font-mono text-xs text-center text-[#FFFFFF] font-semibold">
                             {row[2]}
                           </TableCell>
-                          <TableCell className="text-center text-muted-foreground">
+                          <TableCell className="font-mono text-xs text-center text-[#A3A3A3]">
                             {row[3]}
                           </TableCell>
-                          <TableCell className="text-center text-amber-400 font-semibold">
+                          <TableCell className="font-mono text-xs text-center text-[#FFFFFF] font-bold">
                             {row[4]}
                           </TableCell>
                         </TableRow>
@@ -569,57 +504,48 @@ export function PricingSection() {
             </div>
 
             {/* Guia de Escolha dos 4 Planos */}
-            <div className="mt-12 max-w-5xl mx-auto">
-              <div className="bg-card/50 border border-border/50 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-secondary/10 rounded-lg">
-                    <HelpCircle className="w-5 h-5 text-secondary" />
-                  </div>
-                  <h4 className="text-lg font-bold">Guia de Escolha Rápido</h4>
+            <div className="mt-12 max-w-5xl mx-auto border border-[#262626] bg-[#121212] p-6 sm:p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="font-mono text-xs uppercase tracking-widest text-[#FFFFFF]">
+                  Guia de Decisão Rápida
+                </span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="border-b md:border-b-0 md:border-r border-[#262626] pb-4 md:pb-0 md:pr-6">
+                  <h5 className="font-mono text-xs font-bold text-[#FFFFFF] uppercase tracking-wider mb-1">
+                    STARTER (R$ 997)
+                  </h5>
+                  <p className="text-xs text-[#A3A3A3] leading-relaxed">
+                    Presença digital essencial. Vitrine rápida no ar para validação com investimento
+                    enxuto.
+                  </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <h5 className="text-sm font-bold text-foreground flex items-center gap-2 mb-1">
-                      STARTER <ArrowRight className="w-3 h-3 text-muted-foreground" />
-                    </h5>
-                    <p className="text-xs text-muted-foreground">
-                      Presença digital essencial. Ideal para quem precisa de uma vitrine
-                      profissional no ar rapidamente com investimento enxuto.
-                    </p>
-                  </div>
-                  <div>
-                    <h5 className="text-sm font-bold text-foreground flex items-center gap-2 mb-1">
-                      MEDIUM <ArrowRight className="w-3 h-3 text-secondary" />
-                      <span className="text-[10px] font-bold text-secondary bg-secondary/15 px-1.5 py-0.5 rounded">
-                        Mais Popular
-                      </span>
-                    </h5>
-                    <p className="text-xs text-muted-foreground">
-                      Geração de leads e contato direto. Ideal para empresas e profissionais que
-                      usam WhatsApp e FAQ para converter visitantes em clientes.
-                    </p>
-                  </div>
-                  <div>
-                    <h5 className="text-sm font-bold text-foreground flex items-center gap-2 mb-1">
-                      EXPERT <ArrowRight className="w-3 h-3 text-muted-foreground" />
-                    </h5>
-                    <p className="text-xs text-muted-foreground">
-                      Site completo com IA. Perfeito para automatizar o atendimento inicial,
-                      qualificar potenciais clientes e vender infoprodutos 24/7.
-                    </p>
-                  </div>
-                  <div>
-                    <h5 className="text-sm font-bold text-foreground flex items-center gap-2 mb-1">
-                      PREMIUM <ArrowRight className="w-3 h-3 text-amber-400" />
-                      <span className="text-[10px] font-bold text-amber-400 bg-amber-400/15 px-1.5 py-0.5 rounded">
-                        Topo de Linha
-                      </span>
-                    </h5>
-                    <p className="text-xs text-muted-foreground">
-                      Experiência cinematográfica de marca com movimento 3D, WebGL e motion design
-                      exclusivo feito sob medida.
-                    </p>
-                  </div>
+                <div className="border-b md:border-b-0 pb-4 md:pb-0">
+                  <h5 className="font-mono text-xs font-bold text-[#FFFFFF] uppercase tracking-wider mb-1">
+                    MEDIUM (R$ 1.497) &middot; Mais Escolhido
+                  </h5>
+                  <p className="text-xs text-[#A3A3A3] leading-relaxed">
+                    Geração de leads via WhatsApp e FAQ estruturada. Recomendado para negócios que
+                    vivem de prospecção direta.
+                  </p>
+                </div>
+                <div className="border-t border-[#262626] pt-4 md:border-r md:pr-6">
+                  <h5 className="font-mono text-xs font-bold text-[#FFFFFF] uppercase tracking-wider mb-1">
+                    EXPERT (R$ 2.997)
+                  </h5>
+                  <p className="text-xs text-[#A3A3A3] leading-relaxed">
+                    Landing page com IA para atendimento automático e suporte a infoprodutos de alta
+                    conversão.
+                  </p>
+                </div>
+                <div className="border-t border-[#262626] pt-4">
+                  <h5 className="font-mono text-xs font-bold text-[#FFFFFF] uppercase tracking-wider mb-1">
+                    PREMIUM (R$ 4.997) &middot; Topo
+                  </h5>
+                  <p className="text-xs text-[#A3A3A3] leading-relaxed">
+                    Experiência visual sob medida com motion 3D, WebGL e direção de arte completa
+                    para liderança de nicho.
+                  </p>
                 </div>
               </div>
             </div>
