@@ -54,11 +54,11 @@ export function CtaSection() {
               <Button
                 size="lg"
                 variant="ghost"
-                className="w-full sm:w-auto text-[#A3A3A3] hover:text-[#FFFFFF] hover:bg-[#171717] font-mono text-xs gap-2 h-12 px-6 transition-colors"
+                className="w-full sm:w-auto text-[#A3A3A3] hover:text-[#FFFFFF] hover:bg-[#171717] font-mono text-xs gap-2 h-12 px-6 transition-colors break-all"
                 asChild
               >
-                <a href="mailto:acdomz.gc@gmail.com">
-                  <Mail className="w-4 h-4" /> acdomz.gc@gmail.com
+                <a href="mailto:carlos.eduardo.model@gmail.com">
+                  <Mail className="w-4 h-4 shrink-0" /> carlos.eduardo.model@gmail.com
                 </a>
               </Button>
             </div>

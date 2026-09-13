@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from '@/components/ui/sheet'
-import { Menu } from 'lucide-react'
+import { Menu, Mail, MessageCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 // Assets oficiais da marca Zhera (regras obrigatórias: sem opacidade, sem gradiente, sem sombra, sem cantos arredondados, sem distorção)
@@ -178,6 +178,29 @@ export default function Layout() {
                     </a>
                   </Button>
                 </SheetClose>
+
+                {/* Canais de Contato no Menu Mobile */}
+                <div className="pt-6 mt-2 border-t border-[#1F1F1F] space-y-3 font-mono text-xs">
+                  <div className="text-[10px] uppercase tracking-widest text-[#737373]">
+                    Canais Oficiais
+                  </div>
+                  <a
+                    href="mailto:carlos.eduardo.model@gmail.com"
+                    className="flex items-center gap-2 text-[#A3A3A3] hover:text-[#FFFFFF] transition-colors break-all"
+                  >
+                    <Mail className="w-3.5 h-3.5 shrink-0" />
+                    <span>carlos.eduardo.model@gmail.com</span>
+                  </a>
+                  <a
+                    href="https://wa.me/5541987322926"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-[#A3A3A3] hover:text-[#FFFFFF] transition-colors"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>(41) 98732-2926</span>
+                  </a>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
@@ -229,18 +252,20 @@ export default function Layout() {
             </h4>
             <div className="space-y-3 text-sm text-[#A3A3A3]">
               <a
-                href="mailto:acdomz.gc@gmail.com"
-                className="block hover:text-[#FFFFFF] transition-colors font-mono"
+                href="mailto:carlos.eduardo.model@gmail.com"
+                className="inline-flex items-center gap-2 hover:text-[#FFFFFF] transition-colors font-mono text-xs sm:text-sm link-underline-expand break-all"
               >
-                acdomz.gc@gmail.com
+                <Mail className="w-3.5 h-3.5 shrink-0" />
+                <span>carlos.eduardo.model@gmail.com</span>
               </a>
               <a
                 href="https://wa.me/5541987322926"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block hover:text-[#FFFFFF] transition-colors font-mono"
+                className="flex items-center gap-2 hover:text-[#FFFFFF] transition-colors font-mono text-xs sm:text-sm link-underline-expand"
               >
-                (41) 98732-2926
+                <MessageCircle className="w-3.5 h-3.5 shrink-0" />
+                <span>(41) 98732-2926</span>
               </a>
               <p className="text-xs text-[#737373] pt-2">
                 Curitiba — PR / Atendimento para todo o Brasil

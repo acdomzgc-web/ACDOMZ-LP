@@ -356,11 +356,11 @@ export function HeroSection() {
               </a>
               <span className="hidden sm:inline-block text-[#262626]">/</span>
               <a
-                href="mailto:acdomz.gc@gmail.com"
-                className="hover:text-[#FFFFFF] transition-colors flex items-center gap-2 group"
+                href="mailto:carlos.eduardo.model@gmail.com"
+                className="hover:text-[#FFFFFF] transition-colors flex items-center gap-2 group break-all"
               >
-                <Mail className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-y-0.5" />
-                <span>acdomz.gc@gmail.com</span>
+                <Mail className="w-3.5 h-3.5 shrink-0 transition-transform duration-200 group-hover:-translate-y-0.5" />
+                <span>carlos.eduardo.model@gmail.com</span>
               </a>
             </div>
           </div>
